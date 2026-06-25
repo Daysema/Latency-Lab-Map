@@ -71,11 +71,6 @@ const TIER_MIN_ZOOM = {
 const MIN_ZOOM = 3;
 const MAX_ZOOM = 10; // city level — no street detail
 
-const RUSSIA_BOUNDS = [
-  [41.0, 19.0],
-  [82.0, 180.0],
-];
-
 /** Initial framing — all of Russia without empty Arctic ocean above */
 const RUSSIA_INITIAL_BOUNDS = [
   [41.5, 19.0],
@@ -85,8 +80,6 @@ const RUSSIA_INITIAL_BOUNDS = [
 const map = L.map("map", {
   minZoom: MIN_ZOOM,
   maxZoom: MAX_ZOOM,
-  maxBounds: RUSSIA_BOUNDS,
-  maxBoundsViscosity: 0.85,
   zoomControl: true,
 });
 
