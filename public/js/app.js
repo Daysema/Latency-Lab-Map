@@ -311,6 +311,113 @@ function regionHoverStyle(stats) {
   };
 }
 
+function pointInRing(lng, lat, ring) {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i];
+    const [xj, yj] = ring[j];
+    if ((yi > lat) !== (yj > lat) && lng < ((xj - xi) * (lat - yi)) / (yj - yi) + xi) {
+      inside = !inside;
+    }
+  }
+  return inside;
+}
+
+function pointInPolygonCoords(lng, lat, polygonCoords) {
+  if (!polygonCoords?.length) return false;
+  if (!pointInRing(lng, lat, polygonCoords[0])) return false;
+  for (let hole = 1; hole < polygonCoords.length; hole++) {
+    if (pointInRing(lng, lat, polygonCoords[hole])) return false;
+  }
+  return true;
+}
+
+function getRegionCities(regionName) {
+  return allCities.filter(
+    (city) => normalizeSubject(city.subject || "") === regionName
+  );
+}
+
+function polygonPartHasCity(polygonCoords, regionCities) {
+  for (const city of regionCities) {
+    if (pointInPolygonCoords(city.lng, city.lat, polygonCoords)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function splitRegionFeatures(geojson) {
+  const features = [];
+
+  for (const feature of geojson.features || []) {
+    const name = feature.properties?.name;
+    if (!name || !feature.geometry) continue;
+
+    const regionCities = getRegionCities(name);
+    const { geometry } = feature;
+
+    if (geometry.type === "Polygon") {
+      features.push({
+        type: "Feature",
+        properties: {
+          ...feature.properties,
+          hasCities: polygonPartHasCity(geometry.coordinates, regionCities),
+        },
+        geometry,
+      });
+      continue;
+    }
+
+    if (geometry.type === "MultiPolygon") {
+      for (const polygonCoords of geometry.coordinates) {
+        features.push({
+          type: "Feature",
+          properties: {
+            ...feature.properties,
+            hasCities: polygonPartHasCity(polygonCoords, regionCities),
+          },
+          geometry: { type: "Polygon", coordinates: polygonCoords },
+        });
+      }
+    }
+  }
+
+  return { type: "FeatureCollection", features };
+}
+
+function regionPartHasCities(feature) {
+  return feature.properties?.hasCities !== false;
+}
+
+function regionStyleNeutral() {
+  return {
+    fillColor: STATUS_COLORS.unknown,
+    fillOpacity: 0,
+    color: "rgba(147, 197, 253, 0.3)",
+    weight: 0.9,
+    opacity: 0.4,
+  };
+}
+
+function regionStyleForFeature(feature) {
+  if (!regionPartHasCities(feature)) {
+    return regionStyleNeutral();
+  }
+  return regionStyleForHeat(getRegionStats(feature));
+}
+
+function regionHoverStyleForFeature(feature) {
+  if (!regionPartHasCities(feature)) {
+    return {
+      ...regionStyleNeutral(),
+      weight: 1.4,
+      opacity: 0.65,
+    };
+  }
+  return regionHoverStyle(getRegionStats(feature));
+}
+
 function formatPopulation(n) {
   return new Intl.NumberFormat("ru-RU").format(n) + " чел.";
 }
@@ -420,11 +527,12 @@ function showRegionPopup(name, stats) {
 function refreshRegionStyles() {
   if (!regionsLayer) return;
   regionsLayer.eachLayer((layer) => {
-    const stats = getRegionStats(layer.feature);
-    layer.setStyle(regionStyleForHeat(stats));
+    const feature = layer.feature;
+    const stats = getRegionStats(feature);
+    layer.setStyle(regionStyleForFeature(feature));
     const tooltip = layer.getTooltip();
     if (tooltip) {
-      tooltip.setContent(formatRegionTooltip(layer.feature.properties.name, stats));
+      tooltip.setContent(formatRegionTooltip(feature.properties.name, stats));
     }
   });
 }
@@ -479,7 +587,7 @@ function renderCities(zoom) {
 function onEachRegion(feature, layer) {
   const name = feature.properties.name;
   const stats = getRegionStats(feature);
-  const baseStyle = regionStyleForHeat(stats);
+  const baseStyle = regionStyleForFeature(feature);
 
   layer.bindTooltip(formatRegionTooltip(name, stats), {
     sticky: true,
@@ -488,7 +596,7 @@ function onEachRegion(feature, layer) {
 
   layer.on({
     mouseover: (e) => {
-      e.target.setStyle(regionHoverStyle(stats));
+      e.target.setStyle(regionHoverStyleForFeature(feature));
     },
     mouseout: (e) => {
       e.target.setStyle(baseStyle);
@@ -610,11 +718,11 @@ async function loadData() {
   }
 
   regionStatsMap = buildRegionStatsMap(allCities);
-  const regions = await regionsRes.json();
+  const regions = splitRegionFeatures(await regionsRes.json());
 
   regionsLayer = L.geoJSON(regions, {
     smoothFactor: 1.25,
-    style: (feature) => regionStyleForHeat(getRegionStats(feature)),
+    style: (feature) => regionStyleForFeature(feature),
     onEachFeature: onEachRegion,
   }).addTo(map);
 
