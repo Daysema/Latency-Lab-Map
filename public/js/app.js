@@ -1,19 +1,17 @@
-const TIER_LABELS = {
-  capital: "Столица",
-  megacity: "Город-миллионник",
-  large: "Крупный город",
-  regional: "Областной / региональный центр",
-  small: "Малый город",
-  town: "Населённый пункт",
+const STATUS_LABELS = {
+  unknown: "Нет информации",
+  ok: "Нет ограничений",
+  temp_rare: "Временные ограничения (редкие)",
+  temp_frequent: "Временные ограничения (частые)",
+  permanent: "Постоянные ограничения",
 };
 
-const TIER_COLORS = {
-  capital: "#f59e0b",
-  megacity: "#ef4444",
-  large: "#f97316",
-  regional: "#3b82f6",
-  small: "#22c55e",
-  town: "#94a3b8",
+const STATUS_COLORS = {
+  unknown: "#94a3b8",
+  ok: "#22c55e",
+  temp_rare: "#eab308",
+  temp_frequent: "#f97316",
+  permanent: "#ef4444",
 };
 
 const TIER_RADIUS = {
@@ -25,7 +23,7 @@ const TIER_RADIUS = {
   town: 4,
 };
 
-/** Minimum zoom to show each city tier */
+/** Minimum zoom to show each city tier (by population) */
 const TIER_MIN_ZOOM = {
   capital: 3,
   megacity: 4,
@@ -69,16 +67,21 @@ const popup = document.getElementById("city-popup");
 let allCities = [];
 let cityMarkers = new Map();
 
+function cityStatus(city) {
+  return city.status || "unknown";
+}
+
 function formatPopulation(n) {
   return new Intl.NumberFormat("ru-RU").format(n) + " чел.";
 }
 
-function createCityIcon(tier) {
-  const radius = TIER_RADIUS[tier] || 5;
-  const color = TIER_COLORS[tier] || TIER_COLORS.town;
+function createCityIcon(city) {
+  const status = cityStatus(city);
+  const radius = TIER_RADIUS[city.tier] || 5;
+  const color = STATUS_COLORS[status] || STATUS_COLORS.unknown;
 
   return L.divIcon({
-    className: `city-marker city-marker--${tier}`,
+    className: `city-marker city-marker--${status}`,
     html: `<span style="
       display:block;
       width:${radius * 2}px;
@@ -100,8 +103,8 @@ function showCityPopup(city) {
   document.getElementById("popup-population").textContent = formatPopulation(
     city.population
   );
-  document.getElementById("popup-tier").textContent =
-    TIER_LABELS[city.tier] || city.tier;
+  document.getElementById("popup-status").textContent =
+    STATUS_LABELS[cityStatus(city)] || cityStatus(city);
   popup.hidden = false;
 }
 
@@ -121,7 +124,7 @@ function renderCities(zoom) {
     if (!cityVisibleAtZoom(city, zoom)) continue;
 
     const marker = L.marker([city.lat, city.lng], {
-      icon: createCityIcon(city.tier),
+      icon: createCityIcon(city),
       title: city.name,
     });
 

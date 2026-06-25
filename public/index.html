@@ -16,7 +16,7 @@
   <header class="header">
     <div class="header__brand">
       <h1>Latency Lab Map</h1>
-      <p>Карта городов и субъектов Российской Федерации</p>
+      <p>Карта доступности городов и субъектов Российской Федерации</p>
     </div>
     <div class="header__controls">
       <label class="search" for="city-search">
@@ -38,14 +38,13 @@
   <main id="map" role="application" aria-label="Интерактивная карта России"></main>
 
   <aside class="legend" aria-label="Легенда карты">
-    <h2>Города</h2>
+    <h2>Доступность</h2>
     <ul>
-      <li><span class="dot dot--capital"></span> Столицы</li>
-      <li><span class="dot dot--megacity"></span> Миллионники</li>
-      <li><span class="dot dot--large"></span> Крупные (500 тыс.+)</li>
-      <li><span class="dot dot--regional"></span> Областные центры (100 тыс.+)</li>
-      <li><span class="dot dot--small"></span> Малые (20 тыс.+)</li>
-      <li><span class="dot dot--town"></span> Прочие</li>
+      <li><span class="dot dot--unknown"></span> Нет информации</li>
+      <li><span class="dot dot--ok"></span> Нет ограничений</li>
+      <li><span class="dot dot--temp-rare"></span> Временные ограничения (редкие)</li>
+      <li><span class="dot dot--temp-frequent"></span> Временные ограничения (частые)</li>
+      <li><span class="dot dot--permanent"></span> Постоянные ограничения</li>
     </ul>
     <p class="legend__note">Увеличение ограничено уровнем города — улицы не отображаются.</p>
   </aside>
@@ -56,7 +55,7 @@
     <dl>
       <div><dt>Субъект</dt><dd id="popup-subject"></dd></div>
       <div><dt>Население</dt><dd id="popup-population"></dd></div>
-      <div><dt>Категория</dt><dd id="popup-tier"></dd></div>
+      <div><dt>Доступность</dt><dd id="popup-status"></dd></div>
     </dl>
   </div>
 

@@ -15,12 +15,11 @@
   --region-stroke: rgba(147, 197, 253, 0.45);
   --region-hover: rgba(59, 130, 246, 0.18);
 
-  --capital: #f59e0b;
-  --megacity: #ef4444;
-  --large: #f97316;
-  --regional: #3b82f6;
-  --small: #22c55e;
-  --town: #94a3b8;
+  --status-unknown: #94a3b8;
+  --status-ok: #22c55e;
+  --status-temp-rare: #eab308;
+  --status-temp-frequent: #f97316;
+  --status-permanent: #ef4444;
 }
 
 html,
@@ -199,12 +198,11 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
-.dot--capital { background: var(--capital); }
-.dot--megacity { background: var(--megacity); }
-.dot--large { background: var(--large); }
-.dot--regional { background: var(--regional); }
-.dot--small { background: var(--small); }
-.dot--town { background: var(--town); }
+.dot--unknown { background: var(--status-unknown); }
+.dot--ok { background: var(--status-ok); }
+.dot--temp-rare { background: var(--status-temp-rare); }
+.dot--temp-frequent { background: var(--status-temp-frequent); }
+.dot--permanent { background: var(--status-permanent); }
 
 .city-popup {
   position: fixed;
