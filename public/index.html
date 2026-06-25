@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latency Lab Map — Карта России</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header__brand">
+      <h1>Latency Lab Map</h1>
+      <p>Карта городов и субъектов Российской Федерации</p>
+    </div>
+    <div class="header__controls">
+      <label class="search" for="city-search">
+        <span class="sr-only">Поиск города</span>
+        <input
+          id="city-search"
+          type="search"
+          placeholder="Найти город…"
+          autocomplete="off"
+        />
+        <ul id="search-results" class="search-results" hidden></ul>
+      </label>
+      <div class="zoom-info">
+        Масштаб: <span id="zoom-level">—</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="map" role="application" aria-label="Интерактивная карта России"></main>
+
+  <aside class="legend" aria-label="Легенда карты">
+    <h2>Города</h2>
+    <ul>
+      <li><span class="dot dot--capital"></span> Столицы</li>
+      <li><span class="dot dot--megacity"></span> Миллионники</li>
+      <li><span class="dot dot--large"></span> Крупные (500 тыс.+)</li>
+      <li><span class="dot dot--regional"></span> Областные центры (100 тыс.+)</li>
+      <li><span class="dot dot--small"></span> Малые (20 тыс.+)</li>
+      <li><span class="dot dot--town"></span> Прочие</li>
+    </ul>
+    <p class="legend__note">Увеличение ограничено уровнем города — улицы не отображаются.</p>
+  </aside>
+
+  <div id="city-popup" class="city-popup" hidden>
+    <button type="button" class="city-popup__close" aria-label="Закрыть">&times;</button>
+    <h3 id="popup-name"></h3>
+    <dl>
+      <div><dt>Субъект</dt><dd id="popup-subject"></dd></div>
+      <div><dt>Население</dt><dd id="popup-population"></dd></div>
+      <div><dt>Категория</dt><dd id="popup-tier"></dd></div>
+    </dl>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="js/app.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,9074 @@
+[
+  {
+    "name": "Москва",
+    "lat": 55.755833333333,
+    "lng": 37.617777777778,
+    "population": 13010112,
+    "subject": "Москва",
+    "tier": "capital"
+  },
+  {
+    "name": "Санкт-Петербург",
+    "lat": 59.95,
+    "lng": 30.31667,
+    "population": 5601911,
+    "subject": "Санкт-Петербург",
+    "tier": "capital"
+  },
+  {
+    "name": "Новосибирск",
+    "lat": 55.01667,
+    "lng": 82.91667,
+    "population": 1633595,
+    "subject": "Новосибирская область",
+    "tier": "megacity"
+  },
+  {
+    "name": "Екатеринбург",
+    "lat": 56.83333,
+    "lng": 60.58333,
+    "population": 1544376,
+    "subject": "Свердловская область",
+    "tier": "megacity"
+  },
+  {
+    "name": "Казань",
+    "lat": 55.79083,
+    "lng": 49.11444,
+    "population": 1308660,
+    "subject": "Татарстан",
+    "tier": "megacity"
+  },
+  {
+    "name": "Нижний Новгород",
+    "lat": 56.32694,
+    "lng": 44.0075,
+    "population": 1226076,
+    "subject": "Нижегородская область",
+    "tier": "megacity"
+  },
+  {
+    "name": "Челябинск",
+    "lat": 55.15,
+    "lng": 61.4,
+    "population": 1189525,
+    "subject": "Челябинская область",
+    "tier": "megacity"
+  },
+  {
+    "name": "Красноярск",
+    "lat": 56.012083,
+    "lng": 92.871295,
+    "population": 1187771,
+    "subject": "Красноярский край",
+    "tier": "megacity"
+  },
+  {
+    "name": "Самара",
+    "lat": 53.18333,
+    "lng": 50.11667,
+    "population": 1173299,
+    "subject": "Самарская область",
+    "tier": "megacity"
+  },
+  {
+    "name": "Уфа",
+    "lat": 54.73333,
+    "lng": 55.96667,
+    "population": 1144809,
+    "subject": "Башкортостан",
+    "tier": "megacity"
+  },
+  {
+    "name": "Ростов-на-Дону",
+    "lat": 47.24056,
+    "lng": 39.71056,
+    "population": 1142162,
+    "subject": "Ростовская область",
+    "tier": "megacity"
+  },
+  {
+    "name": "Омск",
+    "lat": 54.96667,
+    "lng": 73.38333,
+    "population": 1125695,
+    "subject": "Омская область",
+    "tier": "megacity"
+  },
+  {
+    "name": "Краснодар",
+    "lat": 45.03333,
+    "lng": 38.98333,
+    "population": 1099344,
+    "subject": "Краснодарский край",
+    "tier": "megacity"
+  },
+  {
+    "name": "Воронеж",
+    "lat": 51.67167,
+    "lng": 39.21056,
+    "population": 1057681,
+    "subject": "Воронежская область",
+    "tier": "megacity"
+  },
+  {
+    "name": "Пермь",
+    "lat": 58.01389,
+    "lng": 56.24889,
+    "population": 1034002,
+    "subject": "Пермский край",
+    "tier": "megacity"
+  },
+  {
+    "name": "Волгоград",
+    "lat": 48.71167,
+    "lng": 44.51389,
+    "population": 1028036,
+    "subject": "Волгоградская область",
+    "tier": "megacity"
+  },
+  {
+    "name": "Саратов",
+    "lat": 51.53333,
+    "lng": 46.0,
+    "population": 901361,
+    "subject": "Саратовская область",
+    "tier": "large"
+  },
+  {
+    "name": "Тюмень",
+    "lat": 57.15,
+    "lng": 65.53333,
+    "population": 847488,
+    "subject": "Тюменская область",
+    "tier": "large"
+  },
+  {
+    "name": "Тольятти",
+    "lat": 53.516666666667,
+    "lng": 49.416666666667,
+    "population": 684709,
+    "subject": "Самарская область",
+    "tier": "large"
+  },
+  {
+    "name": "Барнаул",
+    "lat": 53.347361,
+    "lng": 83.77833,
+    "population": 630877,
+    "subject": "Алтайский край",
+    "tier": "large"
+  },
+  {
+    "name": "Ижевск",
+    "lat": 56.85306,
+    "lng": 53.21222,
+    "population": 623472,
+    "subject": "Удмуртия",
+    "tier": "large"
+  },
+  {
+    "name": "Махачкала",
+    "lat": 42.98333,
+    "lng": 47.5,
+    "population": 623254,
+    "subject": "Дагестан",
+    "tier": "large"
+  },
+  {
+    "name": "Хабаровск",
+    "lat": 48.48333,
+    "lng": 135.06667,
+    "population": 617441,
+    "subject": "Хабаровский край",
+    "tier": "large"
+  },
+  {
+    "name": "Ульяновск",
+    "lat": 54.316666666667,
+    "lng": 48.366666666667,
+    "population": 617352,
+    "subject": "Ульяновская область",
+    "tier": "large"
+  },
+  {
+    "name": "Иркутск",
+    "lat": 52.28333,
+    "lng": 104.3,
+    "population": 617264,
+    "subject": "Иркутская область",
+    "tier": "large"
+  },
+  {
+    "name": "Владивосток",
+    "lat": 43.116666666667,
+    "lng": 131.9,
+    "population": 603519,
+    "subject": "Приморский край",
+    "tier": "large"
+  },
+  {
+    "name": "Ярославль",
+    "lat": 57.61667,
+    "lng": 39.85,
+    "population": 577279,
+    "subject": "Ярославская область",
+    "tier": "large"
+  },
+  {
+    "name": "Кемерово",
+    "lat": 55.35417,
+    "lng": 86.08972,
+    "population": 557119,
+    "subject": "Кемеровская область",
+    "tier": "large"
+  },
+  {
+    "name": "Томск",
+    "lat": 56.48861,
+    "lng": 84.95222,
+    "population": 556478,
+    "subject": "Томская область",
+    "tier": "large"
+  },
+  {
+    "name": "Набережные Челны",
+    "lat": 55.7,
+    "lng": 52.33333,
+    "population": 548434,
+    "subject": "Татарстан",
+    "tier": "large"
+  },
+  {
+    "name": "Севастополь",
+    "lat": 44.6,
+    "lng": 33.53333,
+    "population": 547820,
+    "subject": "Севастополь",
+    "tier": "large"
+  },
+  {
+    "name": "Ставрополь",
+    "lat": 45.03333,
+    "lng": 41.96667,
+    "population": 547443,
+    "subject": "Ставропольский край",
+    "tier": "large"
+  },
+  {
+    "name": "Оренбург",
+    "lat": 51.76667,
+    "lng": 55.1,
+    "population": 543654,
+    "subject": "Оренбургская область",
+    "tier": "large"
+  },
+  {
+    "name": "Новокузнецк",
+    "lat": 53.73333,
+    "lng": 87.08333,
+    "population": 537480,
+    "subject": "Кемеровская область",
+    "tier": "large"
+  },
+  {
+    "name": "Рязань",
+    "lat": 54.61667,
+    "lng": 39.71667,
+    "population": 528599,
+    "subject": "Рязанская область",
+    "tier": "large"
+  },
+  {
+    "name": "Балашиха",
+    "lat": 55.8,
+    "lng": 37.93333,
+    "population": 520962,
+    "subject": "Московская область",
+    "tier": "large"
+  },
+  {
+    "name": "Пенза",
+    "lat": 53.2,
+    "lng": 45.0,
+    "population": 501109,
+    "subject": "Пензенская область",
+    "tier": "large"
+  },
+  {
+    "name": "Чебоксары",
+    "lat": 56.11667,
+    "lng": 47.23333,
+    "population": 497807,
+    "subject": "Чувашия",
+    "tier": "regional"
+  },
+  {
+    "name": "Липецк",
+    "lat": 52.61667,
+    "lng": 39.6,
+    "population": 496403,
+    "subject": "Липецкая область",
+    "tier": "regional"
+  },
+  {
+    "name": "Калининград",
+    "lat": 54.71667,
+    "lng": 20.5,
+    "population": 490449,
+    "subject": "Калининградская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Астрахань",
+    "lat": 46.33333,
+    "lng": 48.03333,
+    "population": 475629,
+    "subject": "Астраханская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Тула",
+    "lat": 54.2,
+    "lng": 37.61667,
+    "population": 473622,
+    "subject": "Тульская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Киров",
+    "lat": 58.6,
+    "lng": 49.65,
+    "population": 468212,
+    "subject": "Кировская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Сочи",
+    "lat": 43.58528,
+    "lng": 39.72028,
+    "population": 466078,
+    "subject": "Краснодарский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Курск",
+    "lat": 51.71667,
+    "lng": 36.18333,
+    "population": 440052,
+    "subject": "Курская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Улан-Удэ",
+    "lat": 51.83333,
+    "lng": 107.61667,
+    "population": 437565,
+    "subject": "Бурятия",
+    "tier": "regional"
+  },
+  {
+    "name": "Тверь",
+    "lat": 56.8578278,
+    "lng": 35.9219278,
+    "population": 416219,
+    "subject": "Тверская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Магнитогорск",
+    "lat": 53.38333,
+    "lng": 59.03333,
+    "population": 410594,
+    "subject": "Челябинская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Сургут",
+    "lat": 61.25,
+    "lng": 73.43333,
+    "population": 396443,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "regional"
+  },
+  {
+    "name": "Брянск",
+    "lat": 53.25,
+    "lng": 34.36667,
+    "population": 379152,
+    "subject": "Брянская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Иваново",
+    "lat": 56.99667,
+    "lng": 40.98194,
+    "population": 361644,
+    "subject": "Ивановская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Якутск",
+    "lat": 62.027222222222,
+    "lng": 129.73194444444,
+    "population": 355443,
+    "subject": "Якутия",
+    "tier": "regional"
+  },
+  {
+    "name": "Владимир",
+    "lat": 56.13333,
+    "lng": 40.41667,
+    "population": 349951,
+    "subject": "Владимирская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Симферополь",
+    "lat": 44.94806,
+    "lng": 34.10417,
+    "population": 340540,
+    "subject": "Крым",
+    "tier": "regional"
+  },
+  {
+    "name": "Белгород",
+    "lat": 50.6,
+    "lng": 36.6,
+    "population": 339978,
+    "subject": "Белгородская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Нижний Тагил",
+    "lat": 57.91667,
+    "lng": 59.96667,
+    "population": 338966,
+    "subject": "Свердловская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Калуга",
+    "lat": 54.53333,
+    "lng": 36.26667,
+    "population": 337058,
+    "subject": "Калужская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Чита",
+    "lat": 52.03333,
+    "lng": 113.5,
+    "population": 334427,
+    "subject": "Забайкальский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Грозный",
+    "lat": 43.31667,
+    "lng": 45.7,
+    "population": 328533,
+    "subject": "Чечня",
+    "tier": "regional"
+  },
+  {
+    "name": "Волжский",
+    "lat": 48.783333333333,
+    "lng": 44.766666666667,
+    "population": 321479,
+    "subject": "Волгоградская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Смоленск",
+    "lat": 54.78278,
+    "lng": 32.04528,
+    "population": 316570,
+    "subject": "Смоленская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Подольск",
+    "lat": 55.42972,
+    "lng": 37.54444,
+    "population": 314934,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Саранск",
+    "lat": 54.18333,
+    "lng": 45.18333,
+    "population": 314871,
+    "subject": "Мордовия",
+    "tier": "regional"
+  },
+  {
+    "name": "Вологда",
+    "lat": 59.216666666667,
+    "lng": 39.9,
+    "population": 313944,
+    "subject": "Вологодская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Курган",
+    "lat": 55.44083,
+    "lng": 65.34111,
+    "population": 310911,
+    "subject": "Курганская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Череповец",
+    "lat": 59.11667,
+    "lng": 37.9,
+    "population": 305185,
+    "subject": "Вологодская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Орёл",
+    "lat": 52.96667,
+    "lng": 36.08333,
+    "population": 303169,
+    "subject": "Орловская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Архангельск",
+    "lat": 64.55,
+    "lng": 40.53333,
+    "population": 301199,
+    "subject": "Архангельская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Владикавказ",
+    "lat": 43.01667,
+    "lng": 44.683315,
+    "population": 295830,
+    "subject": "Северная Осетия",
+    "tier": "regional"
+  },
+  {
+    "name": "Нижневартовск",
+    "lat": 60.93389,
+    "lng": 76.58111,
+    "population": 283256,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "regional"
+  },
+  {
+    "name": "Йошкар-Ола",
+    "lat": 56.632777777778,
+    "lng": 47.895833333333,
+    "population": 281248,
+    "subject": "Марий Эл",
+    "tier": "regional"
+  },
+  {
+    "name": "Стерлитамак",
+    "lat": 53.63333,
+    "lng": 55.95,
+    "population": 277410,
+    "subject": "Башкортостан",
+    "tier": "regional"
+  },
+  {
+    "name": "Мурманск",
+    "lat": 68.96667,
+    "lng": 33.08333,
+    "population": 270384,
+    "subject": "Мурманская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Кострома",
+    "lat": 57.76667,
+    "lng": 40.93333,
+    "population": 267481,
+    "subject": "Костромская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Новороссийск",
+    "lat": 44.71667,
+    "lng": 37.76667,
+    "population": 262293,
+    "subject": "Краснодарский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Тамбов",
+    "lat": 52.71667,
+    "lng": 41.43333,
+    "population": 261803,
+    "subject": "Тамбовская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Химки",
+    "lat": 55.88917,
+    "lng": 37.445,
+    "population": 257128,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Зеленоград",
+    "lat": 55.997917,
+    "lng": 37.190417,
+    "population": 256775,
+    "subject": "Москва",
+    "tier": "regional"
+  },
+  {
+    "name": "Мытищи",
+    "lat": 55.91667,
+    "lng": 37.73333,
+    "population": 255429,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Нальчик",
+    "lat": 43.485259,
+    "lng": 43.607072,
+    "population": 247054,
+    "subject": "Кабардино-Балкария",
+    "tier": "regional"
+  },
+  {
+    "name": "Таганрог",
+    "lat": 47.23917,
+    "lng": 38.88333,
+    "population": 245120,
+    "subject": "Ростовская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Нижнекамск",
+    "lat": 55.63333,
+    "lng": 51.81667,
+    "population": 241479,
+    "subject": "Татарстан",
+    "tier": "regional"
+  },
+  {
+    "name": "Благовещенск",
+    "lat": 50.25778,
+    "lng": 127.53639,
+    "population": 241437,
+    "subject": "Амурская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Комсомольск-на-Амуре",
+    "lat": 50.55,
+    "lng": 137.0,
+    "population": 238505,
+    "subject": "Хабаровский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Петрозаводск",
+    "lat": 61.79611,
+    "lng": 34.34917,
+    "population": 234897,
+    "subject": "Карелия",
+    "tier": "regional"
+  },
+  {
+    "name": "Королёв",
+    "lat": 55.91667,
+    "lng": 37.81667,
+    "population": 228095,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Шахты",
+    "lat": 47.7122111,
+    "lng": 40.2083694,
+    "population": 226452,
+    "subject": "Ростовская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Энгельс",
+    "lat": 51.46667,
+    "lng": 46.11667,
+    "population": 225428,
+    "subject": "Саратовская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Великий Новгород",
+    "lat": 58.525,
+    "lng": 31.275,
+    "population": 224286,
+    "subject": "Новгородская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Люберцы",
+    "lat": 55.68139,
+    "lng": 37.89389,
+    "population": 224195,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Братск",
+    "lat": 56.152,
+    "lng": 101.633,
+    "population": 224071,
+    "subject": "Иркутская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Старый Оскол",
+    "lat": 51.29806,
+    "lng": 37.835,
+    "population": 221676,
+    "subject": "Белгородская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Ангарск",
+    "lat": 52.56667,
+    "lng": 103.91667,
+    "population": 221296,
+    "subject": "Иркутская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Сыктывкар",
+    "lat": 61.66667,
+    "lng": 50.81667,
+    "population": 220580,
+    "subject": "Коми",
+    "tier": "regional"
+  },
+  {
+    "name": "Дзержинск",
+    "lat": 56.23333,
+    "lng": 43.45,
+    "population": 218630,
+    "subject": "Нижегородская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Псков",
+    "lat": 57.81667,
+    "lng": 28.33333,
+    "population": 193082,
+    "subject": "Псковская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Орск",
+    "lat": 51.2,
+    "lng": 58.61667,
+    "population": 189195,
+    "subject": "Оренбургская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Красногорск",
+    "lat": 55.81667,
+    "lng": 37.33333,
+    "population": 187634,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Армавир",
+    "lat": 44.99464,
+    "lng": 41.12946,
+    "population": 187177,
+    "subject": "Краснодарский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Абакан",
+    "lat": 53.71667,
+    "lng": 91.41667,
+    "population": 184769,
+    "subject": "Хакасия",
+    "tier": "regional"
+  },
+  {
+    "name": "Балаково",
+    "lat": 52.03333,
+    "lng": 47.78333,
+    "population": 184466,
+    "subject": "Саратовская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Бийск",
+    "lat": 52.51667,
+    "lng": 85.16667,
+    "population": 183852,
+    "subject": "Алтайский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Южно-Сахалинск",
+    "lat": 46.95,
+    "lng": 142.73333,
+    "population": 181587,
+    "subject": "Сахалинская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Одинцово",
+    "lat": 55.67333,
+    "lng": 37.27333,
+    "population": 180530,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Уссурийск",
+    "lat": 43.8,
+    "lng": 131.95,
+    "population": 180393,
+    "subject": "Приморский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Прокопьевск",
+    "lat": 53.88333,
+    "lng": 86.71667,
+    "population": 177819,
+    "subject": "Кемеровская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Рыбинск",
+    "lat": 58.05,
+    "lng": 38.83333,
+    "population": 177295,
+    "subject": "Ярославская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Норильск",
+    "lat": 69.33333,
+    "lng": 88.21667,
+    "population": 174453,
+    "subject": "Красноярский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Волгодонск",
+    "lat": 47.54,
+    "lng": 42.20722,
+    "population": 168048,
+    "subject": "Ростовская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Сызрань",
+    "lat": 53.16667,
+    "lng": 48.46667,
+    "population": 165725,
+    "subject": "Самарская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Петропавловск-Камчатский",
+    "lat": 53.01667,
+    "lng": 158.65,
+    "population": 164900,
+    "subject": "Камчатский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Каменск-Уральский",
+    "lat": 56.4,
+    "lng": 61.93333,
+    "population": 164192,
+    "subject": "Свердловская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Новочеркасск",
+    "lat": 47.43583,
+    "lng": 40.09861,
+    "population": 163674,
+    "subject": "Ростовская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Альметьевск",
+    "lat": 54.9,
+    "lng": 52.3,
+    "population": 163512,
+    "subject": "Татарстан",
+    "tier": "regional"
+  },
+  {
+    "name": "Златоуст",
+    "lat": 55.16667,
+    "lng": 59.66667,
+    "population": 161774,
+    "subject": "Челябинская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Северодвинск",
+    "lat": 64.56667,
+    "lng": 39.85,
+    "population": 157213,
+    "subject": "Архангельская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Хасавюрт",
+    "lat": 43.249937,
+    "lng": 46.583247,
+    "population": 155144,
+    "subject": "Дагестан",
+    "tier": "regional"
+  },
+  {
+    "name": "Керчь",
+    "lat": 45.33861,
+    "lng": 36.46806,
+    "population": 154621,
+    "subject": "Крым",
+    "tier": "regional"
+  },
+  {
+    "name": "Домодедово",
+    "lat": 55.44389,
+    "lng": 37.75806,
+    "population": 152404,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Салават",
+    "lat": 53.36667,
+    "lng": 55.93333,
+    "population": 148575,
+    "subject": "Башкортостан",
+    "tier": "regional"
+  },
+  {
+    "name": "Миасс",
+    "lat": 55.05,
+    "lng": 60.1,
+    "population": 147995,
+    "subject": "Челябинская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Копейск",
+    "lat": 55.1,
+    "lng": 61.61667,
+    "population": 147806,
+    "subject": "Челябинская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Пятигорск",
+    "lat": 44.0499664,
+    "lng": 43.0600548,
+    "population": 146473,
+    "subject": "Ставропольский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Электросталь",
+    "lat": 55.8,
+    "lng": 38.45,
+    "population": 146403,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Майкоп",
+    "lat": 44.611,
+    "lng": 40.111,
+    "population": 143385,
+    "subject": "Адыгея",
+    "tier": "regional"
+  },
+  {
+    "name": "Колпино",
+    "lat": 59.75,
+    "lng": 30.6,
+    "population": 142108,
+    "subject": "Санкт-Петербург",
+    "tier": "regional"
+  },
+  {
+    "name": "Находка",
+    "lat": 42.81667,
+    "lng": 132.88333,
+    "population": 139931,
+    "subject": "Приморский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Березники",
+    "lat": 59.40806,
+    "lng": 56.80528,
+    "population": 138069,
+    "subject": "Пермский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Коломна",
+    "lat": 55.09389,
+    "lng": 38.76806,
+    "population": 134850,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Щёлково",
+    "lat": 55.91667,
+    "lng": 38.0,
+    "population": 134211,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Серпухов",
+    "lat": 54.91667,
+    "lng": 37.4,
+    "population": 133793,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Ковров",
+    "lat": 56.36056,
+    "lng": 41.31972,
+    "population": 132417,
+    "subject": "Владимирская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Нефтекамск",
+    "lat": 56.08889,
+    "lng": 54.24639,
+    "population": 131942,
+    "subject": "Башкортостан",
+    "tier": "regional"
+  },
+  {
+    "name": "Кисловодск",
+    "lat": 43.90333,
+    "lng": 42.72444,
+    "population": 127521,
+    "subject": "Ставропольский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Батайск",
+    "lat": 47.13333,
+    "lng": 39.75,
+    "population": 126988,
+    "subject": "Ростовская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Рубцовск",
+    "lat": 51.52722,
+    "lng": 81.218806,
+    "population": 126834,
+    "subject": "Алтайский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Обнинск",
+    "lat": 55.1,
+    "lng": 36.61667,
+    "population": 125376,
+    "subject": "Калужская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Кызыл",
+    "lat": 51.7,
+    "lng": 94.36667,
+    "population": 125241,
+    "subject": "Тыва",
+    "tier": "regional"
+  },
+  {
+    "name": "Дербент",
+    "lat": 42.069825,
+    "lng": 48.295025,
+    "population": 124953,
+    "subject": "Дагестан",
+    "tier": "regional"
+  },
+  {
+    "name": "Нефтеюганск",
+    "lat": 61.1,
+    "lng": 72.6,
+    "population": 124732,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "regional"
+  },
+  {
+    "name": "Назрань",
+    "lat": 43.21667,
+    "lng": 44.76667,
+    "population": 122350,
+    "subject": "Ингушетия",
+    "tier": "regional"
+  },
+  {
+    "name": "Каспийск",
+    "lat": 42.88333,
+    "lng": 47.63333,
+    "population": 121140,
+    "subject": "Дагестан",
+    "tier": "regional"
+  },
+  {
+    "name": "Долгопрудный",
+    "lat": 55.93333,
+    "lng": 37.5,
+    "population": 120907,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Новочебоксарск",
+    "lat": 56.12194,
+    "lng": 47.4925,
+    "population": 120375,
+    "subject": "Чувашия",
+    "tier": "regional"
+  },
+  {
+    "name": "Новомосковск",
+    "lat": 54.03333,
+    "lng": 38.26667,
+    "population": 119697,
+    "subject": "Тульская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Ессентуки",
+    "lat": 44.04306,
+    "lng": 42.86417,
+    "population": 119658,
+    "subject": "Ставропольский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Невинномысск",
+    "lat": 44.63333,
+    "lng": 41.93333,
+    "population": 117562,
+    "subject": "Ставропольский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Октябрьский",
+    "lat": 54.48333,
+    "lng": 53.48333,
+    "population": 115557,
+    "subject": "Башкортостан",
+    "tier": "regional"
+  },
+  {
+    "name": "Раменское",
+    "lat": 55.56667,
+    "lng": 38.21667,
+    "population": 114537,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Первоуральск",
+    "lat": 56.91667,
+    "lng": 59.95,
+    "population": 114450,
+    "subject": "Свердловская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Михайловск",
+    "lat": 45.130012,
+    "lng": 42.027487,
+    "population": 114133,
+    "subject": "Ставропольский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Реутов",
+    "lat": 55.760611,
+    "lng": 37.855194,
+    "population": 113871,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Черкесск",
+    "lat": 44.213888,
+    "lng": 42.04431,
+    "population": 113226,
+    "subject": "Карачаево-Черкесия",
+    "tier": "regional"
+  },
+  {
+    "name": "Жуковский",
+    "lat": 55.60111,
+    "lng": 38.11611,
+    "population": 111222,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Димитровград",
+    "lat": 54.23333,
+    "lng": 49.58333,
+    "population": 110968,
+    "subject": "Ульяновская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Пушкино",
+    "lat": 56.01667,
+    "lng": 37.85,
+    "population": 110868,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Артём",
+    "lat": 43.35,
+    "lng": 132.18333,
+    "population": 109556,
+    "subject": "Приморский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Камышин",
+    "lat": 50.08333,
+    "lng": 45.4,
+    "population": 107927,
+    "subject": "Волгоградская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Евпатория",
+    "lat": 45.2,
+    "lng": 33.35833,
+    "population": 107877,
+    "subject": "Крым",
+    "tier": "regional"
+  },
+  {
+    "name": "Муром",
+    "lat": 55.5725,
+    "lng": 42.05139,
+    "population": 107497,
+    "subject": "Владимирская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Ханты-Мансийск",
+    "lat": 61.0,
+    "lng": 69.0,
+    "population": 107473,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "regional"
+  },
+  {
+    "name": "Новый Уренгой",
+    "lat": 66.08472,
+    "lng": 76.67889,
+    "population": 107251,
+    "subject": "Ямало-Ненецкий АО",
+    "tier": "regional"
+  },
+  {
+    "name": "Пушкин",
+    "lat": 59.71667,
+    "lng": 30.41667,
+    "population": 107223,
+    "subject": "Санкт-Петербург",
+    "tier": "regional"
+  },
+  {
+    "name": "Северск",
+    "lat": 56.6,
+    "lng": 84.85,
+    "population": 106648,
+    "subject": "Томская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Орехово-Зуево",
+    "lat": 55.8,
+    "lng": 38.96667,
+    "population": 105745,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Арзамас",
+    "lat": 55.38333,
+    "lng": 43.8,
+    "population": 104908,
+    "subject": "Нижегородская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Ногинск",
+    "lat": 55.85,
+    "lng": 38.43333,
+    "population": 103891,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Новошахтинск",
+    "lat": 47.76667,
+    "lng": 39.91667,
+    "population": 103480,
+    "subject": "Ростовская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Бердск",
+    "lat": 54.75,
+    "lng": 83.1,
+    "population": 102850,
+    "subject": "Новосибирская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Элиста",
+    "lat": 46.31667,
+    "lng": 44.26667,
+    "population": 102583,
+    "subject": "Калмыкия",
+    "tier": "regional"
+  },
+  {
+    "name": "Сергиев Посад",
+    "lat": 56.3,
+    "lng": 38.13333,
+    "population": 101756,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Видное",
+    "lat": 55.55,
+    "lng": 37.7,
+    "population": 101490,
+    "subject": "Московская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Ачинск",
+    "lat": 56.26667,
+    "lng": 90.5,
+    "population": 100621,
+    "subject": "Красноярский край",
+    "tier": "regional"
+  },
+  {
+    "name": "Тобольск",
+    "lat": 58.19528,
+    "lng": 68.25806,
+    "population": 100352,
+    "subject": "Тюменская область",
+    "tier": "regional"
+  },
+  {
+    "name": "Ноябрьск",
+    "lat": 63.20167,
+    "lng": 75.45167,
+    "population": 100188,
+    "subject": "Ямало-Ненецкий АО",
+    "tier": "regional"
+  },
+  {
+    "name": "Елец",
+    "lat": 52.61667,
+    "lng": 38.46667,
+    "population": 99875,
+    "subject": "Липецкая область",
+    "tier": "small"
+  },
+  {
+    "name": "Зеленодольск",
+    "lat": 55.85,
+    "lng": 48.51667,
+    "population": 99137,
+    "subject": "Татарстан",
+    "tier": "small"
+  },
+  {
+    "name": "Новокуйбышевск",
+    "lat": 53.1,
+    "lng": 49.91667,
+    "population": 98306,
+    "subject": "Самарская область",
+    "tier": "small"
+  },
+  {
+    "name": "Воткинск",
+    "lat": 57.05,
+    "lng": 54.0,
+    "population": 97471,
+    "subject": "Удмуртия",
+    "tier": "small"
+  },
+  {
+    "name": "Железногорск",
+    "lat": 52.339174,
+    "lng": 35.351582,
+    "population": 97038,
+    "subject": "Курская область",
+    "tier": "small"
+  },
+  {
+    "name": "Междуреченск",
+    "lat": 53.68333,
+    "lng": 88.05,
+    "population": 96174,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Воскресенск",
+    "lat": 55.32333,
+    "lng": 38.68056,
+    "population": 95495,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Гатчина",
+    "lat": 59.56841,
+    "lng": 30.122892,
+    "population": 94377,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Серов",
+    "lat": 59.58333,
+    "lng": 60.56667,
+    "population": 94211,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Саров",
+    "lat": 54.93333,
+    "lng": 43.31667,
+    "population": 93357,
+    "subject": "Нижегородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Ленинск-Кузнецкий",
+    "lat": 54.65,
+    "lng": 86.16667,
+    "population": 92244,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Сарапул",
+    "lat": 56.46667,
+    "lng": 53.8,
+    "population": 91115,
+    "subject": "Удмуртия",
+    "tier": "small"
+  },
+  {
+    "name": "Магадан",
+    "lat": 59.56667,
+    "lng": 150.8,
+    "population": 90757,
+    "subject": "Магаданская область",
+    "tier": "small"
+  },
+  {
+    "name": "Мичуринск",
+    "lat": 52.89222,
+    "lng": 40.49278,
+    "population": 90451,
+    "subject": "Тамбовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Соликамск",
+    "lat": 59.63333,
+    "lng": 56.76667,
+    "population": 89473,
+    "subject": "Пермский край",
+    "tier": "small"
+  },
+  {
+    "name": "Мурино",
+    "lat": 60.051284,
+    "lng": 30.438578,
+    "population": 89083,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Чехов",
+    "lat": 55.145,
+    "lng": 37.45556,
+    "population": 89025,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Клин",
+    "lat": 56.33389,
+    "lng": 36.7125,
+    "population": 88511,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Бузулук",
+    "lat": 52.76667,
+    "lng": 52.26667,
+    "population": 88341,
+    "subject": "Оренбургская область",
+    "tier": "small"
+  },
+  {
+    "name": "Глазов",
+    "lat": 58.14083,
+    "lng": 52.67417,
+    "population": 87762,
+    "subject": "Удмуртия",
+    "tier": "small"
+  },
+  {
+    "name": "Канск",
+    "lat": 56.2,
+    "lng": 95.7,
+    "population": 86816,
+    "subject": "Красноярский край",
+    "tier": "small"
+  },
+  {
+    "name": "Великие Луки",
+    "lat": 56.35,
+    "lng": 30.51667,
+    "population": 86711,
+    "subject": "Псковская область",
+    "tier": "small"
+  },
+  {
+    "name": "Каменск-Шахтинский",
+    "lat": 48.31667,
+    "lng": 40.26667,
+    "population": 86365,
+    "subject": "Ростовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Губкин",
+    "lat": 51.28333,
+    "lng": 37.55,
+    "population": 85225,
+    "subject": "Белгородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Киселёвск",
+    "lat": 53.98333,
+    "lng": 86.7,
+    "population": 83431,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Ейск",
+    "lat": 46.71056,
+    "lng": 38.27778,
+    "population": 82943,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Ивантеевка",
+    "lat": 55.97,
+    "lng": 37.92,
+    "population": 82827,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Лобня",
+    "lat": 56.01194,
+    "lng": 37.47444,
+    "population": 82764,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Железногорск",
+    "lat": 56.25,
+    "lng": 93.53333,
+    "population": 82723,
+    "subject": "Красноярский край",
+    "tier": "small"
+  },
+  {
+    "name": "Азов",
+    "lat": 47.1,
+    "lng": 39.41667,
+    "population": 81924,
+    "subject": "Ростовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Анапа",
+    "lat": 44.893857,
+    "lng": 37.317481,
+    "population": 81863,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Бугульма",
+    "lat": 54.53333,
+    "lng": 52.78333,
+    "population": 81677,
+    "subject": "Татарстан",
+    "tier": "small"
+  },
+  {
+    "name": "Петергоф",
+    "lat": 59.88333,
+    "lng": 29.9,
+    "population": 80814,
+    "subject": "Санкт-Петербург",
+    "tier": "small"
+  },
+  {
+    "name": "Геленджик",
+    "lat": 44.560999,
+    "lng": 38.076949,
+    "population": 80204,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Ухта",
+    "lat": 63.56667,
+    "lng": 53.7,
+    "population": 79899,
+    "subject": "Коми",
+    "tier": "small"
+  },
+  {
+    "name": "Юрга",
+    "lat": 55.73333,
+    "lng": 84.9,
+    "population": 79693,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Усть-Илимск",
+    "lat": 58.0,
+    "lng": 102.66667,
+    "population": 79570,
+    "subject": "Иркутская область",
+    "tier": "small"
+  },
+  {
+    "name": "Всеволожск",
+    "lat": 60.021321,
+    "lng": 30.654084,
+    "population": 79038,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Новоуральск",
+    "lat": 57.25,
+    "lng": 60.08333,
+    "population": 78479,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кузнецк",
+    "lat": 53.11667,
+    "lng": 46.6,
+    "population": 78390,
+    "subject": "Пензенская область",
+    "tier": "small"
+  },
+  {
+    "name": "Бор",
+    "lat": 56.36028,
+    "lng": 44.05917,
+    "population": 78372,
+    "subject": "Нижегородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кинешма",
+    "lat": 57.45,
+    "lng": 42.15,
+    "population": 77694,
+    "subject": "Ивановская область",
+    "tier": "small"
+  },
+  {
+    "name": "Озёрск",
+    "lat": 55.75,
+    "lng": 60.71667,
+    "population": 76896,
+    "subject": "Челябинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Новотроицк",
+    "lat": 51.20667,
+    "lng": 58.32806,
+    "population": 75960,
+    "subject": "Оренбургская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кропоткин",
+    "lat": 45.43333,
+    "lng": 40.56667,
+    "population": 75858,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Чайковский",
+    "lat": 56.773291,
+    "lng": 54.140386,
+    "population": 75837,
+    "subject": "Пермский край",
+    "tier": "small"
+  },
+  {
+    "name": "Черногорск",
+    "lat": 53.81667,
+    "lng": 91.28333,
+    "population": 75745,
+    "subject": "Хакасия",
+    "tier": "small"
+  },
+  {
+    "name": "Усолье-Сибирское",
+    "lat": 52.75,
+    "lng": 103.65,
+    "population": 74762,
+    "subject": "Иркутская область",
+    "tier": "small"
+  },
+  {
+    "name": "Ялта",
+    "lat": 44.49944,
+    "lng": 34.15528,
+    "population": 74652,
+    "subject": "Крым",
+    "tier": "small"
+  },
+  {
+    "name": "Дубна",
+    "lat": 56.75,
+    "lng": 37.15,
+    "population": 74183,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Балашов",
+    "lat": 51.55,
+    "lng": 43.16667,
+    "population": 74057,
+    "subject": "Саратовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Елабуга",
+    "lat": 55.76667,
+    "lng": 52.03333,
+    "population": 73630,
+    "subject": "Татарстан",
+    "tier": "small"
+  },
+  {
+    "name": "Новоалтайск",
+    "lat": 53.4,
+    "lng": 83.93333,
+    "population": 73049,
+    "subject": "Алтайский край",
+    "tier": "small"
+  },
+  {
+    "name": "Выборг",
+    "lat": 60.710496,
+    "lng": 28.749781,
+    "population": 72530,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Егорьевск",
+    "lat": 55.38333,
+    "lng": 39.03361,
+    "population": 71686,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Верхняя Пышма",
+    "lat": 56.966666666667,
+    "lng": 60.583333333333,
+    "population": 71335,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Наро-Фоминск",
+    "lat": 55.38333,
+    "lng": 36.73333,
+    "population": 71121,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Минеральные Воды",
+    "lat": 44.20083,
+    "lng": 43.1125,
+    "population": 70485,
+    "subject": "Ставропольский край",
+    "tier": "small"
+  },
+  {
+    "name": "Троицк",
+    "lat": 54.08333,
+    "lng": 61.56667,
+    "population": 70301,
+    "subject": "Челябинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Чапаевск",
+    "lat": 52.98333,
+    "lng": 49.71667,
+    "population": 70228,
+    "subject": "Самарская область",
+    "tier": "small"
+  },
+  {
+    "name": "Минусинск",
+    "lat": 53.7,
+    "lng": 91.68333,
+    "population": 70089,
+    "subject": "Красноярский край",
+    "tier": "small"
+  },
+  {
+    "name": "Биробиджан",
+    "lat": 48.78333,
+    "lng": 132.93333,
+    "population": 70064,
+    "subject": "Еврейская АО",
+    "tier": "small"
+  },
+  {
+    "name": "Шадринск",
+    "lat": 56.08333,
+    "lng": 63.63333,
+    "population": 68609,
+    "subject": "Курганская область",
+    "tier": "small"
+  },
+  {
+    "name": "Белово",
+    "lat": 54.416666666667,
+    "lng": 86.3,
+    "population": 68542,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Туймазы",
+    "lat": 54.6,
+    "lng": 53.7,
+    "population": 68349,
+    "subject": "Башкортостан",
+    "tier": "small"
+  },
+  {
+    "name": "Сертолово",
+    "lat": 60.141613,
+    "lng": 30.211879,
+    "population": 68241,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Буйнакск",
+    "lat": 42.81667,
+    "lng": 47.11667,
+    "population": 68121,
+    "subject": "Дагестан",
+    "tier": "small"
+  },
+  {
+    "name": "Ишим",
+    "lat": 56.11667,
+    "lng": 69.5,
+    "population": 67614,
+    "subject": "Тюменская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кирово-Чепецк",
+    "lat": 58.55,
+    "lng": 50.01667,
+    "population": 66651,
+    "subject": "Кировская область",
+    "tier": "small"
+  },
+  {
+    "name": "Анжеро-Судженск",
+    "lat": 56.08333,
+    "lng": 86.03333,
+    "population": 66583,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Феодосия",
+    "lat": 45.04889,
+    "lng": 35.37917,
+    "population": 66293,
+    "subject": "Крым",
+    "tier": "small"
+  },
+  {
+    "name": "Дмитров",
+    "lat": 56.34667,
+    "lng": 37.52167,
+    "population": 65574,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Московский",
+    "lat": 55.6,
+    "lng": 37.35,
+    "population": 65417,
+    "subject": "Москва",
+    "tier": "small"
+  },
+  {
+    "name": "Сосновый Бор",
+    "lat": 59.9,
+    "lng": 29.08611,
+    "population": 65367,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Горно-Алтайск",
+    "lat": 51.96,
+    "lng": 85.96,
+    "population": 65342,
+    "subject": "Алтай",
+    "tier": "small"
+  },
+  {
+    "name": "Лыткарино",
+    "lat": 55.58361,
+    "lng": 37.90556,
+    "population": 65212,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Павловский Посад",
+    "lat": 55.78333,
+    "lng": 38.65,
+    "population": 65098,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Троицк",
+    "lat": 55.467,
+    "lng": 37.3,
+    "population": 65043,
+    "subject": "Москва",
+    "tier": "small"
+  },
+  {
+    "name": "Белорецк",
+    "lat": 53.96667,
+    "lng": 58.4,
+    "population": 64525,
+    "subject": "Башкортостан",
+    "tier": "small"
+  },
+  {
+    "name": "Ступино",
+    "lat": 54.88694,
+    "lng": 38.07722,
+    "population": 64412,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Гудермес",
+    "lat": 43.34861,
+    "lng": 46.09611,
+    "population": 64376,
+    "subject": "Чечня",
+    "tier": "small"
+  },
+  {
+    "name": "Ишимбай",
+    "lat": 53.45444,
+    "lng": 56.04389,
+    "population": 64041,
+    "subject": "Башкортостан",
+    "tier": "small"
+  },
+  {
+    "name": "Донской",
+    "lat": 53.96667,
+    "lng": 38.31667,
+    "population": 63837,
+    "subject": "Тульская область",
+    "tier": "small"
+  },
+  {
+    "name": "Котельники",
+    "lat": 55.6625,
+    "lng": 37.86722,
+    "population": 63728,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кстово",
+    "lat": 56.15167,
+    "lng": 44.19556,
+    "population": 63646,
+    "subject": "Нижегородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Урус-Мартан",
+    "lat": 43.129123,
+    "lng": 45.54167,
+    "population": 63449,
+    "subject": "Чечня",
+    "tier": "small"
+  },
+  {
+    "name": "Георгиевск",
+    "lat": 44.15,
+    "lng": 43.46667,
+    "population": 63221,
+    "subject": "Ставропольский край",
+    "tier": "small"
+  },
+  {
+    "name": "Клинцы",
+    "lat": 52.75278,
+    "lng": 32.23611,
+    "population": 63059,
+    "subject": "Брянская область",
+    "tier": "small"
+  },
+  {
+    "name": "Нягань",
+    "lat": 62.13333,
+    "lng": 65.38333,
+    "population": 63034,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "small"
+  },
+  {
+    "name": "Славянск-на-Кубани",
+    "lat": 45.25861,
+    "lng": 38.12472,
+    "population": 62985,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Кунгур",
+    "lat": 57.43333,
+    "lng": 56.93333,
+    "population": 62673,
+    "subject": "Пермский край",
+    "tier": "small"
+  },
+  {
+    "name": "Сунжа",
+    "lat": 43.313475,
+    "lng": 45.051581,
+    "population": 62078,
+    "subject": "Ингушетия",
+    "tier": "small"
+  },
+  {
+    "name": "Туапсе",
+    "lat": 44.100016,
+    "lng": 39.083223,
+    "population": 61571,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Когалым",
+    "lat": 62.26667,
+    "lng": 74.48333,
+    "population": 61441,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "small"
+  },
+  {
+    "name": "Белогорск",
+    "lat": 50.91667,
+    "lng": 128.48333,
+    "population": 61440,
+    "subject": "Амурская область",
+    "tier": "small"
+  },
+  {
+    "name": "Лениногорск",
+    "lat": 54.5988694,
+    "lng": 52.4422722,
+    "population": 60993,
+    "subject": "Татарстан",
+    "tier": "small"
+  },
+  {
+    "name": "Россошь",
+    "lat": 50.2,
+    "lng": 39.58333,
+    "population": 60879,
+    "subject": "Воронежская область",
+    "tier": "small"
+  },
+  {
+    "name": "Алексин",
+    "lat": 54.5,
+    "lng": 37.06667,
+    "population": 60842,
+    "subject": "Тульская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кудрово",
+    "lat": 59.908489,
+    "lng": 30.513569,
+    "population": 60791,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Борисоглебск",
+    "lat": 51.36667,
+    "lng": 42.08333,
+    "population": 60687,
+    "subject": "Воронежская область",
+    "tier": "small"
+  },
+  {
+    "name": "Фрязино",
+    "lat": 55.95,
+    "lng": 38.05,
+    "population": 60580,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Гуково",
+    "lat": 48.05,
+    "lng": 39.93333,
+    "population": 60361,
+    "subject": "Ростовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Ревда",
+    "lat": 56.8,
+    "lng": 59.91667,
+    "population": 60200,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Прохладный",
+    "lat": 43.750055,
+    "lng": 44.033333,
+    "population": 59938,
+    "subject": "Кабардино-Балкария",
+    "tier": "small"
+  },
+  {
+    "name": "Берёзовский",
+    "lat": 56.9,
+    "lng": 60.8,
+    "population": 59698,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Белебей",
+    "lat": 54.1,
+    "lng": 54.13333,
+    "population": 59195,
+    "subject": "Башкортостан",
+    "tier": "small"
+  },
+  {
+    "name": "Чистополь",
+    "lat": 55.36667,
+    "lng": 50.63333,
+    "population": 58815,
+    "subject": "Татарстан",
+    "tier": "small"
+  },
+  {
+    "name": "Заречный",
+    "lat": 53.2,
+    "lng": 45.16667,
+    "population": 58510,
+    "subject": "Пензенская область",
+    "tier": "small"
+  },
+  {
+    "name": "Будённовск",
+    "lat": 44.79,
+    "lng": 44.14,
+    "population": 58103,
+    "subject": "Ставропольский край",
+    "tier": "small"
+  },
+  {
+    "name": "Кумертау",
+    "lat": 52.76667,
+    "lng": 55.78333,
+    "population": 57949,
+    "subject": "Башкортостан",
+    "tier": "small"
+  },
+  {
+    "name": "Сальск",
+    "lat": 46.48333,
+    "lng": 41.53333,
+    "population": 57937,
+    "subject": "Ростовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Дзержинский",
+    "lat": 55.63333,
+    "lng": 37.85,
+    "population": 57918,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Лабинск",
+    "lat": 44.633338,
+    "lng": 40.733311,
+    "population": 57428,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Асбест",
+    "lat": 57.01027679,
+    "lng": 61.45639038,
+    "population": 57317,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Искитим",
+    "lat": 54.63333,
+    "lng": 83.3,
+    "population": 57147,
+    "subject": "Новосибирская область",
+    "tier": "small"
+  },
+  {
+    "name": "Павлово",
+    "lat": 55.96194,
+    "lng": 43.09,
+    "population": 57116,
+    "subject": "Нижегородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Александров",
+    "lat": 56.39361,
+    "lng": 38.715,
+    "population": 57053,
+    "subject": "Владимирская область",
+    "tier": "small"
+  },
+  {
+    "name": "Воркута",
+    "lat": 67.5,
+    "lng": 64.03333,
+    "population": 56985,
+    "subject": "Коми",
+    "tier": "small"
+  },
+  {
+    "name": "Красное Село",
+    "lat": 59.733745,
+    "lng": 30.086205,
+    "population": 56533,
+    "subject": "Санкт-Петербург",
+    "tier": "small"
+  },
+  {
+    "name": "Щербинка",
+    "lat": 55.5,
+    "lng": 37.56667,
+    "population": 56531,
+    "subject": "Москва",
+    "tier": "small"
+  },
+  {
+    "name": "Сибай",
+    "lat": 52.7,
+    "lng": 58.65,
+    "population": 56514,
+    "subject": "Башкортостан",
+    "tier": "small"
+  },
+  {
+    "name": "Мелеуз",
+    "lat": 52.95,
+    "lng": 55.93333,
+    "population": 56505,
+    "subject": "Башкортостан",
+    "tier": "small"
+  },
+  {
+    "name": "Котлас",
+    "lat": 61.25,
+    "lng": 46.65,
+    "population": 56093,
+    "subject": "Архангельская область",
+    "tier": "small"
+  },
+  {
+    "name": "Михайловка",
+    "lat": 50.06667,
+    "lng": 43.23333,
+    "population": 56031,
+    "subject": "Волгоградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Избербаш",
+    "lat": 42.56667,
+    "lng": 47.86667,
+    "population": 55996,
+    "subject": "Дагестан",
+    "tier": "small"
+  },
+  {
+    "name": "Краснотурьинск",
+    "lat": 59.76667,
+    "lng": 60.2,
+    "population": 55875,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Белореченск",
+    "lat": 44.76667,
+    "lng": 39.86667,
+    "population": 55870,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Ржев",
+    "lat": 56.26556,
+    "lng": 34.3275,
+    "population": 55757,
+    "subject": "Тверская область",
+    "tier": "small"
+  },
+  {
+    "name": "Лесосибирск",
+    "lat": 58.23333,
+    "lng": 92.48333,
+    "population": 55730,
+    "subject": "Красноярский край",
+    "tier": "small"
+  },
+  {
+    "name": "Тихорецк",
+    "lat": 45.85,
+    "lng": 40.11667,
+    "population": 55686,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Тихвин",
+    "lat": 59.644213,
+    "lng": 33.542105,
+    "population": 55415,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Шуя",
+    "lat": 56.85,
+    "lng": 41.36667,
+    "population": 55225,
+    "subject": "Ивановская область",
+    "tier": "small"
+  },
+  {
+    "name": "Полевской",
+    "lat": 56.45,
+    "lng": 60.18333,
+    "population": 55182,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Щёкино",
+    "lat": 54.0,
+    "lng": 37.51667,
+    "population": 55109,
+    "subject": "Тульская область",
+    "tier": "small"
+  },
+  {
+    "name": "Шали",
+    "lat": 43.145,
+    "lng": 45.903847,
+    "population": 55054,
+    "subject": "Чечня",
+    "tier": "small"
+  },
+  {
+    "name": "Вольск",
+    "lat": 52.05,
+    "lng": 47.38333,
+    "population": 55035,
+    "subject": "Саратовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Крымск",
+    "lat": 44.93333,
+    "lng": 38.0,
+    "population": 54597,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Зеленогорск",
+    "lat": 56.1,
+    "lng": 94.58333,
+    "population": 54279,
+    "subject": "Красноярский край",
+    "tier": "small"
+  },
+  {
+    "name": "Лиски",
+    "lat": 50.98222,
+    "lng": 39.49944,
+    "population": 54147,
+    "subject": "Воронежская область",
+    "tier": "small"
+  },
+  {
+    "name": "Черемхово",
+    "lat": 53.15,
+    "lng": 103.06667,
+    "population": 53958,
+    "subject": "Иркутская область",
+    "tier": "small"
+  },
+  {
+    "name": "Лысьва",
+    "lat": 58.1003806,
+    "lng": 57.8043278,
+    "population": 53855,
+    "subject": "Пермский край",
+    "tier": "small"
+  },
+  {
+    "name": "Нерюнгри",
+    "lat": 56.65833,
+    "lng": 124.725,
+    "population": 53409,
+    "subject": "Якутия",
+    "tier": "small"
+  },
+  {
+    "name": "Волжск",
+    "lat": 55.86667,
+    "lng": 48.35,
+    "population": 53013,
+    "subject": "Марий Эл",
+    "tier": "small"
+  },
+  {
+    "name": "Мегион",
+    "lat": 61.033055555556,
+    "lng": 76.109722222222,
+    "population": 52887,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "small"
+  },
+  {
+    "name": "Вязьма",
+    "lat": 55.21028,
+    "lng": 34.285,
+    "population": 51950,
+    "subject": "Смоленская область",
+    "tier": "small"
+  },
+  {
+    "name": "Тимашёвск",
+    "lat": 45.61667,
+    "lng": 38.93333,
+    "population": 51858,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Гусь-Хрустальный",
+    "lat": 55.61667,
+    "lng": 40.65,
+    "population": 51552,
+    "subject": "Владимирская область",
+    "tier": "small"
+  },
+  {
+    "name": "Краснокаменск",
+    "lat": 50.1,
+    "lng": 118.03333,
+    "population": 51137,
+    "subject": "Забайкальский край",
+    "tier": "small"
+  },
+  {
+    "name": "Кириши",
+    "lat": 59.449695,
+    "lng": 32.008716,
+    "population": 51028,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Снежинск",
+    "lat": 56.08333,
+    "lng": 60.73333,
+    "population": 50619,
+    "subject": "Челябинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Жигулёвск",
+    "lat": 53.4,
+    "lng": 49.5,
+    "population": 50466,
+    "subject": "Самарская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кизляр",
+    "lat": 43.850245,
+    "lng": 46.71698,
+    "population": 49999,
+    "subject": "Дагестан",
+    "tier": "small"
+  },
+  {
+    "name": "Кингисепп",
+    "lat": 59.378053,
+    "lng": 28.601209,
+    "population": 49716,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Апатиты",
+    "lat": 67.5675,
+    "lng": 33.39333,
+    "population": 49647,
+    "subject": "Мурманская область",
+    "tier": "small"
+  },
+  {
+    "name": "Узловая",
+    "lat": 53.9791417,
+    "lng": 38.1600833,
+    "population": 49427,
+    "subject": "Тульская область",
+    "tier": "small"
+  },
+  {
+    "name": "Краснокамск",
+    "lat": 58.08333,
+    "lng": 55.75,
+    "population": 48778,
+    "subject": "Пермский край",
+    "tier": "small"
+  },
+  {
+    "name": "Балахна",
+    "lat": 56.48083,
+    "lng": 43.54028,
+    "population": 48569,
+    "subject": "Нижегородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Свободный",
+    "lat": 51.38333,
+    "lng": 128.13333,
+    "population": 48517,
+    "subject": "Амурская область",
+    "tier": "small"
+  },
+  {
+    "name": "Солнечногорск",
+    "lat": 56.185114,
+    "lng": 36.977618,
+    "population": 48413,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Аксай",
+    "lat": 47.26667,
+    "lng": 39.86667,
+    "population": 48372,
+    "subject": "Ростовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Лесной",
+    "lat": 58.63333,
+    "lng": 59.78333,
+    "population": 48261,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Арсеньев",
+    "lat": 44.16667,
+    "lng": 133.26667,
+    "population": 47937,
+    "subject": "Приморский край",
+    "tier": "small"
+  },
+  {
+    "name": "Салехард",
+    "lat": 66.53333,
+    "lng": 66.63333,
+    "population": 47910,
+    "subject": "Ямало-Ненецкий АО",
+    "tier": "small"
+  },
+  {
+    "name": "Боровичи",
+    "lat": 58.38694,
+    "lng": 33.91139,
+    "population": 47883,
+    "subject": "Новгородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Рассказово",
+    "lat": 52.66667,
+    "lng": 41.88333,
+    "population": 47644,
+    "subject": "Тамбовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Курганинск",
+    "lat": 44.88333,
+    "lng": 40.6,
+    "population": 47305,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Отрадный",
+    "lat": 53.36667,
+    "lng": 51.35,
+    "population": 46984,
+    "subject": "Самарская область",
+    "tier": "small"
+  },
+  {
+    "name": "Донецк",
+    "lat": 48.33694,
+    "lng": 39.945,
+    "population": 46623,
+    "subject": "Ростовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Надым",
+    "lat": 65.53333,
+    "lng": 72.51667,
+    "population": 45973,
+    "subject": "Ямало-Ненецкий АО",
+    "tier": "small"
+  },
+  {
+    "name": "Кашира",
+    "lat": 54.83333,
+    "lng": 38.15,
+    "population": 45922,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Вышний Волочёк",
+    "lat": 57.58333,
+    "lng": 34.56667,
+    "population": 45830,
+    "subject": "Тверская область",
+    "tier": "small"
+  },
+  {
+    "name": "Чусовой",
+    "lat": 58.28333,
+    "lng": 57.81667,
+    "population": 45471,
+    "subject": "Пермский край",
+    "tier": "small"
+  },
+  {
+    "name": "Рославль",
+    "lat": 53.949166666667,
+    "lng": 32.856944444444,
+    "population": 45416,
+    "subject": "Смоленская область",
+    "tier": "small"
+  },
+  {
+    "name": "Назарово",
+    "lat": 56.00639,
+    "lng": 90.39139,
+    "population": 45333,
+    "subject": "Красноярский край",
+    "tier": "small"
+  },
+  {
+    "name": "Выкса",
+    "lat": 55.31944,
+    "lng": 42.17306,
+    "population": 45240,
+    "subject": "Нижегородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Сестрорецк",
+    "lat": 60.1,
+    "lng": 29.96667,
+    "population": 45192,
+    "subject": "Санкт-Петербург",
+    "tier": "small"
+  },
+  {
+    "name": "Берёзовский",
+    "lat": 55.66667,
+    "lng": 86.25,
+    "population": 44932,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Саяногорск",
+    "lat": 53.1,
+    "lng": 91.4,
+    "population": 44872,
+    "subject": "Хакасия",
+    "tier": "small"
+  },
+  {
+    "name": "Чебаркуль",
+    "lat": 54.97778,
+    "lng": 60.37,
+    "population": 44693,
+    "subject": "Челябинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кронштадт",
+    "lat": 60.0,
+    "lng": 29.76667,
+    "population": 44399,
+    "subject": "Санкт-Петербург",
+    "tier": "small"
+  },
+  {
+    "name": "Канаш",
+    "lat": 55.50694,
+    "lng": 47.49139,
+    "population": 44354,
+    "subject": "Чувашия",
+    "tier": "small"
+  },
+  {
+    "name": "Можга",
+    "lat": 56.45,
+    "lng": 52.21667,
+    "population": 44345,
+    "subject": "Удмуртия",
+    "tier": "small"
+  },
+  {
+    "name": "Бирск",
+    "lat": 55.41667,
+    "lng": 55.53333,
+    "population": 44295,
+    "subject": "Башкортостан",
+    "tier": "small"
+  },
+  {
+    "name": "Грязи",
+    "lat": 52.5,
+    "lng": 39.93333,
+    "population": 43908,
+    "subject": "Липецкая область",
+    "tier": "small"
+  },
+  {
+    "name": "Краснознаменск",
+    "lat": 55.6,
+    "lng": 37.03333,
+    "population": 43868,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Бугуруслан",
+    "lat": 53.61667,
+    "lng": 52.41667,
+    "population": 43593,
+    "subject": "Оренбургская область",
+    "tier": "small"
+  },
+  {
+    "name": "Радужный",
+    "lat": 62.13333,
+    "lng": 77.46667,
+    "population": 43577,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "small"
+  },
+  {
+    "name": "Ливны",
+    "lat": 52.425306,
+    "lng": 37.608306,
+    "population": 43549,
+    "subject": "Орловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Североморск",
+    "lat": 69.06917,
+    "lng": 33.41667,
+    "population": 43327,
+    "subject": "Мурманская область",
+    "tier": "small"
+  },
+  {
+    "name": "Карабулак",
+    "lat": 43.306285,
+    "lng": 44.909763,
+    "population": 43037,
+    "subject": "Ингушетия",
+    "tier": "small"
+  },
+  {
+    "name": "Рузаевка",
+    "lat": 54.06667,
+    "lng": 44.95,
+    "population": 42989,
+    "subject": "Мордовия",
+    "tier": "small"
+  },
+  {
+    "name": "Лангепас",
+    "lat": 61.25,
+    "lng": 75.16667,
+    "population": 42701,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "small"
+  },
+  {
+    "name": "Сатка",
+    "lat": 55.05,
+    "lng": 59.05,
+    "population": 42597,
+    "subject": "Челябинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Шелехов",
+    "lat": 52.2,
+    "lng": 104.1,
+    "population": 41998,
+    "subject": "Иркутская область",
+    "tier": "small"
+  },
+  {
+    "name": "Куйбышев",
+    "lat": 55.45028,
+    "lng": 78.3075,
+    "population": 41946,
+    "subject": "Новосибирская область",
+    "tier": "small"
+  },
+  {
+    "name": "Малоярославец",
+    "lat": 55.0,
+    "lng": 36.46667,
+    "population": 41836,
+    "subject": "Калужская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кореновск",
+    "lat": 45.46667,
+    "lng": 39.45,
+    "population": 41826,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Большой Камень",
+    "lat": 43.11667,
+    "lng": 132.35,
+    "population": 41825,
+    "subject": "Приморский край",
+    "tier": "small"
+  },
+  {
+    "name": "Аргун",
+    "lat": 43.292095,
+    "lng": 45.876622,
+    "population": 41622,
+    "subject": "Чечня",
+    "tier": "small"
+  },
+  {
+    "name": "Темрюк",
+    "lat": 45.26667,
+    "lng": 37.38333,
+    "population": 41608,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Ярцево",
+    "lat": 55.06667,
+    "lng": 32.68333,
+    "population": 41452,
+    "subject": "Смоленская область",
+    "tier": "small"
+  },
+  {
+    "name": "Урай",
+    "lat": 60.13333,
+    "lng": 64.78333,
+    "population": 41315,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "small"
+  },
+  {
+    "name": "Заринск",
+    "lat": 53.7,
+    "lng": 84.91667,
+    "population": 41272,
+    "subject": "Алтайский край",
+    "tier": "small"
+  },
+  {
+    "name": "Торжок",
+    "lat": 57.03333,
+    "lng": 34.96667,
+    "population": 41116,
+    "subject": "Тверская область",
+    "tier": "small"
+  },
+  {
+    "name": "Верхняя Салда",
+    "lat": 58.05,
+    "lng": 60.55,
+    "population": 41034,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Лянтор",
+    "lat": 61.61667,
+    "lng": 72.16667,
+    "population": 40977,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "small"
+  },
+  {
+    "name": "Горячий Ключ",
+    "lat": 44.633284,
+    "lng": 39.133287,
+    "population": 40903,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Кимры",
+    "lat": 56.86667,
+    "lng": 37.35,
+    "population": 40875,
+    "subject": "Тверская область",
+    "tier": "small"
+  },
+  {
+    "name": "Мариинск",
+    "lat": 56.21667,
+    "lng": 87.75,
+    "population": 40779,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Белая Калитва",
+    "lat": 48.17472,
+    "lng": 40.79306,
+    "population": 40448,
+    "subject": "Ростовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Сосновоборск",
+    "lat": 56.13333,
+    "lng": 93.36667,
+    "population": 40442,
+    "subject": "Красноярский край",
+    "tier": "small"
+  },
+  {
+    "name": "Осинники",
+    "lat": 53.61667,
+    "lng": 87.33333,
+    "population": 40367,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Курчатов",
+    "lat": 51.66667,
+    "lng": 35.65,
+    "population": 40318,
+    "subject": "Курская область",
+    "tier": "small"
+  },
+  {
+    "name": "Апшеронск",
+    "lat": 44.46083,
+    "lng": 39.74056,
+    "population": 40289,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Пыть-Ях",
+    "lat": 60.75,
+    "lng": 72.78333,
+    "population": 40180,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "small"
+  },
+  {
+    "name": "Усть-Лабинск",
+    "lat": 45.21528,
+    "lng": 39.68944,
+    "population": 40158,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Пугачёв",
+    "lat": 52.01667,
+    "lng": 48.8,
+    "population": 40127,
+    "subject": "Саратовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Мыски",
+    "lat": 53.7,
+    "lng": 87.81667,
+    "population": 40109,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Мончегорск",
+    "lat": 67.93944,
+    "lng": 32.91556,
+    "population": 39962,
+    "subject": "Мурманская область",
+    "tier": "small"
+  },
+  {
+    "name": "Заинск",
+    "lat": 55.3,
+    "lng": 52.01667,
+    "population": 39739,
+    "subject": "Татарстан",
+    "tier": "small"
+  },
+  {
+    "name": "Шебекино",
+    "lat": 50.40778,
+    "lng": 36.89694,
+    "population": 39680,
+    "subject": "Белгородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Тутаев",
+    "lat": 57.88333,
+    "lng": 39.53333,
+    "population": 39643,
+    "subject": "Ярославская область",
+    "tier": "small"
+  },
+  {
+    "name": "Баксан",
+    "lat": 43.683333,
+    "lng": 43.533333,
+    "population": 39593,
+    "subject": "Кабардино-Балкария",
+    "tier": "small"
+  },
+  {
+    "name": "Абинск",
+    "lat": 44.86667,
+    "lng": 38.16667,
+    "population": 39511,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Кольчугино",
+    "lat": 56.3,
+    "lng": 39.38333,
+    "population": 39410,
+    "subject": "Владимирская область",
+    "tier": "small"
+  },
+  {
+    "name": "Стрежевой",
+    "lat": 60.73333,
+    "lng": 77.58333,
+    "population": 39169,
+    "subject": "Томская область",
+    "tier": "small"
+  },
+  {
+    "name": "Ломоносов",
+    "lat": 59.91074,
+    "lng": 29.776466,
+    "population": 39147,
+    "subject": "Санкт-Петербург",
+    "tier": "small"
+  },
+  {
+    "name": "Моршанск",
+    "lat": 53.45,
+    "lng": 41.8,
+    "population": 39023,
+    "subject": "Тамбовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Советск",
+    "lat": 55.08333,
+    "lng": 21.88333,
+    "population": 38910,
+    "subject": "Калининградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Ялуторовск",
+    "lat": 56.65,
+    "lng": 66.3,
+    "population": 38853,
+    "subject": "Тюменская область",
+    "tier": "small"
+  },
+  {
+    "name": "Новозыбков",
+    "lat": 52.53333,
+    "lng": 31.93333,
+    "population": 38680,
+    "subject": "Брянская область",
+    "tier": "small"
+  },
+  {
+    "name": "Изобильный",
+    "lat": 45.36667,
+    "lng": 41.71667,
+    "population": 38614,
+    "subject": "Ставропольский край",
+    "tier": "small"
+  },
+  {
+    "name": "Амурск",
+    "lat": 50.21667,
+    "lng": 136.9,
+    "population": 38606,
+    "subject": "Хабаровский край",
+    "tier": "small"
+  },
+  {
+    "name": "Волхов",
+    "lat": 59.900543,
+    "lng": 32.352681,
+    "population": 38511,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Тулун",
+    "lat": 54.56667,
+    "lng": 100.56667,
+    "population": 38440,
+    "subject": "Иркутская область",
+    "tier": "small"
+  },
+  {
+    "name": "Луга",
+    "lat": 58.733333333333,
+    "lng": 29.85,
+    "population": 38407,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Сафоново",
+    "lat": 55.1,
+    "lng": 33.25,
+    "population": 38403,
+    "subject": "Смоленская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кизилюрт",
+    "lat": 43.2,
+    "lng": 46.86667,
+    "population": 38335,
+    "subject": "Дагестан",
+    "tier": "small"
+  },
+  {
+    "name": "Югорск",
+    "lat": 61.31667,
+    "lng": 63.35,
+    "population": 38238,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "small"
+  },
+  {
+    "name": "Шатура",
+    "lat": 55.5776722,
+    "lng": 39.5446333,
+    "population": 38230,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Ртищево",
+    "lat": 52.25,
+    "lng": 43.78333,
+    "population": 37850,
+    "subject": "Саратовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Переславль-Залесский",
+    "lat": 56.7381333,
+    "lng": 38.8561528,
+    "population": 37738,
+    "subject": "Ярославская область",
+    "tier": "small"
+  },
+  {
+    "name": "Протвино",
+    "lat": 54.87944,
+    "lng": 37.21389,
+    "population": 37735,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Южноуральск",
+    "lat": 54.45,
+    "lng": 61.25,
+    "population": 37478,
+    "subject": "Челябинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Истра",
+    "lat": 55.91667,
+    "lng": 36.86667,
+    "population": 37474,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Качканар",
+    "lat": 58.7,
+    "lng": 59.48333,
+    "population": 37307,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Красноуфимск",
+    "lat": 56.61667,
+    "lng": 57.76667,
+    "population": 37301,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Коркино",
+    "lat": 54.88333,
+    "lng": 61.4,
+    "population": 37224,
+    "subject": "Челябинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Джанкой",
+    "lat": 45.70861,
+    "lng": 34.39333,
+    "population": 37014,
+    "subject": "Крым",
+    "tier": "small"
+  },
+  {
+    "name": "Ирбит",
+    "lat": 57.66667,
+    "lng": 63.06667,
+    "population": 37009,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Мценск",
+    "lat": 53.27833,
+    "lng": 36.575,
+    "population": 36960,
+    "subject": "Орловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Усть-Кут",
+    "lat": 56.8,
+    "lng": 105.83333,
+    "population": 36918,
+    "subject": "Иркутская область",
+    "tier": "small"
+  },
+  {
+    "name": "Моздок",
+    "lat": 43.736575,
+    "lng": 44.652834,
+    "population": 36784,
+    "subject": "Северная Осетия",
+    "tier": "small"
+  },
+  {
+    "name": "Заволжье",
+    "lat": 56.6425,
+    "lng": 43.39278,
+    "population": 36763,
+    "subject": "Нижегородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кинель",
+    "lat": 53.23333,
+    "lng": 50.61667,
+    "population": 36729,
+    "subject": "Самарская область",
+    "tier": "small"
+  },
+  {
+    "name": "Урюпинск",
+    "lat": 50.8,
+    "lng": 42.01667,
+    "population": 36669,
+    "subject": "Волгоградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Реж",
+    "lat": 57.36667,
+    "lng": 61.4,
+    "population": 36585,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Алексеевка",
+    "lat": 50.63,
+    "lng": 38.68639,
+    "population": 36578,
+    "subject": "Белгородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Ефремов",
+    "lat": 53.149167,
+    "lng": 38.082585,
+    "population": 36545,
+    "subject": "Тульская область",
+    "tier": "small"
+  },
+  {
+    "name": "Малгобек",
+    "lat": 43.508882,
+    "lng": 44.585563,
+    "population": 36480,
+    "subject": "Ингушетия",
+    "tier": "small"
+  },
+  {
+    "name": "Елизово",
+    "lat": 53.18333,
+    "lng": 158.38333,
+    "population": 36240,
+    "subject": "Камчатский край",
+    "tier": "small"
+  },
+  {
+    "name": "Вязники",
+    "lat": 56.24333,
+    "lng": 42.12917,
+    "population": 36203,
+    "subject": "Владимирская область",
+    "tier": "small"
+  },
+  {
+    "name": "Алапаевск",
+    "lat": 57.85,
+    "lng": 61.7,
+    "population": 36189,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Учалы",
+    "lat": 54.31667,
+    "lng": 59.38333,
+    "population": 36175,
+    "subject": "Башкортостан",
+    "tier": "small"
+  },
+  {
+    "name": "Черняховск",
+    "lat": 54.63333,
+    "lng": 21.81667,
+    "population": 36128,
+    "subject": "Калининградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кыштым",
+    "lat": 55.7,
+    "lng": 60.55,
+    "population": 36045,
+    "subject": "Челябинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Беслан",
+    "lat": 43.18889,
+    "lng": 44.521691,
+    "population": 35929,
+    "subject": "Северная Осетия",
+    "tier": "small"
+  },
+  {
+    "name": "Балаклава",
+    "lat": 44.5,
+    "lng": 33.6,
+    "population": 35919,
+    "subject": "Севастополь",
+    "tier": "small"
+  },
+  {
+    "name": "Людиново",
+    "lat": 53.86667,
+    "lng": 34.46667,
+    "population": 35874,
+    "subject": "Калужская область",
+    "tier": "small"
+  },
+  {
+    "name": "Звенигород",
+    "lat": 55.73333,
+    "lng": 36.85,
+    "population": 35842,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Спасск-Дальний",
+    "lat": 44.6,
+    "lng": 132.81667,
+    "population": 35732,
+    "subject": "Приморский край",
+    "tier": "small"
+  },
+  {
+    "name": "Светлоград",
+    "lat": 45.33083,
+    "lng": 42.85111,
+    "population": 35703,
+    "subject": "Ставропольский край",
+    "tier": "small"
+  },
+  {
+    "name": "Красный Сулин",
+    "lat": 47.88333,
+    "lng": 40.06667,
+    "population": 35697,
+    "subject": "Ростовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Фролово",
+    "lat": 49.76667,
+    "lng": 43.65,
+    "population": 35661,
+    "subject": "Волгоградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Ахтубинск",
+    "lat": 48.28333,
+    "lng": 46.16667,
+    "population": 35635,
+    "subject": "Астраханская область",
+    "tier": "small"
+  },
+  {
+    "name": "Саянск",
+    "lat": 54.11667,
+    "lng": 102.16667,
+    "population": 35561,
+    "subject": "Иркутская область",
+    "tier": "small"
+  },
+  {
+    "name": "Апрелевка",
+    "lat": 55.53333,
+    "lng": 37.05,
+    "population": 35514,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Благовещенск",
+    "lat": 55.03333,
+    "lng": 55.98333,
+    "population": 35481,
+    "subject": "Башкортостан",
+    "tier": "small"
+  },
+  {
+    "name": "Лесозаводск",
+    "lat": 45.46667,
+    "lng": 133.4,
+    "population": 35433,
+    "subject": "Приморский край",
+    "tier": "small"
+  },
+  {
+    "name": "Печора",
+    "lat": 65.11667,
+    "lng": 57.11667,
+    "population": 35254,
+    "subject": "Коми",
+    "tier": "small"
+  },
+  {
+    "name": "Богородск",
+    "lat": 56.09972,
+    "lng": 43.50722,
+    "population": 35068,
+    "subject": "Нижегородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Миллерово",
+    "lat": 48.91667,
+    "lng": 40.4,
+    "population": 34841,
+    "subject": "Ростовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Азнакаево",
+    "lat": 54.85,
+    "lng": 53.06667,
+    "population": 34750,
+    "subject": "Татарстан",
+    "tier": "small"
+  },
+  {
+    "name": "Сокол",
+    "lat": 59.46667,
+    "lng": 40.11667,
+    "population": 34742,
+    "subject": "Вологодская область",
+    "tier": "small"
+  },
+  {
+    "name": "Сланцы",
+    "lat": 59.11779,
+    "lng": 28.088145,
+    "population": 34628,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Коряжма",
+    "lat": 61.3,
+    "lng": 47.16667,
+    "population": 34523,
+    "subject": "Архангельская область",
+    "tier": "small"
+  },
+  {
+    "name": "Тайшет",
+    "lat": 55.93333,
+    "lng": 98.01667,
+    "population": 34491,
+    "subject": "Иркутская область",
+    "tier": "small"
+  },
+  {
+    "name": "Ликино-Дулёво",
+    "lat": 55.71528,
+    "lng": 38.95778,
+    "population": 34191,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Тосно",
+    "lat": 59.541179,
+    "lng": 30.875006,
+    "population": 34066,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Мирный",
+    "lat": 62.53333,
+    "lng": 113.95,
+    "population": 34045,
+    "subject": "Якутия",
+    "tier": "small"
+  },
+  {
+    "name": "Новокубанск",
+    "lat": 45.1,
+    "lng": 41.05,
+    "population": 34000,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Нурлат",
+    "lat": 54.43333,
+    "lng": 50.8,
+    "population": 33990,
+    "subject": "Татарстан",
+    "tier": "small"
+  },
+  {
+    "name": "Шарыпово",
+    "lat": 55.525,
+    "lng": 89.2,
+    "population": 33961,
+    "subject": "Красноярский край",
+    "tier": "small"
+  },
+  {
+    "name": "Корсаков",
+    "lat": 46.63333,
+    "lng": 142.76667,
+    "population": 33950,
+    "subject": "Сахалинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Можайск",
+    "lat": 55.5,
+    "lng": 36.03333,
+    "population": 33880,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Партизанск",
+    "lat": 43.13333,
+    "lng": 133.13333,
+    "population": 33832,
+    "subject": "Приморский край",
+    "tier": "small"
+  },
+  {
+    "name": "Дальнегорск",
+    "lat": 44.56667,
+    "lng": 135.61667,
+    "population": 33655,
+    "subject": "Приморский край",
+    "tier": "small"
+  },
+  {
+    "name": "Конаково",
+    "lat": 56.7,
+    "lng": 36.76667,
+    "population": 33560,
+    "subject": "Тверская область",
+    "tier": "small"
+  },
+  {
+    "name": "Каменка",
+    "lat": 53.18333,
+    "lng": 44.05,
+    "population": 33491,
+    "subject": "Пензенская область",
+    "tier": "small"
+  },
+  {
+    "name": "Гулькевичи",
+    "lat": 45.36028,
+    "lng": 40.69444,
+    "population": 33357,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Новодвинск",
+    "lat": 64.41667,
+    "lng": 40.81667,
+    "population": 33294,
+    "subject": "Архангельская область",
+    "tier": "small"
+  },
+  {
+    "name": "Гай",
+    "lat": 51.46667,
+    "lng": 58.45,
+    "population": 33280,
+    "subject": "Оренбургская область",
+    "tier": "small"
+  },
+  {
+    "name": "Губкинский",
+    "lat": 64.43333,
+    "lng": 76.5,
+    "population": 33273,
+    "subject": "Ямало-Ненецкий АО",
+    "tier": "small"
+  },
+  {
+    "name": "Нарткала",
+    "lat": 43.556734,
+    "lng": 43.862222,
+    "population": 33203,
+    "subject": "Кабардино-Балкария",
+    "tier": "small"
+  },
+  {
+    "name": "Зеленокумск",
+    "lat": 44.4070115,
+    "lng": 43.8731235,
+    "population": 33187,
+    "subject": "Ставропольский край",
+    "tier": "small"
+  },
+  {
+    "name": "Валуйки",
+    "lat": 50.18333,
+    "lng": 38.11667,
+    "population": 33032,
+    "subject": "Белгородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Чернушка",
+    "lat": 56.5,
+    "lng": 56.08333,
+    "population": 32991,
+    "subject": "Пермский край",
+    "tier": "small"
+  },
+  {
+    "name": "Тавда",
+    "lat": 58.05,
+    "lng": 65.26667,
+    "population": 32749,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Сухой Лог",
+    "lat": 56.90583,
+    "lng": 62.03417,
+    "population": 32748,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Углич",
+    "lat": 57.53333,
+    "lng": 38.33333,
+    "population": 32719,
+    "subject": "Ярославская область",
+    "tier": "small"
+  },
+  {
+    "name": "Трёхгорный",
+    "lat": 54.8,
+    "lng": 58.45,
+    "population": 32463,
+    "subject": "Челябинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Камень-на-Оби",
+    "lat": 53.79194,
+    "lng": 81.34861,
+    "population": 32385,
+    "subject": "Алтайский край",
+    "tier": "small"
+  },
+  {
+    "name": "Алатырь",
+    "lat": 54.85,
+    "lng": 46.58333,
+    "population": 32265,
+    "subject": "Чувашия",
+    "tier": "small"
+  },
+  {
+    "name": "Кулебаки",
+    "lat": 55.41667,
+    "lng": 42.51667,
+    "population": 32184,
+    "subject": "Нижегородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Усинск",
+    "lat": 65.995028,
+    "lng": 57.557139,
+    "population": 32182,
+    "subject": "Коми",
+    "tier": "small"
+  },
+  {
+    "name": "Острогожск",
+    "lat": 50.86667,
+    "lng": 39.06667,
+    "population": 31699,
+    "subject": "Воронежская область",
+    "tier": "small"
+  },
+  {
+    "name": "Дагестанские Огни",
+    "lat": 42.11667,
+    "lng": 48.2,
+    "population": 31412,
+    "subject": "Дагестан",
+    "tier": "small"
+  },
+  {
+    "name": "Алушта",
+    "lat": 44.66722,
+    "lng": 34.39778,
+    "population": 31364,
+    "subject": "Крым",
+    "tier": "small"
+  },
+  {
+    "name": "Тейково",
+    "lat": 56.85,
+    "lng": 40.55,
+    "population": 31305,
+    "subject": "Ивановская область",
+    "tier": "small"
+  },
+  {
+    "name": "Дюртюли",
+    "lat": 55.48333,
+    "lng": 54.86667,
+    "population": 31185,
+    "subject": "Башкортостан",
+    "tier": "small"
+  },
+  {
+    "name": "Советский",
+    "lat": 61.36667,
+    "lng": 63.56667,
+    "population": 31138,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "small"
+  },
+  {
+    "name": "Усть-Джегута",
+    "lat": 44.08611,
+    "lng": 41.97194,
+    "population": 31137,
+    "subject": "Карачаево-Черкесия",
+    "tier": "small"
+  },
+  {
+    "name": "Приморско-Ахтарск",
+    "lat": 46.05,
+    "lng": 38.18333,
+    "population": 31087,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Кохма",
+    "lat": 56.93333,
+    "lng": 41.08333,
+    "population": 30940,
+    "subject": "Ивановская область",
+    "tier": "small"
+  },
+  {
+    "name": "Благодарный",
+    "lat": 45.1029039,
+    "lng": 43.4251513,
+    "population": 30827,
+    "subject": "Ставропольский край",
+    "tier": "small"
+  },
+  {
+    "name": "Ачхой-Мартан",
+    "lat": 43.189155,
+    "lng": 45.284741,
+    "population": 30739,
+    "subject": "Чечня",
+    "tier": "small"
+  },
+  {
+    "name": "Дедовск",
+    "lat": 55.86667,
+    "lng": 37.13333,
+    "population": 30731,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Вичуга",
+    "lat": 57.2,
+    "lng": 41.91667,
+    "population": 30694,
+    "subject": "Ивановская область",
+    "tier": "small"
+  },
+  {
+    "name": "Нововоронеж",
+    "lat": 51.31667,
+    "lng": 39.21667,
+    "population": 30658,
+    "subject": "Воронежская область",
+    "tier": "small"
+  },
+  {
+    "name": "Зима",
+    "lat": 53.91667,
+    "lng": 102.05,
+    "population": 30640,
+    "subject": "Иркутская область",
+    "tier": "small"
+  },
+  {
+    "name": "Обь",
+    "lat": 54.99167,
+    "lng": 82.7125,
+    "population": 30369,
+    "subject": "Новосибирская область",
+    "tier": "small"
+  },
+  {
+    "name": "Сердобск",
+    "lat": 52.46667,
+    "lng": 44.21667,
+    "population": 30220,
+    "subject": "Пензенская область",
+    "tier": "small"
+  },
+  {
+    "name": "Богданович",
+    "lat": 56.78333,
+    "lng": 62.05,
+    "population": 30142,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Нижнеудинск",
+    "lat": 54.9,
+    "lng": 99.01667,
+    "population": 29995,
+    "subject": "Иркутская область",
+    "tier": "small"
+  },
+  {
+    "name": "Электрогорск",
+    "lat": 55.88333,
+    "lng": 38.78333,
+    "population": 29982,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Луховицы",
+    "lat": 54.96667,
+    "lng": 39.025,
+    "population": 29889,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Вятские Поляны",
+    "lat": 56.218417,
+    "lng": 51.068583,
+    "population": 29742,
+    "subject": "Кировская область",
+    "tier": "small"
+  },
+  {
+    "name": "Фурманов",
+    "lat": 57.25,
+    "lng": 41.1,
+    "population": 29715,
+    "subject": "Ивановская область",
+    "tier": "small"
+  },
+  {
+    "name": "Борзя",
+    "lat": 50.38333,
+    "lng": 116.53333,
+    "population": 29596,
+    "subject": "Забайкальский край",
+    "tier": "small"
+  },
+  {
+    "name": "Богородицк",
+    "lat": 53.76667,
+    "lng": 38.13333,
+    "population": 29560,
+    "subject": "Тульская область",
+    "tier": "small"
+  },
+  {
+    "name": "Гусев",
+    "lat": 54.58333,
+    "lng": 22.2,
+    "population": 29234,
+    "subject": "Калининградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Муравленко",
+    "lat": 63.79444,
+    "lng": 74.49722,
+    "population": 29233,
+    "subject": "Ямало-Ненецкий АО",
+    "tier": "small"
+  },
+  {
+    "name": "Слободской",
+    "lat": 58.724167,
+    "lng": 50.161167,
+    "population": 29148,
+    "subject": "Кировская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кандалакша",
+    "lat": 67.15694,
+    "lng": 32.41167,
+    "population": 29138,
+    "subject": "Мурманская область",
+    "tier": "small"
+  },
+  {
+    "name": "Балабаново",
+    "lat": 55.18333,
+    "lng": 36.65,
+    "population": 29029,
+    "subject": "Калужская область",
+    "tier": "small"
+  },
+  {
+    "name": "Лосино-Петровский",
+    "lat": 55.86667,
+    "lng": 38.2,
+    "population": 29000,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Артёмовский",
+    "lat": 57.33639,
+    "lng": 61.89194,
+    "population": 28943,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Добрянка",
+    "lat": 58.45,
+    "lng": 56.41667,
+    "population": 28782,
+    "subject": "Пермский край",
+    "tier": "small"
+  },
+  {
+    "name": "Маркс",
+    "lat": 51.7,
+    "lng": 46.75,
+    "population": 28749,
+    "subject": "Саратовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Великий Устюг",
+    "lat": 60.75889,
+    "lng": 46.30389,
+    "population": 28670,
+    "subject": "Вологодская область",
+    "tier": "small"
+  },
+  {
+    "name": "Городец",
+    "lat": 56.65028,
+    "lng": 43.47028,
+    "population": 28660,
+    "subject": "Нижегородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Тында",
+    "lat": 55.15,
+    "lng": 124.71667,
+    "population": 28625,
+    "subject": "Амурская область",
+    "tier": "small"
+  },
+  {
+    "name": "Бахчисарай",
+    "lat": 44.75278,
+    "lng": 33.86083,
+    "population": 28609,
+    "subject": "Крым",
+    "tier": "small"
+  },
+  {
+    "name": "Сорочинск",
+    "lat": 52.43333,
+    "lng": 53.15,
+    "population": 28478,
+    "subject": "Оренбургская область",
+    "tier": "small"
+  },
+  {
+    "name": "Касимов",
+    "lat": 54.95,
+    "lng": 41.39722,
+    "population": 28443,
+    "subject": "Рязанская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кудымкар",
+    "lat": 59.01667,
+    "lng": 54.66667,
+    "population": 28293,
+    "subject": "Пермский край",
+    "tier": "small"
+  },
+  {
+    "name": "Ростов",
+    "lat": 57.18333,
+    "lng": 39.41667,
+    "population": 28122,
+    "subject": "Ярославская область",
+    "tier": "small"
+  },
+  {
+    "name": "Заречный",
+    "lat": 56.81667,
+    "lng": 61.31667,
+    "population": 28112,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Киров",
+    "lat": 54.08333,
+    "lng": 34.3,
+    "population": 28097,
+    "subject": "Калужская область",
+    "tier": "small"
+  },
+  {
+    "name": "Семилуки",
+    "lat": 51.68333,
+    "lng": 39.03333,
+    "population": 27938,
+    "subject": "Воронежская область",
+    "tier": "small"
+  },
+  {
+    "name": "Славгород",
+    "lat": 53.0,
+    "lng": 78.65,
+    "population": 27900,
+    "subject": "Алтайский край",
+    "tier": "small"
+  },
+  {
+    "name": "Аша",
+    "lat": 55.0,
+    "lng": 57.25,
+    "population": 27890,
+    "subject": "Челябинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Барабинск",
+    "lat": 55.35,
+    "lng": 78.35,
+    "population": 27648,
+    "subject": "Новосибирская область",
+    "tier": "small"
+  },
+  {
+    "name": "Еманжелинск",
+    "lat": 54.75,
+    "lng": 61.31667,
+    "population": 27632,
+    "subject": "Челябинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Старая Русса",
+    "lat": 57.98333,
+    "lng": 31.35,
+    "population": 27487,
+    "subject": "Новгородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Дивногорск",
+    "lat": 55.95,
+    "lng": 92.38333,
+    "population": 27477,
+    "subject": "Красноярский край",
+    "tier": "small"
+  },
+  {
+    "name": "Похвистнево",
+    "lat": 53.65,
+    "lng": 52.13333,
+    "population": 27333,
+    "subject": "Самарская область",
+    "tier": "small"
+  },
+  {
+    "name": "Киржач",
+    "lat": 56.15,
+    "lng": 38.86667,
+    "population": 27318,
+    "subject": "Владимирская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кушва",
+    "lat": 58.28333,
+    "lng": 59.73333,
+    "population": 27306,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Мирный",
+    "lat": 62.76028,
+    "lng": 40.33528,
+    "population": 27262,
+    "subject": "Архангельская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кировск",
+    "lat": 59.87533,
+    "lng": 30.981457,
+    "population": 27238,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Топки",
+    "lat": 55.28333,
+    "lng": 85.61667,
+    "population": 27158,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Камышлов",
+    "lat": 56.85,
+    "lng": 62.71667,
+    "population": 27117,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Карталы",
+    "lat": 53.05,
+    "lng": 60.65,
+    "population": 27103,
+    "subject": "Челябинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Заводоуковск",
+    "lat": 56.5,
+    "lng": 66.55,
+    "population": 27100,
+    "subject": "Тюменская область",
+    "tier": "small"
+  },
+  {
+    "name": "Тара",
+    "lat": 56.902383,
+    "lng": 74.37079,
+    "population": 26878,
+    "subject": "Омская область",
+    "tier": "small"
+  },
+  {
+    "name": "Шумерля",
+    "lat": 55.5,
+    "lng": 46.41667,
+    "population": 26873,
+    "subject": "Чувашия",
+    "tier": "small"
+  },
+  {
+    "name": "Балтийск",
+    "lat": 54.65,
+    "lng": 19.91667,
+    "population": 26796,
+    "subject": "Калининградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Новоалександровск",
+    "lat": 45.49333,
+    "lng": 41.21694,
+    "population": 26767,
+    "subject": "Ставропольский край",
+    "tier": "small"
+  },
+  {
+    "name": "Гурьевск",
+    "lat": 54.76667,
+    "lng": 20.6,
+    "population": 26760,
+    "subject": "Калининградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Котовск",
+    "lat": 52.58333,
+    "lng": 41.5,
+    "population": 26694,
+    "subject": "Тамбовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Майский",
+    "lat": 43.630508,
+    "lng": 44.067733,
+    "population": 26632,
+    "subject": "Кабардино-Балкария",
+    "tier": "small"
+  },
+  {
+    "name": "Кувандык",
+    "lat": 51.48333,
+    "lng": 57.35,
+    "population": 26596,
+    "subject": "Оренбургская область",
+    "tier": "small"
+  },
+  {
+    "name": "Гагарин",
+    "lat": 55.55,
+    "lng": 35.0,
+    "population": 26500,
+    "subject": "Смоленская область",
+    "tier": "small"
+  },
+  {
+    "name": "Красноармейск",
+    "lat": 56.12278,
+    "lng": 38.14611,
+    "population": 26492,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кимовск",
+    "lat": 53.96667,
+    "lng": 38.53333,
+    "population": 26475,
+    "subject": "Тульская область",
+    "tier": "small"
+  },
+  {
+    "name": "Волоколамск",
+    "lat": 56.03333,
+    "lng": 35.95,
+    "population": 26389,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Петровск",
+    "lat": 52.31667,
+    "lng": 45.38333,
+    "population": 26319,
+    "subject": "Саратовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Соль-Илецк",
+    "lat": 51.16667,
+    "lng": 54.98333,
+    "population": 26149,
+    "subject": "Оренбургская область",
+    "tier": "small"
+  },
+  {
+    "name": "Ипатово",
+    "lat": 45.71667,
+    "lng": 42.9,
+    "population": 26122,
+    "subject": "Ставропольский край",
+    "tier": "small"
+  },
+  {
+    "name": "Костомукша",
+    "lat": 64.58333,
+    "lng": 30.6,
+    "population": 26048,
+    "subject": "Карелия",
+    "tier": "small"
+  },
+  {
+    "name": "Удомля",
+    "lat": 57.88333,
+    "lng": 35.01667,
+    "population": 25950,
+    "subject": "Тверская область",
+    "tier": "small"
+  },
+  {
+    "name": "Янаул",
+    "lat": 56.26667,
+    "lng": 54.93333,
+    "population": 25908,
+    "subject": "Башкортостан",
+    "tier": "small"
+  },
+  {
+    "name": "Карпинск",
+    "lat": 59.76667,
+    "lng": 60.0,
+    "population": 25879,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кондопога",
+    "lat": 62.2,
+    "lng": 34.26667,
+    "population": 25851,
+    "subject": "Карелия",
+    "tier": "small"
+  },
+  {
+    "name": "Коммунар",
+    "lat": 59.621609,
+    "lng": 30.393483,
+    "population": 25793,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Отрадное",
+    "lat": 59.77409,
+    "lng": 30.794553,
+    "population": 25706,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Холмск",
+    "lat": 47.04028,
+    "lng": 142.04306,
+    "population": 25677,
+    "subject": "Сахалинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Полысаево",
+    "lat": 54.6,
+    "lng": 86.28333,
+    "population": 25631,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Красноперекопск",
+    "lat": 45.955306,
+    "lng": 33.795,
+    "population": 25569,
+    "subject": "Крым",
+    "tier": "small"
+  },
+  {
+    "name": "Киреевск",
+    "lat": 53.93333,
+    "lng": 37.93333,
+    "population": 25560,
+    "subject": "Тульская область",
+    "tier": "small"
+  },
+  {
+    "name": "Лабытнанги",
+    "lat": 66.65806,
+    "lng": 66.38389,
+    "population": 25501,
+    "subject": "Ямало-Ненецкий АО",
+    "tier": "small"
+  },
+  {
+    "name": "Алейск",
+    "lat": 52.5,
+    "lng": 82.78333,
+    "population": 25380,
+    "subject": "Алтайский край",
+    "tier": "small"
+  },
+  {
+    "name": "Десногорск",
+    "lat": 54.1530861,
+    "lng": 33.2902917,
+    "population": 25345,
+    "subject": "Смоленская область",
+    "tier": "small"
+  },
+  {
+    "name": "Дятьково",
+    "lat": 53.6,
+    "lng": 34.33333,
+    "population": 25255,
+    "subject": "Брянская область",
+    "tier": "small"
+  },
+  {
+    "name": "Скопин",
+    "lat": 53.81667,
+    "lng": 39.55,
+    "population": 25238,
+    "subject": "Рязанская область",
+    "tier": "small"
+  },
+  {
+    "name": "Семёнов",
+    "lat": 56.78944,
+    "lng": 44.49056,
+    "population": 25075,
+    "subject": "Нижегородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Асино",
+    "lat": 57.0,
+    "lng": 86.15,
+    "population": 24913,
+    "subject": "Томская область",
+    "tier": "small"
+  },
+  {
+    "name": "Карасук",
+    "lat": 53.73333,
+    "lng": 78.03333,
+    "population": 24890,
+    "subject": "Новосибирская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кировск",
+    "lat": 67.61417,
+    "lng": 33.67167,
+    "population": 24857,
+    "subject": "Мурманская область",
+    "tier": "small"
+  },
+  {
+    "name": "Знаменск",
+    "lat": 48.58333,
+    "lng": 45.75,
+    "population": 24628,
+    "subject": "Астраханская область",
+    "tier": "small"
+  },
+  {
+    "name": "Гусиноозёрск",
+    "lat": 51.28556,
+    "lng": 106.52917,
+    "population": 24451,
+    "subject": "Бурятия",
+    "tier": "small"
+  },
+  {
+    "name": "Североуральск",
+    "lat": 60.15,
+    "lng": 59.93333,
+    "population": 24428,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Бутурлиновка",
+    "lat": 50.825,
+    "lng": 40.58889,
+    "population": 24397,
+    "subject": "Воронежская область",
+    "tier": "small"
+  },
+  {
+    "name": "Озёры",
+    "lat": 54.857875,
+    "lng": 38.5438194,
+    "population": 24359,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Саки",
+    "lat": 45.13361,
+    "lng": 33.57722,
+    "population": 24285,
+    "subject": "Крым",
+    "tier": "small"
+  },
+  {
+    "name": "Калач-на-Дону",
+    "lat": 48.68333,
+    "lng": 43.53333,
+    "population": 24277,
+    "subject": "Волгоградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Унеча",
+    "lat": 52.85,
+    "lng": 32.68333,
+    "population": 24274,
+    "subject": "Брянская область",
+    "tier": "small"
+  },
+  {
+    "name": "Морозовск",
+    "lat": 48.35,
+    "lng": 41.833333333333,
+    "population": 24258,
+    "subject": "Ростовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Северобайкальск",
+    "lat": 55.63333,
+    "lng": 109.31667,
+    "population": 24233,
+    "subject": "Бурятия",
+    "tier": "small"
+  },
+  {
+    "name": "Советская Гавань",
+    "lat": 48.966373,
+    "lng": 140.285189,
+    "population": 24231,
+    "subject": "Хабаровский край",
+    "tier": "small"
+  },
+  {
+    "name": "Родники",
+    "lat": 57.1,
+    "lng": 41.73333,
+    "population": 24101,
+    "subject": "Ивановская область",
+    "tier": "small"
+  },
+  {
+    "name": "Зерноград",
+    "lat": 46.846525,
+    "lng": 40.3040333,
+    "population": 24076,
+    "subject": "Ростовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Карачаевск",
+    "lat": 43.769713,
+    "lng": 41.911369,
+    "population": 23867,
+    "subject": "Карачаево-Черкесия",
+    "tier": "small"
+  },
+  {
+    "name": "Строитель",
+    "lat": 50.78333,
+    "lng": 36.48333,
+    "population": 23780,
+    "subject": "Белгородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Татарск",
+    "lat": 55.21667,
+    "lng": 75.96667,
+    "population": 23711,
+    "subject": "Новосибирская область",
+    "tier": "small"
+  },
+  {
+    "name": "Медногорск",
+    "lat": 51.422085,
+    "lng": 57.595296,
+    "population": 23693,
+    "subject": "Оренбургская область",
+    "tier": "small"
+  },
+  {
+    "name": "Дальнереченск",
+    "lat": 45.93333,
+    "lng": 133.73333,
+    "population": 23613,
+    "subject": "Приморский край",
+    "tier": "small"
+  },
+  {
+    "name": "Уварово",
+    "lat": 51.98333,
+    "lng": 42.26667,
+    "population": 23584,
+    "subject": "Тамбовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Сегежа",
+    "lat": 63.73333,
+    "lng": 34.31667,
+    "population": 23543,
+    "subject": "Карелия",
+    "tier": "small"
+  },
+  {
+    "name": "Курчалой",
+    "lat": 43.20444,
+    "lng": 46.087812,
+    "population": 23425,
+    "subject": "Чечня",
+    "tier": "small"
+  },
+  {
+    "name": "Нарьян-Мар",
+    "lat": 67.63778,
+    "lng": 53.00667,
+    "population": 23399,
+    "subject": "Ненецкий АО",
+    "tier": "small"
+  },
+  {
+    "name": "Губаха",
+    "lat": 58.86667,
+    "lng": 57.58333,
+    "population": 23397,
+    "subject": "Пермский край",
+    "tier": "small"
+  },
+  {
+    "name": "Среднеуральск",
+    "lat": 56.98333,
+    "lng": 60.46667,
+    "population": 23344,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Кубинка",
+    "lat": 55.57639,
+    "lng": 36.69472,
+    "population": 23146,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Нефтекумск",
+    "lat": 44.75056,
+    "lng": 44.97972,
+    "population": 23137,
+    "subject": "Ставропольский край",
+    "tier": "small"
+  },
+  {
+    "name": "Верхний Уфалей",
+    "lat": 56.05,
+    "lng": 60.23333,
+    "population": 22981,
+    "subject": "Челябинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Старая Купавна",
+    "lat": 55.8,
+    "lng": 38.18333,
+    "population": 22898,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Менделеевск",
+    "lat": 55.9,
+    "lng": 52.316666666667,
+    "population": 22875,
+    "subject": "Татарстан",
+    "tier": "small"
+  },
+  {
+    "name": "Железноводск",
+    "lat": 44.13333,
+    "lng": 43.03333,
+    "population": 22863,
+    "subject": "Ставропольский край",
+    "tier": "small"
+  },
+  {
+    "name": "Голицыно",
+    "lat": 55.61472,
+    "lng": 36.98722,
+    "population": 22733,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Аткарск",
+    "lat": 51.86667,
+    "lng": 45.0,
+    "population": 22709,
+    "subject": "Саратовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Лермонтов",
+    "lat": 44.10528,
+    "lng": 42.97167,
+    "population": 22444,
+    "subject": "Ставропольский край",
+    "tier": "small"
+  },
+  {
+    "name": "Павловск",
+    "lat": 50.45,
+    "lng": 40.06667,
+    "population": 22384,
+    "subject": "Воронежская область",
+    "tier": "small"
+  },
+  {
+    "name": "Тайга",
+    "lat": 56.06667,
+    "lng": 85.61667,
+    "population": 22375,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Никольское",
+    "lat": 59.704642,
+    "lng": 30.788975,
+    "population": 22355,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Верещагино",
+    "lat": 58.06667,
+    "lng": 54.65,
+    "population": 22239,
+    "subject": "Пермский край",
+    "tier": "small"
+  },
+  {
+    "name": "Сосногорск",
+    "lat": 63.58333,
+    "lng": 53.93333,
+    "population": 22189,
+    "subject": "Коми",
+    "tier": "small"
+  },
+  {
+    "name": "Гурьевск",
+    "lat": 54.28333,
+    "lng": 85.93333,
+    "population": 22134,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Хадыженск",
+    "lat": 44.42389,
+    "lng": 39.53722,
+    "population": 22094,
+    "subject": "Краснодарский край",
+    "tier": "small"
+  },
+  {
+    "name": "Невьянск",
+    "lat": 57.48333,
+    "lng": 60.2,
+    "population": 22061,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Тырныауз",
+    "lat": 43.3892665,
+    "lng": 42.9189065,
+    "population": 22056,
+    "subject": "Кабардино-Балкария",
+    "tier": "small"
+  },
+  {
+    "name": "Котельниково",
+    "lat": 47.63333,
+    "lng": 43.13333,
+    "population": 22016,
+    "subject": "Волгоградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Таштагол",
+    "lat": 52.76667,
+    "lng": 87.86667,
+    "population": 21980,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Давлеканово",
+    "lat": 54.21667,
+    "lng": 55.03333,
+    "population": 21834,
+    "subject": "Башкортостан",
+    "tier": "small"
+  },
+  {
+    "name": "Бронницы",
+    "lat": 55.42278,
+    "lng": 38.25889,
+    "population": 21831,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Вилючинск",
+    "lat": 52.93333,
+    "lng": 158.4,
+    "population": 21774,
+    "subject": "Камчатский край",
+    "tier": "small"
+  },
+  {
+    "name": "Калтан",
+    "lat": 53.51667,
+    "lng": 87.26667,
+    "population": 21752,
+    "subject": "Кемеровская область",
+    "tier": "small"
+  },
+  {
+    "name": "Вихоревка",
+    "lat": 56.11667,
+    "lng": 101.16667,
+    "population": 21719,
+    "subject": "Иркутская область",
+    "tier": "small"
+  },
+  {
+    "name": "Семикаракорск",
+    "lat": 47.51667,
+    "lng": 40.8,
+    "population": 21719,
+    "subject": "Ростовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Лысково",
+    "lat": 56.01278,
+    "lng": 45.02528,
+    "population": 21657,
+    "subject": "Нижегородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Бавлы",
+    "lat": 54.4,
+    "lng": 53.25,
+    "population": 21628,
+    "subject": "Татарстан",
+    "tier": "small"
+  },
+  {
+    "name": "Сасово",
+    "lat": 54.35,
+    "lng": 41.91667,
+    "population": 21628,
+    "subject": "Рязанская область",
+    "tier": "small"
+  },
+  {
+    "name": "Железногорск-Илимский",
+    "lat": 56.58333,
+    "lng": 104.11667,
+    "population": 21621,
+    "subject": "Иркутская область",
+    "tier": "small"
+  },
+  {
+    "name": "Вельск",
+    "lat": 61.06667,
+    "lng": 42.1,
+    "population": 21613,
+    "subject": "Архангельская область",
+    "tier": "small"
+  },
+  {
+    "name": "Алдан",
+    "lat": 58.6,
+    "lng": 125.38333,
+    "population": 21590,
+    "subject": "Якутия",
+    "tier": "small"
+  },
+  {
+    "name": "Алагир",
+    "lat": 43.04167,
+    "lng": 44.21056,
+    "population": 21550,
+    "subject": "Северная Осетия",
+    "tier": "small"
+  },
+  {
+    "name": "Красноуральск",
+    "lat": 58.35,
+    "lng": 60.05,
+    "population": 21507,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Бежецк",
+    "lat": 57.78333,
+    "lng": 36.7,
+    "population": 21466,
+    "subject": "Тверская область",
+    "tier": "small"
+  },
+  {
+    "name": "Усть-Катав",
+    "lat": 54.93333,
+    "lng": 58.16667,
+    "population": 21439,
+    "subject": "Челябинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Оленегорск",
+    "lat": 68.15,
+    "lng": 33.28333,
+    "population": 21438,
+    "subject": "Мурманская область",
+    "tier": "small"
+  },
+  {
+    "name": "Рошаль",
+    "lat": 55.66361,
+    "lng": 39.865,
+    "population": 21401,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Ленск",
+    "lat": 60.71667,
+    "lng": 114.9,
+    "population": 21392,
+    "subject": "Якутия",
+    "tier": "small"
+  },
+  {
+    "name": "Калачинск",
+    "lat": 55.05,
+    "lng": 74.58333,
+    "population": 21378,
+    "subject": "Омская область",
+    "tier": "small"
+  },
+  {
+    "name": "Красноармейск",
+    "lat": 51.01667,
+    "lng": 45.7,
+    "population": 21350,
+    "subject": "Саратовская область",
+    "tier": "small"
+  },
+  {
+    "name": "Светлый",
+    "lat": 54.68333,
+    "lng": 20.13333,
+    "population": 21114,
+    "subject": "Калининградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Рыбное",
+    "lat": 54.73333,
+    "lng": 39.51667,
+    "population": 21069,
+    "subject": "Рязанская область",
+    "tier": "small"
+  },
+  {
+    "name": "Котово",
+    "lat": 50.31667,
+    "lng": 44.8,
+    "population": 21028,
+    "subject": "Волгоградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Остров",
+    "lat": 57.33333,
+    "lng": 28.35,
+    "population": 20923,
+    "subject": "Псковская область",
+    "tier": "small"
+  },
+  {
+    "name": "Бобров",
+    "lat": 51.09444,
+    "lng": 40.03222,
+    "population": 20871,
+    "subject": "Воронежская область",
+    "tier": "small"
+  },
+  {
+    "name": "Колпашево",
+    "lat": 58.31667,
+    "lng": 82.91667,
+    "population": 20824,
+    "subject": "Томская область",
+    "tier": "small"
+  },
+  {
+    "name": "Новопавловск",
+    "lat": 43.96361,
+    "lng": 43.63944,
+    "population": 20781,
+    "subject": "Ставропольский край",
+    "tier": "small"
+  },
+  {
+    "name": "Тогучин",
+    "lat": 55.23333,
+    "lng": 84.38333,
+    "population": 20766,
+    "subject": "Новосибирская область",
+    "tier": "small"
+  },
+  {
+    "name": "Зарайск",
+    "lat": 54.76528,
+    "lng": 38.88361,
+    "population": 20736,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Чегем",
+    "lat": 43.566657,
+    "lng": 43.583325,
+    "population": 20736,
+    "subject": "Кабардино-Балкария",
+    "tier": "small"
+  },
+  {
+    "name": "Октябрьск",
+    "lat": 53.16667,
+    "lng": 48.66667,
+    "population": 20703,
+    "subject": "Самарская область",
+    "tier": "small"
+  },
+  {
+    "name": "Армянск",
+    "lat": 46.10694,
+    "lng": 33.69306,
+    "population": 20692,
+    "subject": "Крым",
+    "tier": "small"
+  },
+  {
+    "name": "Ряжск",
+    "lat": 53.71667,
+    "lng": 40.06667,
+    "population": 20634,
+    "subject": "Рязанская область",
+    "tier": "small"
+  },
+  {
+    "name": "Сысерть",
+    "lat": 56.5,
+    "lng": 60.81667,
+    "population": 20634,
+    "subject": "Свердловская область",
+    "tier": "small"
+  },
+  {
+    "name": "Буй",
+    "lat": 58.48333,
+    "lng": 41.51667,
+    "population": 20564,
+    "subject": "Костромская область",
+    "tier": "small"
+  },
+  {
+    "name": "Исилькуль",
+    "lat": 54.90889,
+    "lng": 71.26056,
+    "population": 20515,
+    "subject": "Омская область",
+    "tier": "small"
+  },
+  {
+    "name": "Хотьково",
+    "lat": 56.25,
+    "lng": 37.98333,
+    "population": 20466,
+    "subject": "Московская область",
+    "tier": "small"
+  },
+  {
+    "name": "Шарья",
+    "lat": 58.36667,
+    "lng": 45.5,
+    "population": 20439,
+    "subject": "Костромская область",
+    "tier": "small"
+  },
+  {
+    "name": "Арск",
+    "lat": 56.09056,
+    "lng": 49.87639,
+    "population": 20421,
+    "subject": "Татарстан",
+    "tier": "small"
+  },
+  {
+    "name": "Нижний Ломов",
+    "lat": 53.53333,
+    "lng": 43.68333,
+    "population": 20421,
+    "subject": "Пензенская область",
+    "tier": "small"
+  },
+  {
+    "name": "Пикалёво",
+    "lat": 59.512684,
+    "lng": 34.177483,
+    "population": 20388,
+    "subject": "Ленинградская область",
+    "tier": "small"
+  },
+  {
+    "name": "Оха",
+    "lat": 53.58333,
+    "lng": 142.95,
+    "population": 20357,
+    "subject": "Сахалинская область",
+    "tier": "small"
+  },
+  {
+    "name": "Инта",
+    "lat": 66.0398139,
+    "lng": 60.1315194,
+    "population": 20271,
+    "subject": "Коми",
+    "tier": "small"
+  },
+  {
+    "name": "Сергач",
+    "lat": 55.53333,
+    "lng": 45.46667,
+    "population": 20256,
+    "subject": "Нижегородская область",
+    "tier": "small"
+  },
+  {
+    "name": "Бологое",
+    "lat": 57.87083,
+    "lng": 34.07361,
+    "population": 20234,
+    "subject": "Тверская область",
+    "tier": "small"
+  },
+  {
+    "name": "Котельнич",
+    "lat": 58.3,
+    "lng": 48.33333,
+    "population": 20144,
+    "subject": "Кировская область",
+    "tier": "small"
+  },
+  {
+    "name": "Лебедянь",
+    "lat": 53.0115528,
+    "lng": 39.1281167,
+    "population": 20049,
+    "subject": "Липецкая область",
+    "tier": "small"
+  },
+  {
+    "name": "Белоярский",
+    "lat": 63.71667,
+    "lng": 66.66667,
+    "population": 19994,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "town"
+  },
+  {
+    "name": "Агрыз",
+    "lat": 56.51667,
+    "lng": 52.98333,
+    "population": 19991,
+    "subject": "Татарстан",
+    "tier": "town"
+  },
+  {
+    "name": "Нерехта",
+    "lat": 57.45,
+    "lng": 40.58333,
+    "population": 19977,
+    "subject": "Костромская область",
+    "tier": "town"
+  },
+  {
+    "name": "Буинск",
+    "lat": 54.96667,
+    "lng": 48.28333,
+    "population": 19968,
+    "subject": "Татарстан",
+    "tier": "town"
+  },
+  {
+    "name": "Терек",
+    "lat": 43.483317,
+    "lng": 44.138871,
+    "population": 19948,
+    "subject": "Кабардино-Балкария",
+    "tier": "town"
+  },
+  {
+    "name": "Тарко-Сале",
+    "lat": 64.91472,
+    "lng": 77.77278,
+    "population": 19900,
+    "subject": "Ямало-Ненецкий АО",
+    "tier": "town"
+  },
+  {
+    "name": "Черепаново",
+    "lat": 54.21667,
+    "lng": 83.36667,
+    "population": 19900,
+    "subject": "Новосибирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Никольск",
+    "lat": 53.71667,
+    "lng": 46.08333,
+    "population": 19873,
+    "subject": "Пензенская область",
+    "tier": "town"
+  },
+  {
+    "name": "Куровское",
+    "lat": 55.58333,
+    "lng": 38.91667,
+    "population": 19857,
+    "subject": "Московская область",
+    "tier": "town"
+  },
+  {
+    "name": "Ковылкино",
+    "lat": 54.03333,
+    "lng": 43.91667,
+    "population": 19793,
+    "subject": "Мордовия",
+    "tier": "town"
+  },
+  {
+    "name": "Козьмодемьянск",
+    "lat": 56.33333,
+    "lng": 46.56667,
+    "population": 19731,
+    "subject": "Марий Эл",
+    "tier": "town"
+  },
+  {
+    "name": "Данков",
+    "lat": 53.25,
+    "lng": 39.15,
+    "population": 19726,
+    "subject": "Липецкая область",
+    "tier": "town"
+  },
+  {
+    "name": "Фокино",
+    "lat": 42.96667,
+    "lng": 132.4,
+    "population": 19711,
+    "subject": "Приморский край",
+    "tier": "town"
+  },
+  {
+    "name": "Усмань",
+    "lat": 52.05,
+    "lng": 39.73333,
+    "population": 19662,
+    "subject": "Липецкая область",
+    "tier": "town"
+  },
+  {
+    "name": "Омутнинск",
+    "lat": 58.66667,
+    "lng": 52.18333,
+    "population": 19629,
+    "subject": "Кировская область",
+    "tier": "town"
+  },
+  {
+    "name": "Пущино",
+    "lat": 54.83333,
+    "lng": 37.61667,
+    "population": 19578,
+    "subject": "Московская область",
+    "tier": "town"
+  },
+  {
+    "name": "Дудинка",
+    "lat": 69.4,
+    "lng": 86.18333,
+    "population": 19556,
+    "subject": "Красноярский край",
+    "tier": "town"
+  },
+  {
+    "name": "Черноголовка",
+    "lat": 56.01472,
+    "lng": 38.38972,
+    "population": 19530,
+    "subject": "Московская область",
+    "tier": "town"
+  },
+  {
+    "name": "Оса",
+    "lat": 57.28333,
+    "lng": 55.45,
+    "population": 19523,
+    "subject": "Пермский край",
+    "tier": "town"
+  },
+  {
+    "name": "Зея",
+    "lat": 53.73333,
+    "lng": 127.25,
+    "population": 19414,
+    "subject": "Амурская область",
+    "tier": "town"
+  },
+  {
+    "name": "Зверево",
+    "lat": 48.01667,
+    "lng": 40.11667,
+    "population": 19353,
+    "subject": "Ростовская область",
+    "tier": "town"
+  },
+  {
+    "name": "Арамиль",
+    "lat": 56.7,
+    "lng": 60.83333,
+    "population": 19013,
+    "subject": "Свердловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Пролетарск",
+    "lat": 46.70306,
+    "lng": 41.71917,
+    "population": 18983,
+    "subject": "Ростовская область",
+    "tier": "town"
+  },
+  {
+    "name": "Ардон",
+    "lat": 43.17278,
+    "lng": 44.29222,
+    "population": 18956,
+    "subject": "Северная Осетия",
+    "tier": "town"
+  },
+  {
+    "name": "Лодейное Поле",
+    "lat": 60.734305,
+    "lng": 33.543183,
+    "population": 18905,
+    "subject": "Ленинградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Приозерск",
+    "lat": 61.035979,
+    "lng": 30.115589,
+    "population": 18777,
+    "subject": "Ленинградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кировград",
+    "lat": 57.43333,
+    "lng": 60.06667,
+    "population": 18698,
+    "subject": "Свердловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Николаевск-на-Амуре",
+    "lat": 53.15,
+    "lng": 140.73333,
+    "population": 18631,
+    "subject": "Хабаровский край",
+    "tier": "town"
+  },
+  {
+    "name": "Нелидово",
+    "lat": 56.21667,
+    "lng": 32.78333,
+    "population": 18603,
+    "subject": "Тверская область",
+    "tier": "town"
+  },
+  {
+    "name": "Харабали",
+    "lat": 47.4,
+    "lng": 47.25,
+    "population": 18514,
+    "subject": "Астраханская область",
+    "tier": "town"
+  },
+  {
+    "name": "Няндома",
+    "lat": 61.666666666667,
+    "lng": 40.2,
+    "population": 18473,
+    "subject": "Архангельская область",
+    "tier": "town"
+  },
+  {
+    "name": "Нижняя Тура",
+    "lat": 58.62083,
+    "lng": 59.84778,
+    "population": 18392,
+    "subject": "Свердловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Пласт",
+    "lat": 54.36667,
+    "lng": 60.81667,
+    "population": 18379,
+    "subject": "Челябинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Новый Оскол",
+    "lat": 50.76667,
+    "lng": 37.86667,
+    "population": 18359,
+    "subject": "Белгородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Суровикино",
+    "lat": 48.6,
+    "lng": 42.85,
+    "population": 18227,
+    "subject": "Волгоградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Боготол",
+    "lat": 56.2,
+    "lng": 89.51667,
+    "population": 18206,
+    "subject": "Красноярский край",
+    "tier": "town"
+  },
+  {
+    "name": "Ершов",
+    "lat": 51.35,
+    "lng": 48.28333,
+    "population": 18095,
+    "subject": "Саратовская область",
+    "tier": "town"
+  },
+  {
+    "name": "Нефтегорск",
+    "lat": 52.8,
+    "lng": 51.16667,
+    "population": 18076,
+    "subject": "Самарская область",
+    "tier": "town"
+  },
+  {
+    "name": "Слюдянка",
+    "lat": 51.66667,
+    "lng": 103.7,
+    "population": 18058,
+    "subject": "Иркутская область",
+    "tier": "town"
+  },
+  {
+    "name": "Электроугли",
+    "lat": 55.71667,
+    "lng": 38.21667,
+    "population": 17944,
+    "subject": "Московская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кукмор",
+    "lat": 56.1825,
+    "lng": 50.90639,
+    "population": 17886,
+    "subject": "Татарстан",
+    "tier": "town"
+  },
+  {
+    "name": "Кяхта",
+    "lat": 50.35,
+    "lng": 106.45,
+    "population": 17877,
+    "subject": "Бурятия",
+    "tier": "town"
+  },
+  {
+    "name": "Судак",
+    "lat": 44.85139,
+    "lng": 34.9725,
+    "population": 17834,
+    "subject": "Крым",
+    "tier": "town"
+  },
+  {
+    "name": "Баймак",
+    "lat": 52.58333,
+    "lng": 58.31667,
+    "population": 17833,
+    "subject": "Башкортостан",
+    "tier": "town"
+  },
+  {
+    "name": "Покров",
+    "lat": 55.91778,
+    "lng": 39.175,
+    "population": 17747,
+    "subject": "Владимирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Стародуб",
+    "lat": 52.58333,
+    "lng": 32.76667,
+    "population": 17687,
+    "subject": "Брянская область",
+    "tier": "town"
+  },
+  {
+    "name": "Жуковка",
+    "lat": 53.53333,
+    "lng": 33.73333,
+    "population": 17628,
+    "subject": "Брянская область",
+    "tier": "town"
+  },
+  {
+    "name": "Шахунья",
+    "lat": 57.67472,
+    "lng": 46.62083,
+    "population": 17626,
+    "subject": "Нижегородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Калач",
+    "lat": 50.42583,
+    "lng": 41.01556,
+    "population": 17624,
+    "subject": "Воронежская область",
+    "tier": "town"
+  },
+  {
+    "name": "Суворов",
+    "lat": 54.11667,
+    "lng": 36.5,
+    "population": 17598,
+    "subject": "Тульская область",
+    "tier": "town"
+  },
+  {
+    "name": "Радужный",
+    "lat": 55.99778,
+    "lng": 40.32972,
+    "population": 17569,
+    "subject": "Владимирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Льгов",
+    "lat": 51.66667,
+    "lng": 35.26667,
+    "population": 17557,
+    "subject": "Курская область",
+    "tier": "town"
+  },
+  {
+    "name": "Енисейск",
+    "lat": 58.46667,
+    "lng": 92.13333,
+    "population": 17537,
+    "subject": "Красноярский край",
+    "tier": "town"
+  },
+  {
+    "name": "Павловск",
+    "lat": 59.68333,
+    "lng": 30.43333,
+    "population": 17463,
+    "subject": "Санкт-Петербург",
+    "tier": "town"
+  },
+  {
+    "name": "Карачев",
+    "lat": 53.11667,
+    "lng": 34.98333,
+    "population": 17449,
+    "subject": "Брянская область",
+    "tier": "town"
+  },
+  {
+    "name": "Белогорск",
+    "lat": 45.05444,
+    "lng": 34.60222,
+    "population": 17445,
+    "subject": "Крым",
+    "tier": "town"
+  },
+  {
+    "name": "Собинка",
+    "lat": 55.99,
+    "lng": 40.01667,
+    "population": 17444,
+    "subject": "Владимирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Талдом",
+    "lat": 56.73333,
+    "lng": 37.53333,
+    "population": 17317,
+    "subject": "Московская область",
+    "tier": "town"
+  },
+  {
+    "name": "Юрьев-Польский",
+    "lat": 56.5,
+    "lng": 39.68333,
+    "population": 17276,
+    "subject": "Владимирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Абдулино",
+    "lat": 53.68333,
+    "lng": 53.65,
+    "population": 17274,
+    "subject": "Оренбургская область",
+    "tier": "town"
+  },
+  {
+    "name": "Константиновск",
+    "lat": 47.58333,
+    "lng": 41.1,
+    "population": 17207,
+    "subject": "Ростовская область",
+    "tier": "town"
+  },
+  {
+    "name": "Куса",
+    "lat": 55.33333,
+    "lng": 59.43333,
+    "population": 17136,
+    "subject": "Челябинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Онега",
+    "lat": 63.91667,
+    "lng": 38.08333,
+    "population": 16947,
+    "subject": "Архангельская область",
+    "tier": "town"
+  },
+  {
+    "name": "Новомичуринск",
+    "lat": 54.03333,
+    "lng": 39.75,
+    "population": 16900,
+    "subject": "Рязанская область",
+    "tier": "town"
+  },
+  {
+    "name": "Плавск",
+    "lat": 53.7,
+    "lng": 37.3,
+    "population": 16893,
+    "subject": "Тульская область",
+    "tier": "town"
+  },
+  {
+    "name": "Козельск",
+    "lat": 54.03333,
+    "lng": 35.78333,
+    "population": 16759,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Нытва",
+    "lat": 57.93333,
+    "lng": 55.33333,
+    "population": 16675,
+    "subject": "Пермский край",
+    "tier": "town"
+  },
+  {
+    "name": "Осташков",
+    "lat": 57.15,
+    "lng": 33.1,
+    "population": 16674,
+    "subject": "Тверская область",
+    "tier": "town"
+  },
+  {
+    "name": "Зеленоградск",
+    "lat": 54.95,
+    "lng": 20.48333,
+    "population": 16625,
+    "subject": "Калининградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Туринск",
+    "lat": 58.03333,
+    "lng": 63.7,
+    "population": 16561,
+    "subject": "Свердловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Краснослободск",
+    "lat": 48.7,
+    "lng": 44.566666666667,
+    "population": 16545,
+    "subject": "Волгоградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Нижняя Салда",
+    "lat": 58.08333,
+    "lng": 60.71667,
+    "population": 16505,
+    "subject": "Свердловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Шимановск",
+    "lat": 52.0,
+    "lng": 127.66667,
+    "population": 16488,
+    "subject": "Амурская область",
+    "tier": "town"
+  },
+  {
+    "name": "Яровое",
+    "lat": 52.93333,
+    "lng": 78.58333,
+    "population": 16424,
+    "subject": "Алтайский край",
+    "tier": "town"
+  },
+  {
+    "name": "Поворино",
+    "lat": 51.2,
+    "lng": 42.25,
+    "population": 16417,
+    "subject": "Воронежская область",
+    "tier": "town"
+  },
+  {
+    "name": "Бакал",
+    "lat": 54.93333,
+    "lng": 58.8,
+    "population": 16345,
+    "subject": "Челябинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Инза",
+    "lat": 53.85,
+    "lng": 46.35,
+    "population": 16293,
+    "subject": "Ульяновская область",
+    "tier": "town"
+  },
+  {
+    "name": "Шумиха",
+    "lat": 55.23333,
+    "lng": 63.28333,
+    "population": 16264,
+    "subject": "Курганская область",
+    "tier": "town"
+  },
+  {
+    "name": "Бикин",
+    "lat": 46.81667,
+    "lng": 134.25,
+    "population": 16240,
+    "subject": "Хабаровский край",
+    "tier": "town"
+  },
+  {
+    "name": "Жуков",
+    "lat": 55.03333,
+    "lng": 36.75,
+    "population": 16224,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Светлогорск",
+    "lat": 54.9394,
+    "lng": 20.1565,
+    "population": 16207,
+    "subject": "Калининградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Бокситогорск",
+    "lat": 59.473576,
+    "lng": 33.847675,
+    "population": 16185,
+    "subject": "Ленинградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кирсанов",
+    "lat": 52.65,
+    "lng": 42.73333,
+    "population": 16164,
+    "subject": "Тамбовская область",
+    "tier": "town"
+  },
+  {
+    "name": "Камызяк",
+    "lat": 46.11556,
+    "lng": 48.07694,
+    "population": 16154,
+    "subject": "Астраханская область",
+    "tier": "town"
+  },
+  {
+    "name": "Подпорожье",
+    "lat": 60.912097,
+    "lng": 34.167952,
+    "population": 16123,
+    "subject": "Ленинградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Гаврилов-Ям",
+    "lat": 57.3,
+    "lng": 39.85,
+    "population": 16084,
+    "subject": "Ярославская область",
+    "tier": "town"
+  },
+  {
+    "name": "Покачи",
+    "lat": 61.75,
+    "lng": 75.58333,
+    "population": 16040,
+    "subject": "Ханты-Мансийский АО",
+    "tier": "town"
+  },
+  {
+    "name": "Поронайск",
+    "lat": 49.21667,
+    "lng": 143.1,
+    "population": 16026,
+    "subject": "Сахалинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Руза",
+    "lat": 55.698888888889,
+    "lng": 36.195277777778,
+    "population": 16014,
+    "subject": "Московская область",
+    "tier": "town"
+  },
+  {
+    "name": "Мензелинск",
+    "lat": 55.71667,
+    "lng": 53.08333,
+    "population": 16008,
+    "subject": "Татарстан",
+    "tier": "town"
+  },
+  {
+    "name": "Иланский",
+    "lat": 56.23333,
+    "lng": 96.06667,
+    "population": 15945,
+    "subject": "Красноярский край",
+    "tier": "town"
+  },
+  {
+    "name": "Сельцо",
+    "lat": 53.36944,
+    "lng": 34.1,
+    "population": 15906,
+    "subject": "Брянская область",
+    "tier": "town"
+  },
+  {
+    "name": "Райчихинск",
+    "lat": 49.8,
+    "lng": 129.4,
+    "population": 15797,
+    "subject": "Амурская область",
+    "tier": "town"
+  },
+  {
+    "name": "Ковдор",
+    "lat": 67.55944,
+    "lng": 30.46667,
+    "population": 15770,
+    "subject": "Мурманская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кондрово",
+    "lat": 54.8,
+    "lng": 35.93333,
+    "population": 15734,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Мамадыш",
+    "lat": 55.7,
+    "lng": 51.4,
+    "population": 15726,
+    "subject": "Татарстан",
+    "tier": "town"
+  },
+  {
+    "name": "Межгорье",
+    "lat": 54.24167,
+    "lng": 57.96778,
+    "population": 15697,
+    "subject": "Башкортостан",
+    "tier": "town"
+  },
+  {
+    "name": "Болотное",
+    "lat": 55.66667,
+    "lng": 84.4,
+    "population": 15644,
+    "subject": "Новосибирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кизел",
+    "lat": 59.05,
+    "lng": 57.65,
+    "population": 15619,
+    "subject": "Пермский край",
+    "tier": "town"
+  },
+  {
+    "name": "Зеленогорск",
+    "lat": 60.2,
+    "lng": 29.7,
+    "population": 15613,
+    "subject": "Санкт-Петербург",
+    "tier": "town"
+  },
+  {
+    "name": "Жирновск",
+    "lat": 50.98028,
+    "lng": 44.78083,
+    "population": 15555,
+    "subject": "Волгоградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Дегтярск",
+    "lat": 56.7,
+    "lng": 60.1,
+    "population": 15497,
+    "subject": "Свердловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Свирск",
+    "lat": 53.08333,
+    "lng": 103.33333,
+    "population": 15485,
+    "subject": "Иркутская область",
+    "tier": "town"
+  },
+  {
+    "name": "Ясный",
+    "lat": 51.03333,
+    "lng": 59.86667,
+    "population": 15471,
+    "subject": "Оренбургская область",
+    "tier": "town"
+  },
+  {
+    "name": "Касли",
+    "lat": 55.88333,
+    "lng": 60.75,
+    "population": 15383,
+    "subject": "Челябинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Новоаннинский",
+    "lat": 50.51667,
+    "lng": 42.66667,
+    "population": 15351,
+    "subject": "Волгоградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Нерчинск",
+    "lat": 51.98333,
+    "lng": 116.58333,
+    "population": 15290,
+    "subject": "Забайкальский край",
+    "tier": "town"
+  },
+  {
+    "name": "Магас",
+    "lat": 43.16667,
+    "lng": 44.81667,
+    "population": 15271,
+    "subject": "Ингушетия",
+    "tier": "town"
+  },
+  {
+    "name": "Ясногорск",
+    "lat": 54.4793833,
+    "lng": 37.6933556,
+    "population": 15269,
+    "subject": "Тульская область",
+    "tier": "town"
+  },
+  {
+    "name": "Новоузенск",
+    "lat": 50.45,
+    "lng": 48.15,
+    "population": 15216,
+    "subject": "Саратовская область",
+    "tier": "town"
+  },
+  {
+    "name": "Бородино",
+    "lat": 55.9,
+    "lng": 94.9,
+    "population": 15174,
+    "subject": "Красноярский край",
+    "tier": "town"
+  },
+  {
+    "name": "Рыльск",
+    "lat": 51.56667,
+    "lng": 34.68333,
+    "population": 15069,
+    "subject": "Курская область",
+    "tier": "town"
+  },
+  {
+    "name": "Купино",
+    "lat": 54.36667,
+    "lng": 77.3,
+    "population": 15065,
+    "subject": "Новосибирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Петровск-Забайкальский",
+    "lat": 51.28333,
+    "lng": 108.83333,
+    "population": 15015,
+    "subject": "Забайкальский край",
+    "tier": "town"
+  },
+  {
+    "name": "Почеп",
+    "lat": 52.93333,
+    "lng": 33.45,
+    "population": 14991,
+    "subject": "Брянская область",
+    "tier": "town"
+  },
+  {
+    "name": "Палласовка",
+    "lat": 50.05,
+    "lng": 46.88333,
+    "population": 14966,
+    "subject": "Волгоградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Калининск",
+    "lat": 51.5,
+    "lng": 44.45,
+    "population": 14949,
+    "subject": "Саратовская область",
+    "tier": "town"
+  },
+  {
+    "name": "Щигры",
+    "lat": 51.88111,
+    "lng": 36.90306,
+    "population": 14927,
+    "subject": "Курская область",
+    "tier": "town"
+  },
+  {
+    "name": "Барыш",
+    "lat": 53.65,
+    "lng": 47.11667,
+    "population": 14924,
+    "subject": "Ульяновская область",
+    "tier": "town"
+  },
+  {
+    "name": "Сортавала",
+    "lat": 61.7,
+    "lng": 30.66667,
+    "population": 14867,
+    "subject": "Карелия",
+    "tier": "town"
+  },
+  {
+    "name": "Талица",
+    "lat": 57.0125,
+    "lng": 63.72917,
+    "population": 14808,
+    "subject": "Свердловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Куртамыш",
+    "lat": 54.9,
+    "lng": 64.43333,
+    "population": 14806,
+    "subject": "Курганская область",
+    "tier": "town"
+  },
+  {
+    "name": "Сухиничи",
+    "lat": 54.1,
+    "lng": 35.35,
+    "population": 14806,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Заполярный",
+    "lat": 69.41667,
+    "lng": 30.8,
+    "population": 14791,
+    "subject": "Мурманская область",
+    "tier": "town"
+  },
+  {
+    "name": "Дубовка",
+    "lat": 49.05,
+    "lng": 44.83333,
+    "population": 14779,
+    "subject": "Волгоградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Белокуриха",
+    "lat": 52.0,
+    "lng": 84.98333,
+    "population": 14735,
+    "subject": "Алтайский край",
+    "tier": "town"
+  },
+  {
+    "name": "Цимлянск",
+    "lat": 47.64667,
+    "lng": 42.09472,
+    "population": 14731,
+    "subject": "Ростовская область",
+    "tier": "town"
+  },
+  {
+    "name": "Навашино",
+    "lat": 55.53333,
+    "lng": 42.2,
+    "population": 14664,
+    "subject": "Нижегородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Катав-Ивановск",
+    "lat": 54.75,
+    "lng": 58.2,
+    "population": 14663,
+    "subject": "Челябинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Краснозаводск",
+    "lat": 56.43806,
+    "lng": 38.22944,
+    "population": 14639,
+    "subject": "Московская область",
+    "tier": "town"
+  },
+  {
+    "name": "Советск",
+    "lat": 57.601306,
+    "lng": 48.938611,
+    "population": 14626,
+    "subject": "Кировская область",
+    "tier": "town"
+  },
+  {
+    "name": "Грязовец",
+    "lat": 58.88333,
+    "lng": 40.25,
+    "population": 14505,
+    "subject": "Вологодская область",
+    "tier": "town"
+  },
+  {
+    "name": "Красновишерск",
+    "lat": 60.4,
+    "lng": 57.06667,
+    "population": 14460,
+    "subject": "Пермский край",
+    "tier": "town"
+  },
+  {
+    "name": "Очёр",
+    "lat": 57.88333,
+    "lng": 54.71667,
+    "population": 14385,
+    "subject": "Пермский край",
+    "tier": "town"
+  },
+  {
+    "name": "Богучар",
+    "lat": 49.93333,
+    "lng": 40.55,
+    "population": 14370,
+    "subject": "Воронежская область",
+    "tier": "town"
+  },
+  {
+    "name": "Волгореченск",
+    "lat": 57.43333,
+    "lng": 41.16667,
+    "population": 14355,
+    "subject": "Костромская область",
+    "tier": "town"
+  },
+  {
+    "name": "Приволжск",
+    "lat": 57.38333,
+    "lng": 41.28333,
+    "population": 14332,
+    "subject": "Ивановская область",
+    "tier": "town"
+  },
+  {
+    "name": "Ивдель",
+    "lat": 60.68333,
+    "lng": 60.43333,
+    "population": 14306,
+    "subject": "Свердловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Чудово",
+    "lat": 59.12806,
+    "lng": 31.65917,
+    "population": 14302,
+    "subject": "Новгородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Красный Кут",
+    "lat": 50.95,
+    "lng": 46.96667,
+    "population": 14296,
+    "subject": "Саратовская область",
+    "tier": "town"
+  },
+  {
+    "name": "Яранск",
+    "lat": 57.303306,
+    "lng": 47.868806,
+    "population": 14284,
+    "subject": "Кировская область",
+    "tier": "town"
+  },
+  {
+    "name": "Агидель",
+    "lat": 55.9,
+    "lng": 53.93333,
+    "population": 14219,
+    "subject": "Башкортостан",
+    "tier": "town"
+  },
+  {
+    "name": "Полярные Зори",
+    "lat": 67.36583,
+    "lng": 32.49806,
+    "population": 14146,
+    "subject": "Мурманская область",
+    "tier": "town"
+  },
+  {
+    "name": "Ужур",
+    "lat": 55.31667,
+    "lng": 89.81667,
+    "population": 14134,
+    "subject": "Красноярский край",
+    "tier": "town"
+  },
+  {
+    "name": "Шлиссельбург",
+    "lat": 59.944959,
+    "lng": 31.034754,
+    "population": 14131,
+    "subject": "Ленинградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Гвардейск",
+    "lat": 54.65,
+    "lng": 21.06667,
+    "population": 14122,
+    "subject": "Калининградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кашин",
+    "lat": 57.35,
+    "lng": 37.61667,
+    "population": 14113,
+    "subject": "Тверская область",
+    "tier": "town"
+  },
+  {
+    "name": "Валдай",
+    "lat": 57.96667,
+    "lng": 33.25,
+    "population": 14074,
+    "subject": "Новгородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Колтуши",
+    "lat": 59.932919,
+    "lng": 30.655377,
+    "population": 14052,
+    "subject": "Ленинградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Пестово",
+    "lat": 58.6,
+    "lng": 35.81667,
+    "population": 14032,
+    "subject": "Новгородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Яхрома",
+    "lat": 56.28333,
+    "lng": 37.48333,
+    "population": 14011,
+    "subject": "Московская область",
+    "tier": "town"
+  },
+  {
+    "name": "Невель",
+    "lat": 56.01667,
+    "lng": 29.93333,
+    "population": 13980,
+    "subject": "Псковская область",
+    "tier": "town"
+  },
+  {
+    "name": "Жердевка",
+    "lat": 51.83333,
+    "lng": 41.46667,
+    "population": 13883,
+    "subject": "Тамбовская область",
+    "tier": "town"
+  },
+  {
+    "name": "Инкерман",
+    "lat": 44.61417,
+    "lng": 33.60833,
+    "population": 13858,
+    "subject": "Севастополь",
+    "tier": "town"
+  },
+  {
+    "name": "Лагань",
+    "lat": 45.3925,
+    "lng": 47.355,
+    "population": 13834,
+    "subject": "Калмыкия",
+    "tier": "town"
+  },
+  {
+    "name": "Светогорск",
+    "lat": 61.10833,
+    "lng": 28.85833,
+    "population": 13784,
+    "subject": "Ленинградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Белоозёрский",
+    "lat": 55.46139,
+    "lng": 38.44222,
+    "population": 13737,
+    "subject": "Московская область",
+    "tier": "town"
+  },
+  {
+    "name": "Данилов",
+    "lat": 58.18333,
+    "lng": 40.18333,
+    "population": 13677,
+    "subject": "Ярославская область",
+    "tier": "town"
+  },
+  {
+    "name": "Новоульяновск",
+    "lat": 54.15,
+    "lng": 48.38333,
+    "population": 13673,
+    "subject": "Ульяновская область",
+    "tier": "town"
+  },
+  {
+    "name": "Николаевск",
+    "lat": 50.02722,
+    "lng": 45.46306,
+    "population": 13460,
+    "subject": "Волгоградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Меленки",
+    "lat": 55.33333,
+    "lng": 41.63333,
+    "population": 13407,
+    "subject": "Владимирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Ленинск",
+    "lat": 48.7,
+    "lng": 45.2,
+    "population": 13391,
+    "subject": "Волгоградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кодинск",
+    "lat": 58.6,
+    "lng": 99.18333,
+    "population": 13324,
+    "subject": "Красноярский край",
+    "tier": "town"
+  },
+  {
+    "name": "Петушки",
+    "lat": 55.93333,
+    "lng": 39.46667,
+    "population": 13317,
+    "subject": "Владимирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Трубчевск",
+    "lat": 52.58333,
+    "lng": 33.76667,
+    "population": 13287,
+    "subject": "Брянская область",
+    "tier": "town"
+  },
+  {
+    "name": "Первомайск",
+    "lat": 54.86667,
+    "lng": 43.8,
+    "population": 13223,
+    "subject": "Нижегородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Анадырь",
+    "lat": 64.73333,
+    "lng": 177.51667,
+    "population": 13202,
+    "subject": "Чукотский АО",
+    "tier": "town"
+  },
+  {
+    "name": "Байкальск",
+    "lat": 51.51722,
+    "lng": 104.15611,
+    "population": 13199,
+    "subject": "Иркутская область",
+    "tier": "town"
+  },
+  {
+    "name": "Адыгейск",
+    "lat": 44.884525,
+    "lng": 39.19202,
+    "population": 13175,
+    "subject": "Адыгея",
+    "tier": "town"
+  },
+  {
+    "name": "Карабаново",
+    "lat": 56.30889,
+    "lng": 38.70139,
+    "population": 13150,
+    "subject": "Владимирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Высоковск",
+    "lat": 56.31667,
+    "lng": 36.55,
+    "population": 13081,
+    "subject": "Московская область",
+    "tier": "town"
+  },
+  {
+    "name": "Мантурово",
+    "lat": 58.33333,
+    "lng": 44.76667,
+    "population": 13043,
+    "subject": "Костромская область",
+    "tier": "town"
+  },
+  {
+    "name": "Южа",
+    "lat": 56.58333,
+    "lng": 42.01667,
+    "population": 12957,
+    "subject": "Ивановская область",
+    "tier": "town"
+  },
+  {
+    "name": "Удачный",
+    "lat": 66.4,
+    "lng": 112.3,
+    "population": 12930,
+    "subject": "Якутия",
+    "tier": "town"
+  },
+  {
+    "name": "Лакинск",
+    "lat": 56.01694,
+    "lng": 39.94944,
+    "population": 12861,
+    "subject": "Владимирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Сим",
+    "lat": 54.98333,
+    "lng": 57.68333,
+    "population": 12858,
+    "subject": "Челябинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Галич",
+    "lat": 58.38333,
+    "lng": 42.35,
+    "population": 12856,
+    "subject": "Костромская область",
+    "tier": "town"
+  },
+  {
+    "name": "Белёв",
+    "lat": 53.8,
+    "lng": 36.13333,
+    "population": 12846,
+    "subject": "Тульская область",
+    "tier": "town"
+  },
+  {
+    "name": "Пионерский",
+    "lat": 54.95,
+    "lng": 20.21667,
+    "population": 12794,
+    "subject": "Калининградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Вяземский",
+    "lat": 47.53333,
+    "lng": 134.75,
+    "population": 12775,
+    "subject": "Хабаровский край",
+    "tier": "town"
+  },
+  {
+    "name": "Цивильск",
+    "lat": 55.86667,
+    "lng": 47.48333,
+    "population": 12762,
+    "subject": "Чувашия",
+    "tier": "town"
+  },
+  {
+    "name": "Венёв",
+    "lat": 54.35,
+    "lng": 38.26667,
+    "population": 12668,
+    "subject": "Тульская область",
+    "tier": "town"
+  },
+  {
+    "name": "Гороховец",
+    "lat": 56.20278,
+    "lng": 42.6925,
+    "population": 12666,
+    "subject": "Владимирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Лукоянов",
+    "lat": 55.03833,
+    "lng": 44.49778,
+    "population": 12652,
+    "subject": "Нижегородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Калязин",
+    "lat": 57.23333,
+    "lng": 37.85,
+    "population": 12621,
+    "subject": "Тверская область",
+    "tier": "town"
+  },
+  {
+    "name": "Боровск",
+    "lat": 55.2,
+    "lng": 36.48333,
+    "population": 12598,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Сясьстрой",
+    "lat": 60.137057,
+    "lng": 32.561279,
+    "population": 12566,
+    "subject": "Ленинградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Фокино",
+    "lat": 53.45,
+    "lng": 34.41667,
+    "population": 12538,
+    "subject": "Брянская область",
+    "tier": "town"
+  },
+  {
+    "name": "Петров Вал",
+    "lat": 50.13333,
+    "lng": 45.21667,
+    "population": 12526,
+    "subject": "Волгоградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Ак-Довурак",
+    "lat": 51.16667,
+    "lng": 90.6,
+    "population": 12456,
+    "subject": "Тыва",
+    "tier": "town"
+  },
+  {
+    "name": "Урень",
+    "lat": 57.46667,
+    "lng": 45.78333,
+    "population": 12450,
+    "subject": "Нижегородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Могоча",
+    "lat": 53.73333,
+    "lng": 119.76667,
+    "population": 12390,
+    "subject": "Забайкальский край",
+    "tier": "town"
+  },
+  {
+    "name": "Дрезна",
+    "lat": 55.74444,
+    "lng": 38.84944,
+    "population": 12295,
+    "subject": "Московская область",
+    "tier": "town"
+  },
+  {
+    "name": "Полярный",
+    "lat": 69.19833,
+    "lng": 33.45611,
+    "population": 12293,
+    "subject": "Мурманская область",
+    "tier": "town"
+  },
+  {
+    "name": "Абаза",
+    "lat": 52.65,
+    "lng": 90.083333333333,
+    "population": 12272,
+    "subject": "Хакасия",
+    "tier": "town"
+  },
+  {
+    "name": "Шилка",
+    "lat": 51.85,
+    "lng": 116.03333,
+    "population": 12046,
+    "subject": "Забайкальский край",
+    "tier": "town"
+  },
+  {
+    "name": "Хвалынск",
+    "lat": 52.48333,
+    "lng": 48.1,
+    "population": 12042,
+    "subject": "Саратовская область",
+    "tier": "town"
+  },
+  {
+    "name": "Уяр",
+    "lat": 55.81667,
+    "lng": 94.31667,
+    "population": 12036,
+    "subject": "Красноярский край",
+    "tier": "town"
+  },
+  {
+    "name": "Камешково",
+    "lat": 56.34917,
+    "lng": 40.99778,
+    "population": 12028,
+    "subject": "Владимирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Покровск",
+    "lat": 61.48333,
+    "lng": 129.15,
+    "population": 12021,
+    "subject": "Якутия",
+    "tier": "town"
+  },
+  {
+    "name": "Медвежьегорск",
+    "lat": 62.91667,
+    "lng": 34.45,
+    "population": 11962,
+    "subject": "Карелия",
+    "tier": "town"
+  },
+  {
+    "name": "Волосово",
+    "lat": 59.447275,
+    "lng": 29.484819,
+    "population": 11931,
+    "subject": "Ленинградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Катайск",
+    "lat": 56.3,
+    "lng": 62.56667,
+    "population": 11881,
+    "subject": "Курганская область",
+    "tier": "town"
+  },
+  {
+    "name": "Обоянь",
+    "lat": 51.21111,
+    "lng": 36.27639,
+    "population": 11844,
+    "subject": "Курская область",
+    "tier": "town"
+  },
+  {
+    "name": "Струнино",
+    "lat": 56.37333,
+    "lng": 38.585,
+    "population": 11774,
+    "subject": "Владимирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Шагонар",
+    "lat": 51.53333,
+    "lng": 92.9,
+    "population": 11772,
+    "subject": "Тыва",
+    "tier": "town"
+  },
+  {
+    "name": "Пересвет",
+    "lat": 56.41667,
+    "lng": 38.175,
+    "population": 11752,
+    "subject": "Московская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кремёнки",
+    "lat": 54.88917,
+    "lng": 37.12333,
+    "population": 11745,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Долинск",
+    "lat": 47.31667,
+    "lng": 142.8,
+    "population": 11740,
+    "subject": "Сахалинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Бабаево",
+    "lat": 59.38333,
+    "lng": 35.95,
+    "population": 11739,
+    "subject": "Вологодская область",
+    "tier": "town"
+  },
+  {
+    "name": "Далматово",
+    "lat": 56.26667,
+    "lng": 62.91667,
+    "population": 11584,
+    "subject": "Курганская область",
+    "tier": "town"
+  },
+  {
+    "name": "Чаплыгин",
+    "lat": 53.24167,
+    "lng": 39.96667,
+    "population": 11579,
+    "subject": "Липецкая область",
+    "tier": "town"
+  },
+  {
+    "name": "Чкаловск",
+    "lat": 56.76667,
+    "lng": 43.25,
+    "population": 11535,
+    "subject": "Нижегородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Торопец",
+    "lat": 56.5,
+    "lng": 31.63333,
+    "population": 11441,
+    "subject": "Тверская область",
+    "tier": "town"
+  },
+  {
+    "name": "Сосенский",
+    "lat": 54.05,
+    "lng": 35.96667,
+    "population": 11413,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Закаменск",
+    "lat": 50.38333,
+    "lng": 103.28333,
+    "population": 11365,
+    "subject": "Бурятия",
+    "tier": "town"
+  },
+  {
+    "name": "Сураж",
+    "lat": 53.01667,
+    "lng": 32.4,
+    "population": 11176,
+    "subject": "Брянская область",
+    "tier": "town"
+  },
+  {
+    "name": "Нариманов",
+    "lat": 46.68333,
+    "lng": 47.85,
+    "population": 11104,
+    "subject": "Астраханская область",
+    "tier": "town"
+  },
+  {
+    "name": "Горнозаводск",
+    "lat": 58.38333,
+    "lng": 58.31667,
+    "population": 11073,
+    "subject": "Пермский край",
+    "tier": "town"
+  },
+  {
+    "name": "Чулым",
+    "lat": 55.1,
+    "lng": 80.96667,
+    "population": 11034,
+    "subject": "Новосибирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Лихославль",
+    "lat": 57.11667,
+    "lng": 35.46667,
+    "population": 11017,
+    "subject": "Тверская область",
+    "tier": "town"
+  },
+  {
+    "name": "Киренск",
+    "lat": 57.78333,
+    "lng": 108.1,
+    "population": 10998,
+    "subject": "Иркутская область",
+    "tier": "town"
+  },
+  {
+    "name": "Емва",
+    "lat": 62.58333,
+    "lng": 50.85,
+    "population": 10994,
+    "subject": "Коми",
+    "tier": "town"
+  },
+  {
+    "name": "Звенигово",
+    "lat": 55.96667,
+    "lng": 48.01667,
+    "population": 10994,
+    "subject": "Марий Эл",
+    "tier": "town"
+  },
+  {
+    "name": "Аркадак",
+    "lat": 51.93333,
+    "lng": 43.5,
+    "population": 10990,
+    "subject": "Саратовская область",
+    "tier": "town"
+  },
+  {
+    "name": "Белоусово",
+    "lat": 55.09167,
+    "lng": 36.66667,
+    "population": 10946,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Ермолино",
+    "lat": 55.20556,
+    "lng": 36.57,
+    "population": 10809,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Александровск",
+    "lat": 59.16667,
+    "lng": 57.58333,
+    "population": 10780,
+    "subject": "Пермский край",
+    "tier": "town"
+  },
+  {
+    "name": "Новая Ляля",
+    "lat": 59.05,
+    "lng": 60.6,
+    "population": 10684,
+    "subject": "Свердловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Невельск",
+    "lat": 46.65,
+    "lng": 141.86667,
+    "population": 10608,
+    "subject": "Сахалинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Заозёрный",
+    "lat": 55.96667,
+    "lng": 94.7,
+    "population": 10573,
+    "subject": "Красноярский край",
+    "tier": "town"
+  },
+  {
+    "name": "Тетюши",
+    "lat": 54.93333,
+    "lng": 48.83333,
+    "population": 10535,
+    "subject": "Татарстан",
+    "tier": "town"
+  },
+  {
+    "name": "Карабаш",
+    "lat": 55.48333,
+    "lng": 60.2,
+    "population": 10514,
+    "subject": "Челябинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Южно-Сухокумск",
+    "lat": 44.66667,
+    "lng": 45.65,
+    "population": 10503,
+    "subject": "Дагестан",
+    "tier": "town"
+  },
+  {
+    "name": "Старый Крым",
+    "lat": 45.02917,
+    "lng": 35.08861,
+    "population": 10470,
+    "subject": "Крым",
+    "tier": "town"
+  },
+  {
+    "name": "Называевск",
+    "lat": 55.56667,
+    "lng": 71.35,
+    "population": 10434,
+    "subject": "Омская область",
+    "tier": "town"
+  },
+  {
+    "name": "Судогда",
+    "lat": 55.95,
+    "lng": 40.86667,
+    "population": 10408,
+    "subject": "Владимирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Вытегра",
+    "lat": 61.0,
+    "lng": 36.45,
+    "population": 10386,
+    "subject": "Вологодская область",
+    "tier": "town"
+  },
+  {
+    "name": "Нязепетровск",
+    "lat": 56.05,
+    "lng": 59.6,
+    "population": 10379,
+    "subject": "Челябинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кораблино",
+    "lat": 53.91667,
+    "lng": 40.01667,
+    "population": 10334,
+    "subject": "Рязанская область",
+    "tier": "town"
+  },
+  {
+    "name": "Михайлов",
+    "lat": 54.23333,
+    "lng": 39.03333,
+    "population": 10303,
+    "subject": "Рязанская область",
+    "tier": "town"
+  },
+  {
+    "name": "Балей",
+    "lat": 51.57694,
+    "lng": 116.64917,
+    "population": 10286,
+    "subject": "Забайкальский край",
+    "tier": "town"
+  },
+  {
+    "name": "Юрюзань",
+    "lat": 54.86667,
+    "lng": 58.43333,
+    "population": 10284,
+    "subject": "Челябинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Печоры",
+    "lat": 57.81667,
+    "lng": 27.6,
+    "population": 10247,
+    "subject": "Псковская область",
+    "tier": "town"
+  },
+  {
+    "name": "Ворсма",
+    "lat": 55.98333,
+    "lng": 43.26667,
+    "population": 10162,
+    "subject": "Нижегородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Нюрба",
+    "lat": 63.28333,
+    "lng": 118.33333,
+    "population": 10138,
+    "subject": "Якутия",
+    "tier": "town"
+  },
+  {
+    "name": "Щёлкино",
+    "lat": 45.42361,
+    "lng": 35.81861,
+    "population": 10131,
+    "subject": "Крым",
+    "tier": "town"
+  },
+  {
+    "name": "Сорск",
+    "lat": 54.0,
+    "lng": 90.25,
+    "population": 10124,
+    "subject": "Хакасия",
+    "tier": "town"
+  },
+  {
+    "name": "Верхний Тагил",
+    "lat": 57.38333,
+    "lng": 59.93333,
+    "population": 10113,
+    "subject": "Свердловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Горняк",
+    "lat": 50.993028,
+    "lng": 81.467934,
+    "population": 10112,
+    "subject": "Алтайский край",
+    "tier": "town"
+  },
+  {
+    "name": "Камбарка",
+    "lat": 56.26667,
+    "lng": 54.2,
+    "population": 10080,
+    "subject": "Удмуртия",
+    "tier": "town"
+  },
+  {
+    "name": "Вилюйск",
+    "lat": 63.75,
+    "lng": 121.61667,
+    "population": 10032,
+    "subject": "Якутия",
+    "tier": "town"
+  },
+  {
+    "name": "Эртиль",
+    "lat": 51.83333,
+    "lng": 40.8,
+    "population": 10024,
+    "subject": "Воронежская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кемь",
+    "lat": 64.95,
+    "lng": 34.6,
+    "population": 10018,
+    "subject": "Карелия",
+    "tier": "town"
+  },
+  {
+    "name": "Малая Вишера",
+    "lat": 58.85,
+    "lng": 32.21667,
+    "population": 9996,
+    "subject": "Новгородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Окуловка",
+    "lat": 58.38333,
+    "lng": 33.3,
+    "population": 9949,
+    "subject": "Новгородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Хилок",
+    "lat": 51.35,
+    "lng": 110.45,
+    "population": 9948,
+    "subject": "Забайкальский край",
+    "tier": "town"
+  },
+  {
+    "name": "Снежногорск",
+    "lat": 69.19417,
+    "lng": 33.23306,
+    "population": 9942,
+    "subject": "Мурманская область",
+    "tier": "town"
+  },
+  {
+    "name": "Опочка",
+    "lat": 56.71667,
+    "lng": 28.65,
+    "population": 9928,
+    "subject": "Псковская область",
+    "tier": "town"
+  },
+  {
+    "name": "Дигора",
+    "lat": 43.15,
+    "lng": 44.15,
+    "population": 9922,
+    "subject": "Северная Осетия",
+    "tier": "town"
+  },
+  {
+    "name": "Таруса",
+    "lat": 54.71667,
+    "lng": 37.18333,
+    "population": 9918,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Тюкалинск",
+    "lat": 55.86667,
+    "lng": 72.2,
+    "population": 9894,
+    "subject": "Омская область",
+    "tier": "town"
+  },
+  {
+    "name": "Задонск",
+    "lat": 52.38333,
+    "lng": 38.91667,
+    "population": 9887,
+    "subject": "Липецкая область",
+    "tier": "town"
+  },
+  {
+    "name": "Ивангород",
+    "lat": 59.37649,
+    "lng": 28.219712,
+    "population": 9861,
+    "subject": "Ленинградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Зуевка",
+    "lat": 58.403333,
+    "lng": 51.130361,
+    "population": 9767,
+    "subject": "Кировская область",
+    "tier": "town"
+  },
+  {
+    "name": "Михайловск",
+    "lat": 56.43333,
+    "lng": 59.11667,
+    "population": 9756,
+    "subject": "Свердловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Чадан",
+    "lat": 51.28333,
+    "lng": 91.56667,
+    "population": 9732,
+    "subject": "Тыва",
+    "tier": "town"
+  },
+  {
+    "name": "Володарск",
+    "lat": 56.23333,
+    "lng": 43.2,
+    "population": 9705,
+    "subject": "Нижегородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Белая Холуница",
+    "lat": 58.83333,
+    "lng": 50.85,
+    "population": 9659,
+    "subject": "Кировская область",
+    "tier": "town"
+  },
+  {
+    "name": "Анива",
+    "lat": 46.71667,
+    "lng": 142.51667,
+    "population": 9638,
+    "subject": "Сахалинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Завитинск",
+    "lat": 50.11667,
+    "lng": 129.43333,
+    "population": 9615,
+    "subject": "Амурская область",
+    "tier": "town"
+  },
+  {
+    "name": "Дорогобуж",
+    "lat": 54.92,
+    "lng": 33.307777777778,
+    "population": 9528,
+    "subject": "Смоленская область",
+    "tier": "town"
+  },
+  {
+    "name": "Болхов",
+    "lat": 53.45,
+    "lng": 36.0,
+    "population": 9495,
+    "subject": "Орловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Змеиногорск",
+    "lat": 51.16667,
+    "lng": 82.16667,
+    "population": 9410,
+    "subject": "Алтайский край",
+    "tier": "town"
+  },
+  {
+    "name": "Болохово",
+    "lat": 54.08333,
+    "lng": 37.81667,
+    "population": 9339,
+    "subject": "Тульская область",
+    "tier": "town"
+  },
+  {
+    "name": "Вуктыл",
+    "lat": 63.86667,
+    "lng": 57.31667,
+    "population": 9322,
+    "subject": "Коми",
+    "tier": "town"
+  },
+  {
+    "name": "Гаджиево",
+    "lat": 69.25528,
+    "lng": 33.31667,
+    "population": 9297,
+    "subject": "Мурманская область",
+    "tier": "town"
+  },
+  {
+    "name": "Суздаль",
+    "lat": 56.42111,
+    "lng": 40.44889,
+    "population": 9286,
+    "subject": "Владимирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кувшиново",
+    "lat": 57.03333,
+    "lng": 34.16667,
+    "population": 9262,
+    "subject": "Тверская область",
+    "tier": "town"
+  },
+  {
+    "name": "Неман",
+    "lat": 55.03333,
+    "lng": 22.03333,
+    "population": 9255,
+    "subject": "Калининградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Луза",
+    "lat": 60.61667,
+    "lng": 47.28333,
+    "population": 9122,
+    "subject": "Кировская область",
+    "tier": "town"
+  },
+  {
+    "name": "Лаишево",
+    "lat": 55.4,
+    "lng": 49.55,
+    "population": 9076,
+    "subject": "Татарстан",
+    "tier": "town"
+  },
+  {
+    "name": "Алупка",
+    "lat": 44.41972,
+    "lng": 34.04306,
+    "population": 9063,
+    "subject": "Крым",
+    "tier": "town"
+  },
+  {
+    "name": "Теберда",
+    "lat": 43.449437,
+    "lng": 41.74382,
+    "population": 9020,
+    "subject": "Карачаево-Черкесия",
+    "tier": "town"
+  },
+  {
+    "name": "Кола",
+    "lat": 68.88306,
+    "lng": 33.02194,
+    "population": 9016,
+    "subject": "Мурманская область",
+    "tier": "town"
+  },
+  {
+    "name": "Перевоз",
+    "lat": 55.6,
+    "lng": 44.55,
+    "population": 8999,
+    "subject": "Нижегородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кирс",
+    "lat": 59.337167,
+    "lng": 52.245472,
+    "population": 8982,
+    "subject": "Кировская область",
+    "tier": "town"
+  },
+  {
+    "name": "Верхнеуральск",
+    "lat": 53.88333,
+    "lng": 59.21667,
+    "population": 8929,
+    "subject": "Челябинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Бодайбо",
+    "lat": 57.85,
+    "lng": 114.2,
+    "population": 8921,
+    "subject": "Иркутская область",
+    "tier": "town"
+  },
+  {
+    "name": "Краснослободск",
+    "lat": 54.43333,
+    "lng": 43.78333,
+    "population": 8910,
+    "subject": "Мордовия",
+    "tier": "town"
+  },
+  {
+    "name": "Рудня",
+    "lat": 54.95,
+    "lng": 31.06667,
+    "population": 8908,
+    "subject": "Смоленская область",
+    "tier": "town"
+  },
+  {
+    "name": "Заволжск",
+    "lat": 57.48333,
+    "lng": 42.13333,
+    "population": 8896,
+    "subject": "Ивановская область",
+    "tier": "town"
+  },
+  {
+    "name": "Ардатов",
+    "lat": 54.85,
+    "lng": 46.23333,
+    "population": 8857,
+    "subject": "Мордовия",
+    "tier": "town"
+  },
+  {
+    "name": "Александровск-Сахалинский",
+    "lat": 50.9,
+    "lng": 142.15,
+    "population": 8854,
+    "subject": "Сахалинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Каргополь",
+    "lat": 61.5,
+    "lng": 38.93333,
+    "population": 8849,
+    "subject": "Архангельская область",
+    "tier": "town"
+  },
+  {
+    "name": "Тотьма",
+    "lat": 59.98333,
+    "lng": 42.76667,
+    "population": 8669,
+    "subject": "Вологодская область",
+    "tier": "town"
+  },
+  {
+    "name": "Белинский",
+    "lat": 52.96667,
+    "lng": 43.41667,
+    "population": 8656,
+    "subject": "Пензенская область",
+    "tier": "town"
+  },
+  {
+    "name": "Серафимович",
+    "lat": 49.58333,
+    "lng": 42.73333,
+    "population": 8633,
+    "subject": "Волгоградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Бирюсинск",
+    "lat": 55.95,
+    "lng": 97.81667,
+    "population": 8632,
+    "subject": "Иркутская область",
+    "tier": "town"
+  },
+  {
+    "name": "Волчанск",
+    "lat": 59.93333,
+    "lng": 60.05,
+    "population": 8573,
+    "subject": "Свердловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Верхняя Тура",
+    "lat": 58.3574333,
+    "lng": 59.8224444,
+    "population": 8554,
+    "subject": "Свердловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Микунь",
+    "lat": 62.35,
+    "lng": 50.06667,
+    "population": 8527,
+    "subject": "Коми",
+    "tier": "town"
+  },
+  {
+    "name": "Петухово",
+    "lat": 55.06667,
+    "lng": 67.88333,
+    "population": 8502,
+    "subject": "Курганская область",
+    "tier": "town"
+  },
+  {
+    "name": "Миньяр",
+    "lat": 55.06667,
+    "lng": 57.55,
+    "population": 8500,
+    "subject": "Челябинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Сольцы",
+    "lat": 58.11667,
+    "lng": 30.31667,
+    "population": 8449,
+    "subject": "Новгородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Уржум",
+    "lat": 57.11667,
+    "lng": 50.0,
+    "population": 8448,
+    "subject": "Кировская область",
+    "tier": "town"
+  },
+  {
+    "name": "Сосновка",
+    "lat": 56.2543,
+    "lng": 51.2812,
+    "population": 8428,
+    "subject": "Кировская область",
+    "tier": "town"
+  },
+  {
+    "name": "Олёкминск",
+    "lat": 60.38333,
+    "lng": 120.43333,
+    "population": 8398,
+    "subject": "Якутия",
+    "tier": "town"
+  },
+  {
+    "name": "Харовск",
+    "lat": 59.95,
+    "lng": 40.2,
+    "population": 8389,
+    "subject": "Вологодская область",
+    "tier": "town"
+  },
+  {
+    "name": "Белозерск",
+    "lat": 60.03333,
+    "lng": 37.78333,
+    "population": 8375,
+    "subject": "Вологодская область",
+    "tier": "town"
+  },
+  {
+    "name": "Комсомольск",
+    "lat": 57.03333,
+    "lng": 40.38333,
+    "population": 8364,
+    "subject": "Ивановская область",
+    "tier": "town"
+  },
+  {
+    "name": "Гремячинск",
+    "lat": 58.56667,
+    "lng": 57.83333,
+    "population": 8360,
+    "subject": "Пермский край",
+    "tier": "town"
+  },
+  {
+    "name": "Питкяранта",
+    "lat": 61.56667,
+    "lng": 31.48333,
+    "population": 8340,
+    "subject": "Карелия",
+    "tier": "town"
+  },
+  {
+    "name": "Ельня",
+    "lat": 54.56667,
+    "lng": 33.16667,
+    "population": 8332,
+    "subject": "Смоленская область",
+    "tier": "town"
+  },
+  {
+    "name": "Липки",
+    "lat": 53.95,
+    "lng": 37.7,
+    "population": 8325,
+    "subject": "Тульская область",
+    "tier": "town"
+  },
+  {
+    "name": "Каргат",
+    "lat": 55.2,
+    "lng": 80.28333,
+    "population": 8316,
+    "subject": "Новосибирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Мамоново",
+    "lat": 54.46667,
+    "lng": 19.93333,
+    "population": 8314,
+    "subject": "Калининградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Болгар",
+    "lat": 54.96667,
+    "lng": 49.03333,
+    "population": 8285,
+    "subject": "Татарстан",
+    "tier": "town"
+  },
+  {
+    "name": "Городовиковск",
+    "lat": 46.08333,
+    "lng": 41.93333,
+    "population": 8285,
+    "subject": "Калмыкия",
+    "tier": "town"
+  },
+  {
+    "name": "Нолинск",
+    "lat": 57.55722,
+    "lng": 49.93417,
+    "population": 8262,
+    "subject": "Кировская область",
+    "tier": "town"
+  },
+  {
+    "name": "Щучье",
+    "lat": 55.21667,
+    "lng": 62.76667,
+    "population": 8252,
+    "subject": "Курганская область",
+    "tier": "town"
+  },
+  {
+    "name": "Медынь",
+    "lat": 54.96667,
+    "lng": 35.86667,
+    "population": 8200,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Наволоки",
+    "lat": 57.46667,
+    "lng": 41.96667,
+    "population": 8167,
+    "subject": "Ивановская область",
+    "tier": "town"
+  },
+  {
+    "name": "Углегорск",
+    "lat": 49.06667,
+    "lng": 142.03333,
+    "population": 8041,
+    "subject": "Сахалинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Нижние Серги",
+    "lat": 56.66667,
+    "lng": 59.3,
+    "population": 8009,
+    "subject": "Свердловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Облучье",
+    "lat": 49.0,
+    "lng": 131.05,
+    "population": 7959,
+    "subject": "Еврейская АО",
+    "tier": "town"
+  },
+  {
+    "name": "Инсар",
+    "lat": 53.86667,
+    "lng": 44.36667,
+    "population": 7920,
+    "subject": "Мордовия",
+    "tier": "town"
+  },
+  {
+    "name": "Ядрин",
+    "lat": 55.95,
+    "lng": 46.2,
+    "population": 7918,
+    "subject": "Чувашия",
+    "tier": "town"
+  },
+  {
+    "name": "Юрьевец",
+    "lat": 57.31667,
+    "lng": 43.1,
+    "population": 7899,
+    "subject": "Ивановская область",
+    "tier": "town"
+  },
+  {
+    "name": "Советск",
+    "lat": 53.93333,
+    "lng": 37.63333,
+    "population": 7889,
+    "subject": "Тульская область",
+    "tier": "town"
+  },
+  {
+    "name": "Западная Двина",
+    "lat": 56.26667,
+    "lng": 32.08333,
+    "population": 7869,
+    "subject": "Тверская область",
+    "tier": "town"
+  },
+  {
+    "name": "Мариинский Посад",
+    "lat": 56.11667,
+    "lng": 47.71667,
+    "population": 7851,
+    "subject": "Чувашия",
+    "tier": "town"
+  },
+  {
+    "name": "Дно",
+    "lat": 57.83333,
+    "lng": 29.96667,
+    "population": 7850,
+    "subject": "Псковская область",
+    "tier": "town"
+  },
+  {
+    "name": "Устюжна",
+    "lat": 58.83333,
+    "lng": 36.43333,
+    "population": 7843,
+    "subject": "Вологодская область",
+    "tier": "town"
+  },
+  {
+    "name": "Нея",
+    "lat": 58.29444,
+    "lng": 43.87806,
+    "population": 7816,
+    "subject": "Костромская область",
+    "tier": "town"
+  },
+  {
+    "name": "Городище",
+    "lat": 53.26667,
+    "lng": 45.7,
+    "population": 7796,
+    "subject": "Пензенская область",
+    "tier": "town"
+  },
+  {
+    "name": "Козловка",
+    "lat": 55.83333,
+    "lng": 48.25,
+    "population": 7781,
+    "subject": "Чувашия",
+    "tier": "town"
+  },
+  {
+    "name": "Заозёрск",
+    "lat": 69.4,
+    "lng": 32.45,
+    "population": 7762,
+    "subject": "Мурманская область",
+    "tier": "town"
+  },
+  {
+    "name": "Беломорск",
+    "lat": 64.51667,
+    "lng": 34.76667,
+    "population": 7708,
+    "subject": "Карелия",
+    "tier": "town"
+  },
+  {
+    "name": "Ветлуга",
+    "lat": 57.85556,
+    "lng": 45.78111,
+    "population": 7681,
+    "subject": "Нижегородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Олонец",
+    "lat": 60.98333,
+    "lng": 32.96667,
+    "population": 7663,
+    "subject": "Карелия",
+    "tier": "town"
+  },
+  {
+    "name": "Никольск",
+    "lat": 59.53333,
+    "lng": 45.45,
+    "population": 7661,
+    "subject": "Вологодская область",
+    "tier": "town"
+  },
+  {
+    "name": "Починок",
+    "lat": 54.4,
+    "lng": 32.45,
+    "population": 7575,
+    "subject": "Смоленская область",
+    "tier": "town"
+  },
+  {
+    "name": "Сычёвка",
+    "lat": 55.83333,
+    "lng": 34.28333,
+    "population": 7544,
+    "subject": "Смоленская область",
+    "tier": "town"
+  },
+  {
+    "name": "Новая Ладога",
+    "lat": 60.106401,
+    "lng": 32.316183,
+    "population": 7432,
+    "subject": "Ленинградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Пудож",
+    "lat": 61.8,
+    "lng": 36.53333,
+    "population": 7356,
+    "subject": "Карелия",
+    "tier": "town"
+  },
+  {
+    "name": "Порхов",
+    "lat": 57.76667,
+    "lng": 29.55,
+    "population": 7309,
+    "subject": "Псковская область",
+    "tier": "town"
+  },
+  {
+    "name": "Циолковский",
+    "lat": 51.7602528,
+    "lng": 128.121175,
+    "population": 7194,
+    "subject": "Амурская область",
+    "tier": "town"
+  },
+  {
+    "name": "Суоярви",
+    "lat": 62.08333,
+    "lng": 32.36667,
+    "population": 7190,
+    "subject": "Карелия",
+    "tier": "town"
+  },
+  {
+    "name": "Каменногорск",
+    "lat": 60.95081,
+    "lng": 29.130882,
+    "population": 7160,
+    "subject": "Ленинградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кириллов",
+    "lat": 59.86667,
+    "lng": 38.38333,
+    "population": 7149,
+    "subject": "Вологодская область",
+    "tier": "town"
+  },
+  {
+    "name": "Бирюч",
+    "lat": 50.65,
+    "lng": 38.4,
+    "population": 7114,
+    "subject": "Белгородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Костерёво",
+    "lat": 55.93333,
+    "lng": 39.63333,
+    "population": 7113,
+    "subject": "Владимирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Салаир",
+    "lat": 54.23333,
+    "lng": 85.8,
+    "population": 7088,
+    "subject": "Кемеровская область",
+    "tier": "town"
+  },
+  {
+    "name": "Сковородино",
+    "lat": 53.98333,
+    "lng": 123.93333,
+    "population": 7057,
+    "subject": "Амурская область",
+    "tier": "town"
+  },
+  {
+    "name": "Андреаполь",
+    "lat": 56.65,
+    "lng": 32.26667,
+    "population": 6956,
+    "subject": "Тверская область",
+    "tier": "town"
+  },
+  {
+    "name": "Старица",
+    "lat": 56.51667,
+    "lng": 34.93333,
+    "population": 6938,
+    "subject": "Тверская область",
+    "tier": "town"
+  },
+  {
+    "name": "Спасск",
+    "lat": 53.93333,
+    "lng": 43.18333,
+    "population": 6936,
+    "subject": "Пензенская область",
+    "tier": "town"
+  },
+  {
+    "name": "Малмыж",
+    "lat": 56.52278,
+    "lng": 50.68083,
+    "population": 6931,
+    "subject": "Кировская область",
+    "tier": "town"
+  },
+  {
+    "name": "Полесск",
+    "lat": 54.86667,
+    "lng": 21.1,
+    "population": 6926,
+    "subject": "Калининградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Мглин",
+    "lat": 53.06111,
+    "lng": 32.84833,
+    "population": 6919,
+    "subject": "Брянская область",
+    "tier": "town"
+  },
+  {
+    "name": "Новосокольники",
+    "lat": 56.33333,
+    "lng": 30.15,
+    "population": 6895,
+    "subject": "Псковская область",
+    "tier": "town"
+  },
+  {
+    "name": "Пучеж",
+    "lat": 56.98333,
+    "lng": 43.16667,
+    "population": 6879,
+    "subject": "Ивановская область",
+    "tier": "town"
+  },
+  {
+    "name": "Макушино",
+    "lat": 55.2,
+    "lng": 67.25,
+    "population": 6827,
+    "subject": "Курганская область",
+    "tier": "town"
+  },
+  {
+    "name": "Севск",
+    "lat": 52.15,
+    "lng": 34.49389,
+    "population": 6732,
+    "subject": "Брянская область",
+    "tier": "town"
+  },
+  {
+    "name": "Верхотурье",
+    "lat": 58.86667,
+    "lng": 60.8,
+    "population": 6706,
+    "subject": "Свердловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Усолье",
+    "lat": 59.41667,
+    "lng": 56.68333,
+    "population": 6619,
+    "subject": "Пермский край",
+    "tier": "town"
+  },
+  {
+    "name": "Юхнов",
+    "lat": 54.75,
+    "lng": 35.23333,
+    "population": 6610,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Приморск",
+    "lat": 60.366014,
+    "lng": 28.613561,
+    "population": 6537,
+    "subject": "Ленинградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Темников",
+    "lat": 54.63333,
+    "lng": 43.21667,
+    "population": 6451,
+    "subject": "Мордовия",
+    "tier": "town"
+  },
+  {
+    "name": "Княгинино",
+    "lat": 55.81667,
+    "lng": 45.03333,
+    "population": 6447,
+    "subject": "Нижегородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Томмот",
+    "lat": 58.96667,
+    "lng": 126.26667,
+    "population": 6440,
+    "subject": "Якутия",
+    "tier": "town"
+  },
+  {
+    "name": "Оханск",
+    "lat": 57.71667,
+    "lng": 55.38333,
+    "population": 6430,
+    "subject": "Пермский край",
+    "tier": "town"
+  },
+  {
+    "name": "Багратионовск",
+    "lat": 54.38333,
+    "lng": 20.63333,
+    "population": 6417,
+    "subject": "Калининградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Сенгилей",
+    "lat": 53.96667,
+    "lng": 48.8,
+    "population": 6407,
+    "subject": "Ульяновская область",
+    "tier": "town"
+  },
+  {
+    "name": "Весьегонск",
+    "lat": 58.65,
+    "lng": 37.26667,
+    "population": 6330,
+    "subject": "Тверская область",
+    "tier": "town"
+  },
+  {
+    "name": "Демидов",
+    "lat": 55.26667,
+    "lng": 31.51667,
+    "population": 6326,
+    "subject": "Смоленская область",
+    "tier": "town"
+  },
+  {
+    "name": "Дмитриев",
+    "lat": 52.12889,
+    "lng": 35.07556,
+    "population": 6317,
+    "subject": "Курская область",
+    "tier": "town"
+  },
+  {
+    "name": "Курлово",
+    "lat": 55.45,
+    "lng": 40.61667,
+    "population": 6309,
+    "subject": "Владимирская область",
+    "tier": "town"
+  },
+  {
+    "name": "Велиж",
+    "lat": 55.6,
+    "lng": 31.2,
+    "population": 6293,
+    "subject": "Смоленская область",
+    "tier": "town"
+  },
+  {
+    "name": "Себеж",
+    "lat": 56.28333,
+    "lng": 28.48333,
+    "population": 6246,
+    "subject": "Псковская область",
+    "tier": "town"
+  },
+  {
+    "name": "Зубцов",
+    "lat": 56.16667,
+    "lng": 34.58333,
+    "population": 6217,
+    "subject": "Тверская область",
+    "tier": "town"
+  },
+  {
+    "name": "Грайворон",
+    "lat": 50.48333,
+    "lng": 35.66667,
+    "population": 6179,
+    "subject": "Белгородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Сретенск",
+    "lat": 52.25,
+    "lng": 117.71667,
+    "population": 6093,
+    "subject": "Забайкальский край",
+    "tier": "town"
+  },
+  {
+    "name": "Сурск",
+    "lat": 53.08333,
+    "lng": 45.7,
+    "population": 6034,
+    "subject": "Пензенская область",
+    "tier": "town"
+  },
+  {
+    "name": "Лахденпохья",
+    "lat": 61.51667,
+    "lng": 30.2,
+    "population": 5952,
+    "subject": "Карелия",
+    "tier": "town"
+  },
+  {
+    "name": "Новохопёрск",
+    "lat": 51.1,
+    "lng": 41.61667,
+    "population": 5948,
+    "subject": "Воронежская область",
+    "tier": "town"
+  },
+  {
+    "name": "Шацк",
+    "lat": 54.03333,
+    "lng": 41.7,
+    "population": 5927,
+    "subject": "Рязанская область",
+    "tier": "town"
+  },
+  {
+    "name": "Макаров",
+    "lat": 48.61667,
+    "lng": 142.78333,
+    "population": 5848,
+    "subject": "Сахалинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Спасск-Рязанский",
+    "lat": 54.4,
+    "lng": 40.38333,
+    "population": 5796,
+    "subject": "Рязанская область",
+    "tier": "town"
+  },
+  {
+    "name": "Мураши",
+    "lat": 59.38333,
+    "lng": 48.96667,
+    "population": 5700,
+    "subject": "Кировская область",
+    "tier": "town"
+  },
+  {
+    "name": "Короча",
+    "lat": 50.81361,
+    "lng": 37.18139,
+    "population": 5623,
+    "subject": "Белгородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Мышкин",
+    "lat": 57.78333,
+    "lng": 38.45,
+    "population": 5621,
+    "subject": "Ярославская область",
+    "tier": "town"
+  },
+  {
+    "name": "Красавино",
+    "lat": 60.96667,
+    "lng": 46.48333,
+    "population": 5601,
+    "subject": "Вологодская область",
+    "tier": "town"
+  },
+  {
+    "name": "Билибино",
+    "lat": 68.05,
+    "lng": 166.45,
+    "population": 5546,
+    "subject": "Чукотский АО",
+    "tier": "town"
+  },
+  {
+    "name": "Жиздра",
+    "lat": 53.75028,
+    "lng": 34.73611,
+    "population": 5545,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Солигалич",
+    "lat": 59.08333,
+    "lng": 42.28333,
+    "population": 5534,
+    "subject": "Костромская область",
+    "tier": "town"
+  },
+  {
+    "name": "Макарьев",
+    "lat": 57.88333,
+    "lng": 43.8,
+    "population": 5528,
+    "subject": "Костромская область",
+    "tier": "town"
+  },
+  {
+    "name": "Орлов",
+    "lat": 58.53889,
+    "lng": 48.89861,
+    "population": 5508,
+    "subject": "Кировская область",
+    "tier": "town"
+  },
+  {
+    "name": "Гаврилов Посад",
+    "lat": 56.56667,
+    "lng": 40.11667,
+    "population": 5429,
+    "subject": "Ивановская область",
+    "tier": "town"
+  },
+  {
+    "name": "Алзамай",
+    "lat": 55.55,
+    "lng": 98.66667,
+    "population": 5373,
+    "subject": "Иркутская область",
+    "tier": "town"
+  },
+  {
+    "name": "Злынка",
+    "lat": 52.43333,
+    "lng": 31.73333,
+    "population": 5270,
+    "subject": "Брянская область",
+    "tier": "town"
+  },
+  {
+    "name": "Пыталово",
+    "lat": 57.066666666667,
+    "lng": 27.916666666667,
+    "population": 5263,
+    "subject": "Псковская область",
+    "tier": "town"
+  },
+  {
+    "name": "Дмитровск",
+    "lat": 52.505504,
+    "lng": 35.141478,
+    "population": 5202,
+    "subject": "Орловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Шиханы",
+    "lat": 52.1137809,
+    "lng": 47.199229,
+    "population": 5155,
+    "subject": "Саратовская область",
+    "tier": "town"
+  },
+  {
+    "name": "Пошехонье",
+    "lat": 58.5,
+    "lng": 39.11667,
+    "population": 5150,
+    "subject": "Ярославская область",
+    "tier": "town"
+  },
+  {
+    "name": "Суджа",
+    "lat": 51.190694,
+    "lng": 35.27083,
+    "population": 5127,
+    "subject": "Курская область",
+    "tier": "town"
+  },
+  {
+    "name": "Туран",
+    "lat": 52.1446,
+    "lng": 93.9181,
+    "population": 5044,
+    "subject": "Тыва",
+    "tier": "town"
+  },
+  {
+    "name": "Любим",
+    "lat": 58.35,
+    "lng": 40.7,
+    "population": 5037,
+    "subject": "Ярославская область",
+    "tier": "town"
+  },
+  {
+    "name": "Красный Холм",
+    "lat": 58.06329,
+    "lng": 37.122983,
+    "population": 4998,
+    "subject": "Тверская область",
+    "tier": "town"
+  },
+  {
+    "name": "Верея",
+    "lat": 55.33333,
+    "lng": 36.18333,
+    "population": 4906,
+    "subject": "Московская область",
+    "tier": "town"
+  },
+  {
+    "name": "Спас-Клепики",
+    "lat": 55.13333,
+    "lng": 40.16667,
+    "population": 4743,
+    "subject": "Рязанская область",
+    "tier": "town"
+  },
+  {
+    "name": "Фатеж",
+    "lat": 52.08944,
+    "lng": 35.85889,
+    "population": 4691,
+    "subject": "Курская область",
+    "tier": "town"
+  },
+  {
+    "name": "Шенкурск",
+    "lat": 62.1,
+    "lng": 42.9,
+    "population": 4600,
+    "subject": "Архангельская область",
+    "tier": "town"
+  },
+  {
+    "name": "Чердынь",
+    "lat": 60.4,
+    "lng": 56.48333,
+    "population": 4590,
+    "subject": "Пермский край",
+    "tier": "town"
+  },
+  {
+    "name": "Спас-Деменск",
+    "lat": 54.409808,
+    "lng": 34.018992,
+    "population": 4569,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Любань",
+    "lat": 59.349301,
+    "lng": 31.24858,
+    "population": 4565,
+    "subject": "Ленинградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Сусуман",
+    "lat": 62.78333,
+    "lng": 148.15,
+    "population": 4439,
+    "subject": "Магаданская область",
+    "tier": "town"
+  },
+  {
+    "name": "Бабушкин",
+    "lat": 51.71667,
+    "lng": 105.86667,
+    "population": 4368,
+    "subject": "Бурятия",
+    "tier": "town"
+  },
+  {
+    "name": "Томари",
+    "lat": 47.76667,
+    "lng": 142.06667,
+    "population": 4313,
+    "subject": "Сахалинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Чухлома",
+    "lat": 58.75,
+    "lng": 42.7,
+    "population": 4252,
+    "subject": "Костромская область",
+    "tier": "town"
+  },
+  {
+    "name": "Мосальск",
+    "lat": 54.48333,
+    "lng": 34.98333,
+    "population": 4234,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Славск",
+    "lat": 55.05,
+    "lng": 21.66667,
+    "population": 4153,
+    "subject": "Калининградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Озёрск",
+    "lat": 54.41667,
+    "lng": 22.01667,
+    "population": 4152,
+    "subject": "Калининградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кадников",
+    "lat": 59.5,
+    "lng": 40.33333,
+    "population": 4106,
+    "subject": "Вологодская область",
+    "tier": "town"
+  },
+  {
+    "name": "Пустошка",
+    "lat": 56.33333,
+    "lng": 29.36667,
+    "population": 4070,
+    "subject": "Псковская область",
+    "tier": "town"
+  },
+  {
+    "name": "Певек",
+    "lat": 69.7,
+    "lng": 170.31667,
+    "population": 4015,
+    "subject": "Чукотский АО",
+    "tier": "town"
+  },
+  {
+    "name": "Духовщина",
+    "lat": 55.2,
+    "lng": 32.41667,
+    "population": 3990,
+    "subject": "Смоленская область",
+    "tier": "town"
+  },
+  {
+    "name": "Правдинск",
+    "lat": 54.45,
+    "lng": 21.01667,
+    "population": 3986,
+    "subject": "Калининградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Иннополис",
+    "lat": 55.763633,
+    "lng": 48.736553,
+    "population": 3955,
+    "subject": "Татарстан",
+    "tier": "town"
+  },
+  {
+    "name": "Мещовск",
+    "lat": 54.31667,
+    "lng": 35.28333,
+    "population": 3810,
+    "subject": "Калужская область",
+    "tier": "town"
+  },
+  {
+    "name": "Ладушкин",
+    "lat": 54.56667,
+    "lng": 20.16667,
+    "population": 3666,
+    "subject": "Калининградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Игарка",
+    "lat": 67.46667,
+    "lng": 86.56667,
+    "population": 3634,
+    "subject": "Красноярский край",
+    "tier": "town"
+  },
+  {
+    "name": "Малоархангельск",
+    "lat": 52.4,
+    "lng": 36.5,
+    "population": 3609,
+    "subject": "Орловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Гдов",
+    "lat": 58.73333,
+    "lng": 27.81667,
+    "population": 3455,
+    "subject": "Псковская область",
+    "tier": "town"
+  },
+  {
+    "name": "Краснознаменск",
+    "lat": 54.95,
+    "lng": 22.5,
+    "population": 3419,
+    "subject": "Калининградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Нестеров",
+    "lat": 54.63333,
+    "lng": 22.56667,
+    "population": 3336,
+    "subject": "Калининградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Новоржев",
+    "lat": 57.03333,
+    "lng": 29.33333,
+    "population": 3222,
+    "subject": "Псковская область",
+    "tier": "town"
+  },
+  {
+    "name": "Холм",
+    "lat": 57.15,
+    "lng": 31.18333,
+    "population": 3214,
+    "subject": "Новгородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Среднеколымск",
+    "lat": 67.458,
+    "lng": 153.706,
+    "population": 3131,
+    "subject": "Якутия",
+    "tier": "town"
+  },
+  {
+    "name": "Белый",
+    "lat": 55.83333,
+    "lng": 32.93333,
+    "population": 3125,
+    "subject": "Тверская область",
+    "tier": "town"
+  },
+  {
+    "name": "Чёрмоз",
+    "lat": 58.78333,
+    "lng": 56.15,
+    "population": 3044,
+    "subject": "Пермский край",
+    "tier": "town"
+  },
+  {
+    "name": "Новосиль",
+    "lat": 52.96667,
+    "lng": 37.05,
+    "population": 2912,
+    "subject": "Орловская область",
+    "tier": "town"
+  },
+  {
+    "name": "Мезень",
+    "lat": 65.85,
+    "lng": 44.23333,
+    "population": 2874,
+    "subject": "Архангельская область",
+    "tier": "town"
+  },
+  {
+    "name": "Курильск",
+    "lat": 45.25,
+    "lng": 147.883333,
+    "population": 2530,
+    "subject": "Сахалинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кологрив",
+    "lat": 58.8252278,
+    "lng": 44.311444,
+    "population": 2468,
+    "subject": "Костромская область",
+    "tier": "town"
+  },
+  {
+    "name": "Северо-Курильск",
+    "lat": 50.66667,
+    "lng": 156.11667,
+    "population": 2374,
+    "subject": "Сахалинская область",
+    "tier": "town"
+  },
+  {
+    "name": "Горбатов",
+    "lat": 56.13333,
+    "lng": 43.06667,
+    "population": 2009,
+    "subject": "Нижегородская область",
+    "tier": "town"
+  },
+  {
+    "name": "Сольвычегодск",
+    "lat": 61.33333,
+    "lng": 46.91667,
+    "population": 1952,
+    "subject": "Архангельская область",
+    "tier": "town"
+  },
+  {
+    "name": "Плёс",
+    "lat": 57.45,
+    "lng": 41.5,
+    "population": 1896,
+    "subject": "Ивановская область",
+    "tier": "town"
+  },
+  {
+    "name": "Кедровый",
+    "lat": 57.56667,
+    "lng": 79.56667,
+    "population": 1818,
+    "subject": "Томская область",
+    "tier": "town"
+  },
+  {
+    "name": "Артёмовск",
+    "lat": 54.35,
+    "lng": 93.43333,
+    "population": 1510,
+    "subject": "Красноярский край",
+    "tier": "town"
+  },
+  {
+    "name": "Островной",
+    "lat": 68.05306,
+    "lng": 39.51306,
+    "population": 1487,
+    "subject": "Мурманская область",
+    "tier": "town"
+  },
+  {
+    "name": "Приморск",
+    "lat": 54.73333,
+    "lng": 20.0,
+    "population": 1436,
+    "subject": "Калининградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Высоцк",
+    "lat": 60.625604,
+    "lng": 28.568277,
+    "population": 1129,
+    "subject": "Ленинградская область",
+    "tier": "town"
+  },
+  {
+    "name": "Чекалин",
+    "lat": 54.1,
+    "lng": 36.25,
+    "population": 935,
+    "subject": "Тульская область",
+    "tier": "town"
+  },
+  {
+    "name": "Верхоянск",
+    "lat": 67.55,
+    "lng": 133.38333,
+    "population": 828,
+    "subject": "Якутия",
+    "tier": "town"
+  }
+]
