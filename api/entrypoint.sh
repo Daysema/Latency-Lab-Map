@@ -13,4 +13,9 @@ if [ ! -f /data/regions.geojson ]; then
   cp /seed/regions.geojson /data/regions.geojson
 fi
 
+if [ ! -f /data/reports.json ]; then
+  echo "Initializing reports.json in persistent volume..."
+  echo "[]" > /data/reports.json
+fi
+
 exec uvicorn server:app --host 0.0.0.0 --port 8000

@@ -3,6 +3,8 @@ import hmac
 import json
 import logging
 import os
+import threading
+import time
 import uuid
 from datetime import date, datetime, timezone
 from pathlib import Path
@@ -36,6 +38,8 @@ STATUS_LABELS = {
 
 app = FastAPI(title="Latency Lab Map API", docs_url=None, redoc_url=None)
 logger = logging.getLogger("latency_lab_map")
+_reports_lock = threading.Lock()
+_cities_lock = threading.Lock()
 
 app.add_middleware(
     CORSMiddleware,
@@ -95,16 +99,38 @@ def _require_admin(request: Request) -> None:
 def _load_json(path: Path, default):
     if not path.exists():
         return default
-    return json.loads(path.read_text(encoding="utf-8"))
+
+    text = path.read_text(encoding="utf-8").strip()
+    if not text:
+        return default
+
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError as exc:
+        if "Extra data" in exc.msg:
+            decoder = json.JSONDecoder()
+            data, end = decoder.raw_decode(text)
+            logger.warning(
+                "Repaired JSON with trailing data in %s at char %s",
+                path,
+                end,
+            )
+            _save_json(path, data)
+            return data
+
+        backup = path.with_name(
+            f"{path.stem}.corrupt.{int(time.time())}{path.suffix}"
+        )
+        path.replace(backup)
+        logger.error("Corrupt JSON in %s, backed up to %s", path, backup)
+        return default
 
 
 def _save_json(path: Path, data) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    tmp_path = path.with_suffix(path.suffix + ".tmp")
-    tmp_path.write_text(
-        json.dumps(data, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    tmp_path = path.with_name(f"{path.name}.{os.getpid()}.tmp")
+    content = json.dumps(data, ensure_ascii=False, indent=2)
+    tmp_path.write_text(content, encoding="utf-8")
     tmp_path.replace(path)
 
 
@@ -214,19 +240,21 @@ def update_city(body: UpdateCityRequest, request: Request) -> dict:
     if body.status not in VALID_STATUSES:
         raise HTTPException(status_code=400, detail="Недопустимый статус")
 
-    cities = _load_cities()
-    updated = None
-    for city in cities:
-        if city["name"] == body.name:
-            city["status"] = body.status
-            city["statusUpdatedAt"] = date.today().isoformat()
-            updated = city
-            break
+    with _cities_lock:
+        cities = _load_cities()
+        updated = None
+        for city in cities:
+            if city["name"] == body.name:
+                city["status"] = body.status
+                city["statusUpdatedAt"] = date.today().isoformat()
+                updated = city
+                break
 
-    if not updated:
-        raise HTTPException(status_code=404, detail="Город не найден")
+        if not updated:
+            raise HTTPException(status_code=404, detail="Город не найден")
 
-    _save_cities(cities)
+        _save_cities(cities)
+
     return {"ok": True, "city": updated}
 
 
@@ -245,9 +273,12 @@ def create_report(body: ReportRequest) -> dict:
         "reviewed": False,
     }
 
-    reports = _load_reports()
-    reports.insert(0, report)
-    _save_reports(reports[:500])
+    with _reports_lock:
+        reports = _load_reports()
+        if not isinstance(reports, list):
+            reports = []
+        reports.insert(0, report)
+        _save_reports(reports[:500])
 
     status_line = ""
     if body.status:
@@ -284,25 +315,29 @@ def review_report(
 ) -> dict:
     _require_admin(request)
 
-    reports = _load_reports()
-    report = next((r for r in reports if r["id"] == report_id), None)
-    if not report:
-        raise HTTPException(status_code=404, detail="Заявка не найдена")
+    with _reports_lock:
+        reports = _load_reports()
+        if not isinstance(reports, list):
+            reports = []
+        report = next((r for r in reports if r["id"] == report_id), None)
+        if not report:
+            raise HTTPException(status_code=404, detail="Заявка не найдена")
 
-    updated_city = None
-    if body.apply and report.get("status") in VALID_STATUSES:
-        cities = _load_cities()
-        for city in cities:
-            if city["name"] == report["city"]:
-                city["status"] = report["status"]
-                city["statusUpdatedAt"] = date.today().isoformat()
-                updated_city = city
-                break
-        if updated_city:
-            _save_cities(cities)
+        updated_city = None
+        if body.apply and report.get("status") in VALID_STATUSES:
+            with _cities_lock:
+                cities = _load_cities()
+                for city in cities:
+                    if city["name"] == report["city"]:
+                        city["status"] = report["status"]
+                        city["statusUpdatedAt"] = date.today().isoformat()
+                        updated_city = city
+                        break
+                if updated_city:
+                    _save_cities(cities)
 
-    report["reviewed"] = True
-    report["reviewedAt"] = datetime.now(timezone.utc).isoformat()
-    _save_reports(reports)
+        report["reviewed"] = True
+        report["reviewedAt"] = datetime.now(timezone.utc).isoformat()
+        _save_reports(reports)
 
     return {"ok": True, "report": report, "city": updated_city}
