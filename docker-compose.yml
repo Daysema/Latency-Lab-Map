@@ -1,8 +1,25 @@
 services:
+  caddy:
+    image: caddy:2.8-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-:80}
+      ACME_EMAIL: ${ACME_EMAIL:-}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - map
+    restart: unless-stopped
+
   map:
     build: .
-    ports:
-      - "8080:80"
+    expose:
+      - "80"
     volumes:
       - map_data:/usr/share/nginx/html/data
     depends_on:
@@ -27,3 +44,5 @@ services:
 
 volumes:
   map_data:
+  caddy_data:
+  caddy_config:

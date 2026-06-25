@@ -20,7 +20,8 @@
 
 - Ubuntu 22.04 / 24.04 (или другой Debian-based дистрибутив)
 - Минимум 1 ГБ RAM, 2 ГБ диска
-- Открытый порт **8080** (или **80**, если измените в `docker-compose.yml`)
+- Домен с A-записью на IP сервера (для HTTPS)
+- Открытые порты **80** и **443** (Caddy + Let's Encrypt)
 - Доступ по SSH
 
 ### Шаг 1. Подключиться к серверу
@@ -85,23 +86,42 @@ cd Latency-Lab-Map
 
 > Данные карты (`cities.json`, `regions.geojson`) уже включены в репозиторий — отдельно ничего скачивать не нужно.
 
-### Шаг 5. Настроить пароль администратора
-
-Только вы сможете менять статусы доступности на карте. Создайте файл `.env`:
+### Шаг 5. Настроить `.env`
 
 ```bash
 cp .env.example .env
 nano .env
 ```
 
-Задайте надёжный пароль:
+Пример для продакшена с доменом:
 
 ```
+SITE_ADDRESS=map.example.com
+ACME_EMAIL=you@example.com
 ADMIN_PASSWORD=ваш-секретный-пароль
 SESSION_SECRET=случайная-длинная-строка-минимум-32-символа
 ```
 
-### Шаг 6. Запустить сайт
+- `SITE_ADDRESS` — ваш домен (Caddy выпустит HTTPS-сертификат автоматически)
+- `ACME_EMAIL` — email для Let's Encrypt
+
+Для проверки по IP без домена (только HTTP):
+
+```
+SITE_ADDRESS=:80
+```
+
+### Шаг 6. DNS
+
+В панели регистратора домена создайте **A-запись**:
+
+```
+map.example.com  →  IP_ВАШЕГО_СЕРВЕРА
+```
+
+Подождите 5–30 минут, пока DNS обновится.
+
+### Шаг 7. Запустить сайт
 
 ```bash
 docker compose up --build -d
@@ -119,24 +139,18 @@ docker compose logs -f
 Сайт будет доступен по адресу:
 
 ```
-http://IP_ВАШЕГО_СЕРВЕРА:8080
+https://map.example.com
 ```
 
-### Шаг 7. Открыть порт в файрволе (если включён ufw)
+### Шаг 8. Открыть порты в файрволе (если включён ufw)
 
 ```bash
-sudo ufw allow 8080/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
 sudo ufw status
 ```
 
-Если нужен стандартный порт 80, откройте его и измените проброс в `docker-compose.yml`:
-
-```yaml
-ports:
-  - "80:80"
-```
-
-Затем перезапустите:
+Затем перезапустите при необходимости:
 
 ```bash
 docker compose down
@@ -173,9 +187,9 @@ TELEGRAM_PROXY=socks5://user:pass@host:1080
 Просмотр очереди (только для админа после входа):
 
 ```bash
-curl -b cookies.txt -c cookies.txt -X POST http://localhost:8080/api/auth/login \
+curl -b cookies.txt -c cookies.txt -X POST https://map.example.com/api/auth/login \
   -H "Content-Type: application/json" -d '{"password":"ваш-пароль"}'
-curl -b cookies.txt http://localhost:8080/api/reports
+curl -b cookies.txt https://map.example.com/api/reports
 ```
 
 ### Тепловая карта субъектов
@@ -257,7 +271,7 @@ python scripts/prepare_data.py
 docker compose up --build
 ```
 
-Сайт: **http://localhost:8080**
+Сайт: **http://localhost** (при `SITE_ADDRESS=:80` в `.env`)
 
 ### Локально без Docker
 
@@ -273,7 +287,8 @@ python -m http.server 8000
 ## Структура проекта
 
 ```
-├── docker-compose.yml   # nginx + API
+├── Caddyfile            # reverse proxy + HTTPS
+├── docker-compose.yml   # caddy + nginx + API
 ├── Dockerfile           # образ nginx со статикой
 ├── api/                 # бэкенд для сохранения статусов
 ├── nginx.conf
