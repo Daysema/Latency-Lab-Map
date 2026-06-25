@@ -4,8 +4,11 @@ import json
 from pathlib import Path
 
 from shapely import make_valid
-from shapely.geometry import Point, mapping, shape
+from shapely.geometry import MultiPolygon, Point, box, mapping, shape
 from shapely.ops import snap, unary_union
+
+WEST_OF_DATELINE = box(-180, -90, 179.99, 90)
+EAST_OF_DATELINE = box(180.01, -90, 360, 90)
 
 ROOT = Path(__file__).resolve().parents[1]
 REGIONS_PATH = ROOT / "public" / "data" / "regions.geojson"
@@ -57,13 +60,53 @@ def fix_antimeridian_geometry(geometry: dict) -> dict:
     }
 
 
+def _polygon_parts(geom) -> list:
+    if geom.is_empty:
+        return []
+    if geom.geom_type == "Polygon":
+        return [geom]
+    if geom.geom_type == "MultiPolygon":
+        return list(geom.geoms)
+    return []
+
+
+def _remove_dateline_seam(geom):
+    """Split polygons at 180° with a tiny gap so Leaflet does not draw a seam line."""
+    parts = []
+    for polygon in _polygon_parts(geom):
+        minx, _, maxx, _ = polygon.bounds
+        if maxx <= WEST_OF_DATELINE.bounds[2]:
+            parts.append(polygon)
+            continue
+        if minx >= EAST_OF_DATELINE.bounds[0]:
+            parts.append(polygon)
+            continue
+
+        west = polygon.intersection(WEST_OF_DATELINE)
+        east = polygon.intersection(EAST_OF_DATELINE)
+        for piece in _polygon_parts(west):
+            if not piece.is_empty:
+                parts.append(piece)
+        for piece in _polygon_parts(east):
+            if not piece.is_empty:
+                parts.append(piece)
+
+    if not parts:
+        return geom
+    if len(parts) == 1:
+        return parts[0]
+    return MultiPolygon(parts)
+
+
 def fix_antimeridian(features: list[dict]) -> list[dict]:
     for feature in features:
         geom = shape(feature["geometry"])
         minx, _, maxx, _ = geom.bounds
         if maxx - minx <= 180:
             continue
-        feature["geometry"] = fix_antimeridian_geometry(feature["geometry"])
+        shifted = shape(fix_antimeridian_geometry(feature["geometry"]))
+        fixed = make_valid(_remove_dateline_seam(shifted))
+        feature["geometry"] = mapping(fixed)
     return features
 
 
