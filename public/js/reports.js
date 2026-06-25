@@ -40,6 +40,27 @@ export function initReports(allCitiesGetter, onCityUpdated) {
   const adminBackupStatus = document.getElementById("admin-backup-status");
   let selectedCity = "";
   let closeTimer = null;
+  let reportsRenderGeneration = 0;
+
+  function updateReportsCount() {
+    const remaining = adminReportsList.querySelectorAll(".admin-reports__item").length;
+    adminReportsCount.textContent = remaining
+      ? `Новых сообщений: ${remaining}`
+      : "Новых сообщений нет";
+
+    if (!remaining && !adminReportsList.querySelector(".admin-reports__empty")) {
+      adminReportsList.innerHTML = "";
+      const li = document.createElement("li");
+      li.className = "admin-reports__empty";
+      li.textContent = "Очередь пуста";
+      adminReportsList.appendChild(li);
+    }
+  }
+
+  function removeReportItem(li) {
+    li.remove();
+    updateReportsCount();
+  }
 
   function resetDialog() {
     if (closeTimer) {
@@ -86,8 +107,12 @@ export function initReports(allCitiesGetter, onCityUpdated) {
   }
 
   async function renderAdminReports() {
+    const generation = ++reportsRenderGeneration;
     adminReportsList.innerHTML = "";
     const data = await loadReports();
+    if (generation !== reportsRenderGeneration) {
+      return;
+    }
 
     adminReportsCount.textContent = data.length
       ? `Новых сообщений: ${data.length}`
@@ -153,7 +178,7 @@ export function initReports(allCitiesGetter, onCityUpdated) {
             if (result.city && onCityUpdated) {
               onCityUpdated(result.city);
             }
-            await renderAdminReports();
+            removeReportItem(li);
           } catch (err) {
             alert(err.message || "Не удалось применить");
             applyBtn.disabled = false;
@@ -172,7 +197,7 @@ export function initReports(allCitiesGetter, onCityUpdated) {
           await api(`/api/reports/${report.id}`, {
             method: "DELETE",
           });
-          await renderAdminReports();
+          removeReportItem(li);
         } catch (err) {
           alert(err.message || "Не удалось удалить");
           dismissBtn.disabled = false;

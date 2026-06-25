@@ -5,6 +5,7 @@ const listeners = new Set();
 export async function api(path, options = {}) {
   const response = await fetch(path, {
     credentials: "same-origin",
+    cache: "no-store",
     headers: {
       "Content-Type": "application/json",
       ...(options.headers || {}),

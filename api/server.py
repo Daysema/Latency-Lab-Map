@@ -11,6 +11,12 @@ import zipfile
 from contextlib import asynccontextmanager
 from datetime import date, datetime, timezone
 from pathlib import Path
+from typing import Callable, TypeVar
+
+try:
+    import fcntl
+except ImportError:  # Windows
+    fcntl = None
 
 import requests
 from fastapi import FastAPI, HTTPException, Request, Response
@@ -47,13 +53,8 @@ logger = logging.getLogger("latency_lab_map")
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    with _reports_lock:
-        reports = _load_reports()
-        before = len(reports) if isinstance(reports, list) else 0
-        pending = _load_pending_reports()
-        purged = before - len(pending)
-    if purged:
-        logger.info("Purged %s reviewed report(s) on startup", purged)
+    pending_count = len(_load_pending_reports())
+    logger.info("Reports queue ready: %s pending", pending_count)
 
     if (
         BACKUP_INTERVAL_HOURS > 0
@@ -78,6 +79,8 @@ app = FastAPI(
 _reports_lock = threading.Lock()
 _cities_lock = threading.Lock()
 
+T = TypeVar("T")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -85,6 +88,15 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.middleware("http")
+async def no_store_api(request: Request, call_next):
+    response = await call_next(request)
+    if request.url.path.startswith("/api/"):
+        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate"
+        response.headers["Pragma"] = "no-cache"
+    return response
 
 
 class LoginRequest(BaseModel):
@@ -172,10 +184,127 @@ def _load_json(path: Path, default):
 
 def _save_json(path: Path, data) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    tmp_path = path.with_name(f"{path.name}.{os.getpid()}.tmp")
+    tmp_path = path.with_name(f"{path.name}.{uuid.uuid4().hex}.tmp")
     content = json.dumps(data, ensure_ascii=False, indent=2)
     tmp_path.write_text(content, encoding="utf-8")
     tmp_path.replace(path)
+
+
+def _decode_json_list(text: str, path: Path) -> list[dict]:
+    if not text:
+        return []
+
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError as exc:
+        if "Extra data" not in exc.msg:
+            raise
+
+        decoder = json.JSONDecoder()
+        data: object = []
+        idx = 0
+        while idx < len(text):
+            chunk = text[idx:].lstrip()
+            if not chunk:
+                break
+            offset = len(text[idx:]) - len(chunk)
+            data, end = decoder.raw_decode(chunk)
+            idx += offset + end
+
+        if not isinstance(data, list):
+            data = []
+
+        logger.warning(
+            "Repaired reports.json with trailing data in %s, kept latest snapshot",
+            path,
+        )
+        _save_json(path, data)
+        return data
+
+    if not isinstance(data, list):
+        return []
+    return data
+
+
+def _is_pending_report(report: dict) -> bool:
+    reviewed = report.get("reviewed")
+    if reviewed is True:
+        return False
+    if isinstance(reviewed, str) and reviewed.strip().lower() in {
+        "true",
+        "1",
+        "yes",
+    }:
+        return False
+    return True
+
+
+def _read_reports_locked(lock_file) -> list[dict]:
+    del lock_file
+    if not REPORTS_PATH.exists():
+        return []
+
+    with open(REPORTS_PATH, "r", encoding="utf-8") as handle:
+        if fcntl is not None:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_SH)
+        try:
+            return _decode_json_list(handle.read().strip(), REPORTS_PATH)
+        finally:
+            if fcntl is not None:
+                fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+
+
+def _write_reports_locked(lock_file, reports: list[dict]) -> None:
+    del lock_file
+    REPORTS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    content = json.dumps(reports, ensure_ascii=False, indent=2)
+    with open(REPORTS_PATH, "w", encoding="utf-8") as handle:
+        if fcntl is not None:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
+        try:
+            handle.write(content)
+            handle.flush()
+            if fcntl is not None:
+                os.fsync(handle.fileno())
+        finally:
+            if fcntl is not None:
+                fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+
+
+def _mutate_reports(mutator: Callable[[list[dict]], tuple[list[dict], T]]) -> T:
+    REPORTS_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+    with _reports_lock:
+        if fcntl is None:
+            reports = _load_json(REPORTS_PATH, [])
+            if not isinstance(reports, list):
+                reports = []
+            pending = [r for r in reports if _is_pending_report(r)]
+            if len(pending) != len(reports):
+                _save_json(REPORTS_PATH, pending)
+                reports = pending
+            new_reports, result = mutator(pending)
+            if new_reports != pending:
+                _save_json(REPORTS_PATH, new_reports)
+            return result
+
+        lock_path = REPORTS_PATH.with_suffix(".lock")
+        lock_path.touch(exist_ok=True)
+        with open(lock_path, "a", encoding="utf-8") as lock_file:
+            fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX)
+            try:
+                reports = _read_reports_locked(lock_file)
+                pending = [r for r in reports if _is_pending_report(r)]
+                if len(pending) != len(reports):
+                    _write_reports_locked(lock_file, pending)
+                    reports = pending
+
+                new_reports, result = mutator(pending)
+                if new_reports != pending:
+                    _write_reports_locked(lock_file, new_reports)
+                return result
+            finally:
+                fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
 
 
 def _load_cities() -> list[dict]:
@@ -189,28 +318,24 @@ def _save_cities(cities: list[dict]) -> None:
 
 
 def _load_reports() -> list[dict]:
-    return _load_json(REPORTS_PATH, [])
+    return _mutate_reports(lambda pending: (pending, pending))
 
 
 def _load_pending_reports() -> list[dict]:
-    reports = _load_reports()
-    if not isinstance(reports, list):
-        reports = []
-    pending = [r for r in reports if not r.get("reviewed")]
-    if len(pending) != len(reports):
-        _save_reports(pending)
-    return pending
+    return _load_reports()
 
 
-def _remove_report(reports: list[dict], report_id: str) -> tuple[list[dict], dict | None]:
-    report = next((r for r in reports if r["id"] == report_id), None)
+def _remove_report(
+    reports: list[dict], report_id: str
+) -> tuple[list[dict], dict | None]:
+    report = next((r for r in reports if r.get("id") == report_id), None)
     if not report:
         return reports, None
-    return [r for r in reports if r["id"] != report_id], report
+    return [r for r in reports if r.get("id") != report_id], report
 
 
 def _save_reports(reports: list[dict]) -> None:
-    _save_json(REPORTS_PATH, reports)
+    _mutate_reports(lambda _: (reports, None))
 
 
 def _parse_topic_id(value: str) -> int | None:
@@ -324,8 +449,7 @@ RESTORE_README = """Резервная копия Latency Lab Map
 
 
 def _build_backup_archive() -> tuple[bytes, str, list[str]]:
-    with _reports_lock:
-        _load_pending_reports()
+    _load_pending_reports()
 
     included: list[str] = []
     buf = io.BytesIO()
@@ -478,10 +602,10 @@ def create_report(body: ReportRequest) -> dict:
         "createdAt": datetime.now(timezone.utc).isoformat(),
     }
 
-    with _reports_lock:
-        reports = _load_pending_reports()
-        reports.insert(0, report)
-        _save_reports(reports[:500])
+    def add_report(pending: list[dict]) -> tuple[list[dict], None]:
+        return [report, *pending][:500], None
+
+    _mutate_reports(add_report)
 
     status_line = ""
     if body.status:
@@ -514,8 +638,7 @@ def create_report(body: ReportRequest) -> dict:
 @app.get("/api/reports")
 def list_reports(request: Request) -> dict:
     _require_admin(request)
-    with _reports_lock:
-        reports = _load_pending_reports()
+    reports = _load_pending_reports()
     return {"reports": reports[:100], "pendingCount": len(reports)}
 
 
@@ -523,14 +646,14 @@ def list_reports(request: Request) -> dict:
 def delete_report(report_id: str, request: Request) -> dict:
     _require_admin(request)
 
-    with _reports_lock:
-        reports = _load_pending_reports()
-        reports, report = _remove_report(reports, report_id)
-        if not report:
+    def remove(pending: list[dict]) -> tuple[list[dict], dict]:
+        new_pending, removed = _remove_report(pending, report_id)
+        if not removed:
             raise HTTPException(status_code=404, detail="Заявка не найдена")
-        _save_reports(reports)
+        return new_pending, removed
 
-    return {"ok": True, "report": report}
+    removed = _mutate_reports(remove)
+    return {"ok": True, "report": removed}
 
 
 @app.post("/api/admin/backup")
@@ -545,26 +668,30 @@ def review_report(
 ) -> dict:
     _require_admin(request)
 
-    with _reports_lock:
-        reports = _load_pending_reports()
-        report = next((r for r in reports if r["id"] == report_id), None)
+    holder: dict[str, dict] = {}
+
+    def remove(pending: list[dict]) -> tuple[list[dict], bool]:
+        report = next((r for r in pending if r.get("id") == report_id), None)
         if not report:
             raise HTTPException(status_code=404, detail="Заявка не найдена")
+        holder["report"] = report
+        new_pending, _ = _remove_report(pending, report_id)
+        return new_pending, True
 
-        updated_city = None
-        if body.apply and report.get("status") in VALID_STATUSES:
-            with _cities_lock:
-                cities = _load_cities()
-                for city in cities:
-                    if city["name"] == report["city"]:
-                        city["status"] = report["status"]
-                        city["statusUpdatedAt"] = date.today().isoformat()
-                        updated_city = city
-                        break
-                if updated_city:
-                    _save_cities(cities)
+    _mutate_reports(remove)
+    report = holder["report"]
 
-        reports, _ = _remove_report(reports, report_id)
-        _save_reports(reports)
+    updated_city = None
+    if body.apply and report.get("status") in VALID_STATUSES:
+        with _cities_lock:
+            cities = _load_cities()
+            for city in cities:
+                if city["name"] == report["city"]:
+                    city["status"] = report["status"]
+                    city["statusUpdatedAt"] = date.today().isoformat()
+                    updated_city = city
+                    break
+            if updated_city:
+                _save_cities(cities)
 
     return {"ok": True, "report": report, "city": updated_city}
