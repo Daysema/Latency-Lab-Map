@@ -72,10 +72,18 @@ def _load_cities() -> list[dict]:
 
 
 def _save_cities(cities: list[dict]) -> None:
-    CITIES_PATH.write_text(
+    CITIES_PATH.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = CITIES_PATH.with_suffix(".json.tmp")
+    tmp_path.write_text(
         json.dumps(cities, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
+    tmp_path.replace(CITIES_PATH)
+
+
+@app.get("/api/cities")
+def get_cities() -> list[dict]:
+    return _load_cities()
 
 
 @app.get("/api/health")

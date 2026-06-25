@@ -4,17 +4,22 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./public/data:/usr/share/nginx/html/data
+      - map_data:/usr/share/nginx/html/data
     depends_on:
       - api
     restart: unless-stopped
 
   api:
-    build: ./api
+    build:
+      context: .
+      dockerfile: api/Dockerfile
     environment:
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
       SESSION_SECRET: ${SESSION_SECRET:-change-me-in-production}
       CITIES_PATH: /data/cities.json
     volumes:
-      - ./public/data:/data
+      - map_data:/data
     restart: unless-stopped
+
+volumes:
+  map_data:

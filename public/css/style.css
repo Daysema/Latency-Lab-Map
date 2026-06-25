@@ -402,6 +402,12 @@ body {
   font-size: 0.8rem;
 }
 
+.popup-admin__success {
+  margin: 0;
+  color: #4ade80;
+  font-size: 0.8rem;
+}
+
 .popup-admin {
   margin-top: 1rem;
   padding-top: 1rem;

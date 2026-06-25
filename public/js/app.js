@@ -344,17 +344,34 @@ function setupSearch() {
   });
 }
 
+async function loadCities() {
+  try {
+    const res = await fetch("/api/cities", { cache: "no-store" });
+    if (res.ok) {
+      return res.json();
+    }
+  } catch {
+    // API unavailable (local static server)
+  }
+
+  const res = await fetch("/data/cities.json", { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error("Не удалось загрузить список городов");
+  }
+  return res.json();
+}
+
 async function loadData() {
-  const [citiesRes, regionsRes] = await Promise.all([
-    fetch("data/cities.json"),
-    fetch("data/regions.geojson"),
+  const [regionsRes] = await Promise.all([
+    fetch("/data/regions.geojson", { cache: "no-store" }),
   ]);
 
-  if (!citiesRes.ok || !regionsRes.ok) {
+  allCities = await loadCities();
+
+  if (!regionsRes.ok) {
     throw new Error("Не удалось загрузить данные карты");
   }
 
-  allCities = await citiesRes.json();
   regionStatusMap = buildRegionStatusMap(allCities);
   const regions = await regionsRes.json();
 
@@ -390,7 +407,13 @@ popupSaveBtn.addEventListener("click", async () => {
       popupStatusSelect.value
     );
     applyCityUpdate(updatedCity);
+    popupAdminError.hidden = true;
+    popupAdminError.textContent = "";
+    popupAdminError.className = "popup-admin__success";
+    popupAdminError.textContent = "Сохранено";
+    popupAdminError.hidden = false;
   } catch (err) {
+    popupAdminError.className = "popup-admin__error";
     popupAdminError.textContent = err.message || "Не удалось сохранить";
     popupAdminError.hidden = false;
   } finally {

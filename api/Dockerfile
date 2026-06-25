@@ -2,13 +2,17 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY api/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY server.py .
+COPY api/server.py .
+COPY api/entrypoint.sh /entrypoint.sh
+COPY public/data/ /seed/
+
+RUN chmod +x /entrypoint.sh
 
 ENV CITIES_PATH=/data/cities.json
 
 EXPOSE 8000
 
-CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]
+ENTRYPOINT ["/entrypoint.sh"]
