@@ -326,13 +326,211 @@ body {
   color: var(--accent) !important;
 }
 
-@media (max-width: 640px) {
-  .legend {
-    display: none;
+.legend-toggle {
+  display: none;
+}
+
+/* ── Mobile ───────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0.55rem 0.75rem;
+    gap: 0.55rem;
+    align-items: stretch;
+  }
+
+  .header__brand {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .header__brand h1 {
+    font-size: 0.95rem;
+    line-height: 1.2;
   }
 
   .header__brand p {
+    display: block;
+    font-size: 0.68rem;
+    line-height: 1.3;
+    margin-top: 0.2rem;
+  }
+
+  .header__controls {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  .search {
+    flex: 1 1 100%;
+    order: 1;
+  }
+
+  .search input {
+    width: 100%;
+    font-size: 16px;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .zoom-info {
+    order: 2;
+    font-size: 0.75rem;
+    flex: 1 1 auto;
+  }
+
+  .admin-reports-toggle,
+  .admin-toggle {
+    order: 3;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.05rem;
+  }
+
+  .legend-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 0.75rem;
+    bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    z-index: 1002;
+    padding: 0.55rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(26, 35, 50, 0.95);
+    color: var(--text);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+  }
+
+  .legend {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: none;
+    margin: 0;
+    border-radius: 16px 16px 0 0;
+    border-bottom: none;
+    padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom, 0px));
+    max-height: min(72vh, 520px);
+    overflow-y: auto;
+    transform: translateY(110%);
+    transition: transform 0.25s ease;
+    pointer-events: none;
+  }
+
+  .legend.legend--open {
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .legend h2 {
+    font-size: 0.9rem;
+  }
+
+  .legend li {
+    font-size: 0.78rem;
+  }
+
+  .legend__note {
+    font-size: 0.7rem;
+  }
+
+  .city-popup,
+  .region-popup {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    border-radius: 16px 16px 0 0;
+    max-height: min(75vh, 480px);
+    overflow-y: auto;
+    padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .city-popup dl > div {
+    grid-template-columns: 6.5rem 1fr;
+    gap: 0.35rem 0.5rem;
+  }
+
+  .report-dialog,
+  .admin-login,
+  .admin-reports {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .report-dialog__panel,
+  .admin-login__panel,
+  .admin-reports__panel {
+    width: 100%;
+    max-width: none;
+    border-radius: 16px 16px 0 0;
+    max-height: 92vh;
+    padding: 1.25rem 1rem calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .admin-reports__meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+
+  .admin-reports__meta span {
+    white-space: normal;
+  }
+
+  .admin-reports__actions button {
+    flex: 1 1 auto;
+    min-height: 2.5rem;
+  }
+
+  .leaflet-top.leaflet-left {
+    top: auto;
+    bottom: calc(3.5rem + env(safe-area-inset-bottom, 0px));
+    left: 0.5rem;
+    right: auto;
+  }
+
+  .leaflet-control-zoom a {
+    width: 36px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    font-size: 1.1rem !important;
+  }
+
+  .leaflet-control-attribution {
+    max-width: calc(100vw - 7rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 380px) {
+  .header__brand p {
     display: none;
+  }
+
+  .legend-toggle {
+    right: 0.5rem;
+    bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
+    padding: 0.5rem 0.7rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .legend-toggle {
+    display: none !important;
   }
 }
 

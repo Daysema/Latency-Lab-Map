@@ -470,6 +470,30 @@ function flyToCity(city) {
   searchResults.hidden = true;
 }
 
+function setupMobileLegend() {
+  const toggle = document.getElementById("legend-toggle");
+  const legend = document.getElementById("map-legend");
+  if (!toggle || !legend) return;
+
+  const close = () => {
+    legend.classList.remove("legend--open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.textContent = "Легенда";
+  };
+
+  toggle.addEventListener("click", () => {
+    const open = legend.classList.toggle("legend--open");
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.textContent = open ? "Скрыть" : "Легенда";
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!legend.classList.contains("legend--open")) return;
+    if (e.target.closest(".legend") || e.target.closest(".legend-toggle")) return;
+    close();
+  });
+}
+
 function setupSearch() {
   searchInput.addEventListener("input", () => {
     const query = searchInput.value.trim().toLowerCase();
@@ -604,6 +628,7 @@ onAdminChange((authed) => {
 });
 
 setupSearch();
+setupMobileLegend();
 zoomLevelEl.textContent = String(map.getZoom());
 
 initAdmin()
