@@ -1,5 +1,6 @@
 import { initAdmin, isAdmin, onAdminChange, updateCityStatus } from "./admin.js";
 import { initReports } from "./reports.js";
+import { createRegionHeatController } from "./region-heat-overlay.js";
 
 const STATUS_LABELS = {
   unknown: "Нет информации",
@@ -98,6 +99,8 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
   minZoom: MIN_ZOOM,
   maxZoom: MAX_ZOOM,
 }).addTo(map);
+
+const regionHeat = createRegionHeatController(map);
 
 const cityLayer = L.layerGroup().addTo(map);
 const zoomLevelEl = document.getElementById("zoom-level");
@@ -421,10 +424,21 @@ function refreshRegionStyles() {
   if (!regionsLayer) return;
   regionsLayer.eachLayer((layer) => {
     const stats = getRegionStats(layer.feature);
-    layer.setStyle(regionStyleForHeat(stats));
+    const style = regionStyleForHeat(stats);
+    layer._baseRegionStyle = style;
+    const name = layer.feature.properties.name;
+    if (regionHeat.hasOverlay(name)) {
+      layer.setStyle({
+        ...style,
+        fillOpacity: 0,
+        fillColor: "transparent",
+      });
+    } else {
+      layer.setStyle(style);
+    }
     const tooltip = layer.getTooltip();
     if (tooltip) {
-      tooltip.setContent(formatRegionTooltip(layer.feature.properties.name, stats));
+      tooltip.setContent(formatRegionTooltip(name, stats));
     }
   });
 }
@@ -437,6 +451,7 @@ function applyCityUpdate(updatedCity) {
   regionStatsMap = buildRegionStatsMap(allCities);
   renderCities(map.getZoom());
   refreshRegionStyles();
+  regionHeat.invalidate();
   updateLegendFill();
   if (activeCity?.name === updatedCity.name) {
     showCityPopup(updatedCity);
@@ -480,6 +495,7 @@ function onEachRegion(feature, layer) {
   const name = feature.properties.name;
   const stats = getRegionStats(feature);
   const baseStyle = regionStyleForHeat(stats);
+  layer._baseRegionStyle = baseStyle;
 
   layer.bindTooltip(formatRegionTooltip(name, stats), {
     sticky: true,
@@ -488,10 +504,27 @@ function onEachRegion(feature, layer) {
 
   layer.on({
     mouseover: (e) => {
-      e.target.setStyle(regionHoverStyle(stats));
+      const hover = regionHoverStyle(stats);
+      if (regionHeat.hasOverlay(name)) {
+        e.target.setStyle({
+          ...hover,
+          fillOpacity: 0,
+          fillColor: "transparent",
+        });
+      } else {
+        e.target.setStyle(hover);
+      }
     },
     mouseout: (e) => {
-      e.target.setStyle(baseStyle);
+      if (regionHeat.hasOverlay(name)) {
+        e.target.setStyle({
+          ...baseStyle,
+          fillOpacity: 0,
+          fillColor: "transparent",
+        });
+      } else {
+        e.target.setStyle(baseStyle);
+      }
     },
     click: (e) => {
       L.DomEvent.stopPropagation(e);
@@ -618,9 +651,11 @@ async function loadData() {
     onEachFeature: onEachRegion,
   }).addTo(map);
 
+  regionHeat.setRegionsLayer(regionsLayer);
   applyMapPanBounds();
   renderCities(map.getZoom());
   updateLegendFill();
+  regionHeat.update();
 }
 
 map.on("zoomend", () => {

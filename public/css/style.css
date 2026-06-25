@@ -360,6 +360,10 @@ body {
   color: var(--accent) !important;
 }
 
+.region-heat-overlay {
+  pointer-events: none !important;
+}
+
 .legend-toggle {
   display: none;
 }

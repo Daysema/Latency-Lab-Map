@@ -19,9 +19,12 @@ except ImportError:  # Windows
     fcntl = None
 
 import requests
-from fastapi import FastAPI, HTTPException, Request, Response
+from fastapi import FastAPI, HTTPException, Query, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import Response as FastAPIResponse
 from pydantic import BaseModel, Field
+
+from region_heat import render_region_heat_png
 
 CITIES_PATH = Path(os.environ.get("CITIES_PATH", "/data/cities.json"))
 REPORTS_PATH = Path(os.environ.get("REPORTS_PATH", "/data/reports.json"))
@@ -540,6 +543,24 @@ def _scheduled_backup_loop() -> None:
 @app.get("/api/cities")
 def get_cities() -> list[dict]:
     return _load_cities()
+
+
+@app.get("/api/regions/heat")
+def region_heat(
+    name: str = Query(min_length=1, max_length=200),
+    w: int = Query(default=180, ge=64, le=256),
+) -> FastAPIResponse:
+    png = render_region_heat_png(
+        region_name=name,
+        cities=_load_cities(),
+        regions_path=REGIONS_PATH,
+        width=w,
+    )
+    return FastAPIResponse(
+        content=png,
+        media_type="image/png",
+        headers={"Cache-Control": "public, max-age=120"},
+    )
 
 
 @app.get("/api/health")
