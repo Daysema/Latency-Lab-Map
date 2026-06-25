@@ -144,6 +144,17 @@
     "status": "unknown"
   },
   {
+    "name": "Донецк",
+    "lat": 48.0028,
+    "lng": 37.8053,
+    "population": 929063,
+    "subject": "Донецкая Народная Республика",
+    "tier": "large",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
+  },
+  {
     "name": "Саратов",
     "lat": 51.53333,
     "lng": 46.0,
@@ -414,6 +425,28 @@
     "status": "unknown"
   },
   {
+    "name": "Луганск",
+    "lat": 48.574,
+    "lng": 39.3078,
+    "population": 425681,
+    "subject": "Луганская Народная Республика",
+    "tier": "regional",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
+  },
+  {
+    "name": "Мариуполь",
+    "lat": 47.0971,
+    "lng": 37.5434,
+    "population": 425681,
+    "subject": "Донецкая Народная Республика",
+    "tier": "regional",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
+  },
+  {
     "name": "Тверь",
     "lat": 56.8578278,
     "lng": 35.9219278,
@@ -475,6 +508,17 @@
     "subject": "Владимирская область",
     "tier": "regional",
     "status": "unknown"
+  },
+  {
+    "name": "Макеевка",
+    "lat": 48.0476,
+    "lng": 37.9635,
+    "population": 340601,
+    "subject": "Донецкая Народная Республика",
+    "tier": "regional",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
   },
   {
     "name": "Симферополь",
@@ -700,6 +744,17 @@
     "subject": "Москва",
     "tier": "regional",
     "status": "unknown"
+  },
+  {
+    "name": "Горловка",
+    "lat": 48.3056,
+    "lng": 38.0531,
+    "population": 256151,
+    "subject": "Донецкая Народная Республика",
+    "tier": "regional",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
   },
   {
     "name": "Мытищи",
@@ -1476,6 +1531,17 @@
     "status": "unknown"
   },
   {
+    "name": "Алчевск",
+    "lat": 48.4689,
+    "lng": 38.7989,
+    "population": 106062,
+    "subject": "Луганская Народная Республика",
+    "tier": "regional",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
+  },
+  {
     "name": "Орехово-Зуево",
     "lat": 55.8,
     "lng": 38.96667,
@@ -1962,6 +2028,17 @@
     "status": "unknown"
   },
   {
+    "name": "Енакиево",
+    "lat": 48.2172,
+    "lng": 37.9169,
+    "population": 76673,
+    "subject": "Донецкая Народная Республика",
+    "tier": "small",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
+  },
+  {
     "name": "Новотроицк",
     "lat": 51.20667,
     "lng": 58.32806,
@@ -1996,6 +2073,17 @@
     "subject": "Хакасия",
     "tier": "small",
     "status": "unknown"
+  },
+  {
+    "name": "Стаханов",
+    "lat": 48.5686,
+    "lng": 38.6436,
+    "population": 75000,
+    "subject": "Луганская Народная Республика",
+    "tier": "small",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
   },
   {
     "name": "Усолье-Сибирское",
@@ -2050,6 +2138,17 @@
     "subject": "Алтайский край",
     "tier": "small",
     "status": "unknown"
+  },
+  {
+    "name": "Красный Луч",
+    "lat": 48.1394,
+    "lng": 38.9375,
+    "population": 72634,
+    "subject": "Луганская Народная Республика",
+    "tier": "small",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
   },
   {
     "name": "Выборг",
@@ -2277,6 +2376,17 @@
     "status": "unknown"
   },
   {
+    "name": "Краснодон",
+    "lat": 48.2922,
+    "lng": 39.7172,
+    "population": 64643,
+    "subject": "Луганская Народная Республика",
+    "tier": "small",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
+  },
+  {
     "name": "Белорецк",
     "lat": 53.96667,
     "lng": 58.4,
@@ -2311,6 +2421,17 @@
     "subject": "Башкортостан",
     "tier": "small",
     "status": "unknown"
+  },
+  {
+    "name": "Свердловск",
+    "lat": 48.0778,
+    "lng": 39.65,
+    "population": 64000,
+    "subject": "Луганская Народная Республика",
+    "tier": "small",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
   },
   {
     "name": "Донской",
@@ -2547,6 +2668,17 @@
     "status": "unknown"
   },
   {
+    "name": "Торез",
+    "lat": 48.024,
+    "lng": 38.643,
+    "population": 58455,
+    "subject": "Донецкая Народная Республика",
+    "tier": "small",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
+  },
+  {
     "name": "Будённовск",
     "lat": 44.79,
     "lng": 44.14,
@@ -2581,6 +2713,17 @@
     "subject": "Московская область",
     "tier": "small",
     "status": "unknown"
+  },
+  {
+    "name": "Харцызск",
+    "lat": 48.0428,
+    "lng": 38.1478,
+    "population": 57760,
+    "subject": "Донецкая Народная Республика",
+    "tier": "small",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
   },
   {
     "name": "Лабинск",
@@ -2797,6 +2940,17 @@
     "subject": "Саратовская область",
     "tier": "small",
     "status": "unknown"
+  },
+  {
+    "name": "Антрацит",
+    "lat": 48.1167,
+    "lng": 39.0833,
+    "population": 55000,
+    "subject": "Луганская Народная Республика",
+    "tier": "small",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
   },
   {
     "name": "Крымск",
@@ -3024,6 +3178,17 @@
     "status": "unknown"
   },
   {
+    "name": "Шахтёрск",
+    "lat": 48.0575,
+    "lng": 38.4383,
+    "population": 48155,
+    "subject": "Донецкая Народная Республика",
+    "tier": "small",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
+  },
+  {
     "name": "Арсеньев",
     "lat": 44.16667,
     "lng": 133.26667,
@@ -3031,6 +3196,17 @@
     "subject": "Приморский край",
     "tier": "small",
     "status": "unknown"
+  },
+  {
+    "name": "Брянка",
+    "lat": 48.5133,
+    "lng": 38.6536,
+    "population": 47910,
+    "subject": "Луганская Народная Республика",
+    "tier": "small",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
   },
   {
     "name": "Салехард",
@@ -3049,6 +3225,17 @@
     "subject": "Новгородская область",
     "tier": "small",
     "status": "unknown"
+  },
+  {
+    "name": "Ровеньки",
+    "lat": 48.0833,
+    "lng": 39.3667,
+    "population": 47750,
+    "subject": "Луганская Народная Республика",
+    "tier": "small",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
   },
   {
     "name": "Рассказово",
@@ -3112,6 +3299,17 @@
     "subject": "Тверская область",
     "tier": "small",
     "status": "unknown"
+  },
+  {
+    "name": "Снежное",
+    "lat": 48.0278,
+    "lng": 38.7722,
+    "population": 45679,
+    "subject": "Донецкая Народная Республика",
+    "tier": "small",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
   },
   {
     "name": "Чусовой",
@@ -3733,6 +3931,17 @@
     "subject": "Московская область",
     "tier": "small",
     "status": "unknown"
+  },
+  {
+    "name": "Первомайск",
+    "lat": 48.6333,
+    "lng": 38.55,
+    "population": 38000,
+    "subject": "Луганская Народная Республика",
+    "tier": "small",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
   },
   {
     "name": "Ртищево",
@@ -4543,6 +4752,17 @@
     "subject": "Иркутская область",
     "tier": "small",
     "status": "unknown"
+  },
+  {
+    "name": "Ясиноватая",
+    "lat": 48.1292,
+    "lng": 37.6894,
+    "population": 30559,
+    "subject": "Донецкая Народная Республика",
+    "tier": "small",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
   },
   {
     "name": "Обь",
