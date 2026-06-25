@@ -180,7 +180,10 @@ function regionHeatVisual(stats) {
     (counts.permanent || 0);
 
   if (!known) {
-    return { color: heatColor(0), fillIntensity: 0 };
+    return {
+      color: heatColor(0),
+      fillIntensity: total > 0 ? 0.22 : 0,
+    };
   }
 
   if (!restricted && (counts.ok || 0) > 0) {
