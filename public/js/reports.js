@@ -165,17 +165,16 @@ export function initReports(allCitiesGetter, onCityUpdated) {
       const dismissBtn = document.createElement("button");
       dismissBtn.type = "button";
       dismissBtn.className = "admin-reports__dismiss";
-      dismissBtn.textContent = "Отметить просмотренным";
+      dismissBtn.textContent = "Удалить";
       dismissBtn.addEventListener("click", async () => {
         dismissBtn.disabled = true;
         try {
           await api(`/api/reports/${report.id}`, {
-            method: "PATCH",
-            body: JSON.stringify({ apply: false }),
+            method: "DELETE",
           });
           await renderAdminReports();
         } catch (err) {
-          alert(err.message || "Не удалось обновить");
+          alert(err.message || "Не удалось удалить");
           dismissBtn.disabled = false;
         }
       });

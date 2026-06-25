@@ -47,6 +47,14 @@ logger = logging.getLogger("latency_lab_map")
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    with _reports_lock:
+        reports = _load_reports()
+        before = len(reports) if isinstance(reports, list) else 0
+        pending = _load_pending_reports()
+        purged = before - len(pending)
+    if purged:
+        logger.info("Purged %s reviewed report(s) on startup", purged)
+
     if (
         BACKUP_INTERVAL_HOURS > 0
         and TELEGRAM_BOT_TOKEN
@@ -194,6 +202,13 @@ def _load_pending_reports() -> list[dict]:
     return pending
 
 
+def _remove_report(reports: list[dict], report_id: str) -> tuple[list[dict], dict | None]:
+    report = next((r for r in reports if r["id"] == report_id), None)
+    if not report:
+        return reports, None
+    return [r for r in reports if r["id"] != report_id], report
+
+
 def _save_reports(reports: list[dict]) -> None:
     _save_json(REPORTS_PATH, reports)
 
@@ -309,6 +324,9 @@ RESTORE_README = """Резервная копия Latency Lab Map
 
 
 def _build_backup_archive() -> tuple[bytes, str, list[str]]:
+    with _reports_lock:
+        _load_pending_reports()
+
     included: list[str] = []
     buf = io.BytesIO()
     with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as archive:
@@ -496,8 +514,23 @@ def create_report(body: ReportRequest) -> dict:
 @app.get("/api/reports")
 def list_reports(request: Request) -> dict:
     _require_admin(request)
-    reports = _load_pending_reports()
+    with _reports_lock:
+        reports = _load_pending_reports()
     return {"reports": reports[:100], "pendingCount": len(reports)}
+
+
+@app.delete("/api/reports/{report_id}")
+def delete_report(report_id: str, request: Request) -> dict:
+    _require_admin(request)
+
+    with _reports_lock:
+        reports = _load_pending_reports()
+        reports, report = _remove_report(reports, report_id)
+        if not report:
+            raise HTTPException(status_code=404, detail="Заявка не найдена")
+        _save_reports(reports)
+
+    return {"ok": True, "report": report}
 
 
 @app.post("/api/admin/backup")
@@ -531,7 +564,7 @@ def review_report(
                 if updated_city:
                     _save_cities(cities)
 
-        reports = [r for r in reports if r["id"] != report_id]
+        reports, _ = _remove_report(reports, report_id)
         _save_reports(reports)
 
     return {"ok": True, "report": report, "city": updated_city}
