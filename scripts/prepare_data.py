@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 """Download and prepare map data for Latency Lab Map."""
 import json
+import sys
 import urllib.request
 from pathlib import Path
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(SCRIPT_DIR))
 from fix_region_borders import fix_region_borders
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = SCRIPT_DIR.parent
 DATA = ROOT / "public" / "data"
 
 CITIES_URL = "https://raw.githubusercontent.com/pensnarik/russian-cities/master/russian-cities.json"
