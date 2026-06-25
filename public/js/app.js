@@ -125,6 +125,19 @@ function cityStatus(city) {
   return city.status || "unknown";
 }
 
+function computeMapFillPercent(cities) {
+  if (!cities.length) return 0;
+  const known = cities.filter((city) => cityStatus(city) !== "unknown").length;
+  return Math.round((known / cities.length) * 100);
+}
+
+function updateLegendFill() {
+  const el = document.getElementById("legend-fill");
+  if (!el) return;
+  const percent = computeMapFillPercent(allCities);
+  el.textContent = `Заполненность карты: ${percent}%`;
+}
+
 function normalizeSubject(subject) {
   return SUBJECT_ALIASES[subject] || subject;
 }
@@ -424,6 +437,7 @@ function applyCityUpdate(updatedCity) {
   regionStatsMap = buildRegionStatsMap(allCities);
   renderCities(map.getZoom());
   refreshRegionStyles();
+  updateLegendFill();
   if (activeCity?.name === updatedCity.name) {
     showCityPopup(updatedCity);
   }
@@ -606,6 +620,7 @@ async function loadData() {
 
   applyMapPanBounds();
   renderCities(map.getZoom());
+  updateLegendFill();
 }
 
 map.on("zoomend", () => {

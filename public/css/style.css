@@ -223,6 +223,14 @@ body {
   background: rgba(59, 130, 246, 0.2);
 }
 
+.legend__fill {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
 .legend__note {
   margin: 0.5rem 0 0;
   color: var(--muted);
