@@ -98,30 +98,6 @@ def _remove_dateline_seam(geom):
     return MultiPolygon(parts)
 
 
-def _dissolve_touching_parts(geom):
-    """Merge adjacent polygon parts to drop internal borders."""
-    parts = _polygon_parts(geom)
-    if len(parts) <= 1:
-        return geom
-
-    west = [p for p in parts if p.bounds[2] <= WEST_OF_DATELINE.bounds[2]]
-    east = [p for p in parts if p.bounds[0] >= EAST_OF_DATELINE.bounds[0]]
-    middle = [p for p in parts if p not in west and p not in east]
-    merged: list = []
-
-    for group in (west, east, middle):
-        if not group:
-            continue
-        united = unary_union(group)
-        merged.extend(_polygon_parts(united))
-
-    if not merged:
-        return geom
-    if len(merged) == 1:
-        return merged[0]
-    return MultiPolygon(merged)
-
-
 def fix_antimeridian(features: list[dict]) -> list[dict]:
     for feature in features:
         geom = shape(feature["geometry"])
@@ -130,7 +106,6 @@ def fix_antimeridian(features: list[dict]) -> list[dict]:
             continue
         shifted = shape(fix_antimeridian_geometry(feature["geometry"]))
         fixed = make_valid(_remove_dateline_seam(shifted))
-        fixed = make_valid(_dissolve_touching_parts(fixed))
         feature["geometry"] = mapping(fixed)
     return features
 

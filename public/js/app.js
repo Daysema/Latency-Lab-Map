@@ -280,8 +280,10 @@ function regionStyleForHeat(stats) {
   const { color, fillIntensity } = regionHeatVisual(stats);
   return {
     fillColor: color,
-    fillOpacity: 0.1 + fillIntensity * 0.5,
-    stroke: false,
+    fillOpacity: 0.08 + fillIntensity * 0.48,
+    color,
+    weight: 1.2 + fillIntensity * 1.4,
+    opacity: 0.55 + fillIntensity * 0.45,
   };
 }
 
@@ -289,8 +291,10 @@ function regionHoverStyle(stats) {
   const { color, fillIntensity } = regionHeatVisual(stats);
   return {
     fillColor: color,
-    fillOpacity: 0.24 + fillIntensity * 0.62,
-    stroke: false,
+    fillOpacity: 0.2 + fillIntensity * 0.58,
+    color,
+    weight: 2.2 + fillIntensity * 1.2,
+    opacity: 1,
   };
 }
 
@@ -595,7 +599,6 @@ async function loadData() {
   const regions = await regionsRes.json();
 
   regionsLayer = L.geoJSON(regions, {
-    smoothFactor: 1.25,
     style: (feature) => regionStyleForHeat(getRegionStats(feature)),
     onEachFeature: onEachRegion,
   }).addTo(map);
