@@ -88,10 +88,9 @@ export function initReports(allCitiesGetter, onCityUpdated) {
   async function renderAdminReports() {
     adminReportsList.innerHTML = "";
     const data = await loadReports();
-    const pending = data.filter((r) => !r.reviewed);
 
-    adminReportsCount.textContent = pending.length
-      ? `Новых сообщений: ${pending.length}`
+    adminReportsCount.textContent = data.length
+      ? `Новых сообщений: ${data.length}`
       : "Новых сообщений нет";
 
     if (!data.length) {
@@ -104,9 +103,7 @@ export function initReports(allCitiesGetter, onCityUpdated) {
 
     for (const report of data) {
       const li = document.createElement("li");
-      li.className = report.reviewed
-        ? "admin-reports__item admin-reports__item--done"
-        : "admin-reports__item";
+      li.className = "admin-reports__item";
 
       const statusText = report.status
         ? STATUS_LABELS[report.status] || report.status
@@ -139,53 +136,51 @@ export function initReports(allCitiesGetter, onCityUpdated) {
         li.appendChild(contactEl);
       }
 
-      if (!report.reviewed) {
-        const actions = document.createElement("div");
-        actions.className = "admin-reports__actions";
+      const actions = document.createElement("div");
+      actions.className = "admin-reports__actions";
 
-        if (report.status) {
-          const applyBtn = document.createElement("button");
-          applyBtn.type = "button";
-          applyBtn.textContent = "Применить на карту";
-          applyBtn.addEventListener("click", async () => {
-            applyBtn.disabled = true;
-            try {
-              const result = await api(`/api/reports/${report.id}`, {
-                method: "PATCH",
-                body: JSON.stringify({ apply: true }),
-              });
-              if (result.city && onCityUpdated) {
-                onCityUpdated(result.city);
-              }
-              await renderAdminReports();
-            } catch (err) {
-              alert(err.message || "Не удалось применить");
-              applyBtn.disabled = false;
-            }
-          });
-          actions.appendChild(applyBtn);
-        }
-
-        const dismissBtn = document.createElement("button");
-        dismissBtn.type = "button";
-        dismissBtn.className = "admin-reports__dismiss";
-        dismissBtn.textContent = "Отметить просмотренным";
-        dismissBtn.addEventListener("click", async () => {
-          dismissBtn.disabled = true;
+      if (report.status) {
+        const applyBtn = document.createElement("button");
+        applyBtn.type = "button";
+        applyBtn.textContent = "Применить на карту";
+        applyBtn.addEventListener("click", async () => {
+          applyBtn.disabled = true;
           try {
-            await api(`/api/reports/${report.id}`, {
+            const result = await api(`/api/reports/${report.id}`, {
               method: "PATCH",
-              body: JSON.stringify({ apply: false }),
+              body: JSON.stringify({ apply: true }),
             });
+            if (result.city && onCityUpdated) {
+              onCityUpdated(result.city);
+            }
             await renderAdminReports();
           } catch (err) {
-            alert(err.message || "Не удалось обновить");
-            dismissBtn.disabled = false;
+            alert(err.message || "Не удалось применить");
+            applyBtn.disabled = false;
           }
         });
-        actions.appendChild(dismissBtn);
-        li.appendChild(actions);
+        actions.appendChild(applyBtn);
       }
+
+      const dismissBtn = document.createElement("button");
+      dismissBtn.type = "button";
+      dismissBtn.className = "admin-reports__dismiss";
+      dismissBtn.textContent = "Отметить просмотренным";
+      dismissBtn.addEventListener("click", async () => {
+        dismissBtn.disabled = true;
+        try {
+          await api(`/api/reports/${report.id}`, {
+            method: "PATCH",
+            body: JSON.stringify({ apply: false }),
+          });
+          await renderAdminReports();
+        } catch (err) {
+          alert(err.message || "Не удалось обновить");
+          dismissBtn.disabled = false;
+        }
+      });
+      actions.appendChild(dismissBtn);
+      li.appendChild(actions);
 
       adminReportsList.appendChild(li);
     }

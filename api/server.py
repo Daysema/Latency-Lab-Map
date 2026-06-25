@@ -184,6 +184,16 @@ def _load_reports() -> list[dict]:
     return _load_json(REPORTS_PATH, [])
 
 
+def _load_pending_reports() -> list[dict]:
+    reports = _load_reports()
+    if not isinstance(reports, list):
+        reports = []
+    pending = [r for r in reports if not r.get("reviewed")]
+    if len(pending) != len(reports):
+        _save_reports(pending)
+    return pending
+
+
 def _save_reports(reports: list[dict]) -> None:
     _save_json(REPORTS_PATH, reports)
 
@@ -448,13 +458,10 @@ def create_report(body: ReportRequest) -> dict:
         "message": body.message.strip(),
         "contact": body.contact.strip() if body.contact else None,
         "createdAt": datetime.now(timezone.utc).isoformat(),
-        "reviewed": False,
     }
 
     with _reports_lock:
-        reports = _load_reports()
-        if not isinstance(reports, list):
-            reports = []
+        reports = _load_pending_reports()
         reports.insert(0, report)
         _save_reports(reports[:500])
 
@@ -489,9 +496,8 @@ def create_report(body: ReportRequest) -> dict:
 @app.get("/api/reports")
 def list_reports(request: Request) -> dict:
     _require_admin(request)
-    reports = _load_reports()
-    pending = [r for r in reports if not r.get("reviewed")]
-    return {"reports": reports[:100], "pendingCount": len(pending)}
+    reports = _load_pending_reports()
+    return {"reports": reports[:100], "pendingCount": len(reports)}
 
 
 @app.post("/api/admin/backup")
@@ -507,9 +513,7 @@ def review_report(
     _require_admin(request)
 
     with _reports_lock:
-        reports = _load_reports()
-        if not isinstance(reports, list):
-            reports = []
+        reports = _load_pending_reports()
         report = next((r for r in reports if r["id"] == report_id), None)
         if not report:
             raise HTTPException(status_code=404, detail="Заявка не найдена")
@@ -527,8 +531,7 @@ def review_report(
                 if updated_city:
                     _save_cities(cities)
 
-        report["reviewed"] = True
-        report["reviewedAt"] = datetime.now(timezone.utc).isoformat()
+        reports = [r for r in reports if r["id"] != report_id]
         _save_reports(reports)
 
     return {"ok": True, "report": report, "city": updated_city}
