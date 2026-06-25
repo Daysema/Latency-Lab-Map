@@ -3,12 +3,11 @@ import hmac
 import json
 import logging
 import os
-import urllib.parse
-import urllib.request
 import uuid
 from datetime import date, datetime, timezone
 from pathlib import Path
 
+import requests
 from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -19,6 +18,7 @@ ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "")
 SESSION_SECRET = os.environ.get("SESSION_SECRET", "change-me-in-production")
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
+TELEGRAM_PROXY = os.environ.get("TELEGRAM_PROXY", "").strip()
 SESSION_COOKIE = "llm_admin_session"
 SESSION_VALUE = "authenticated"
 
@@ -126,24 +126,35 @@ def _save_reports(reports: list[dict]) -> None:
     _save_json(REPORTS_PATH, reports)
 
 
+def _telegram_proxies() -> dict[str, str] | None:
+    if not TELEGRAM_PROXY:
+        return None
+    return {"http": TELEGRAM_PROXY, "https": TELEGRAM_PROXY}
+
+
 def _send_telegram(text: str) -> bool:
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         return False
 
-    payload = urllib.parse.urlencode(
-        {
-            "chat_id": TELEGRAM_CHAT_ID,
-            "text": text,
-            "disable_web_page_preview": "true",
-        }
-    ).encode("utf-8")
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    req = urllib.request.Request(url, data=payload, method="POST")
     try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            if resp.status >= 400:
-                logger.warning("Telegram API returned status %s", resp.status)
-                return False
+        response = requests.post(
+            url,
+            data={
+                "chat_id": TELEGRAM_CHAT_ID,
+                "text": text,
+                "disable_web_page_preview": True,
+            },
+            proxies=_telegram_proxies(),
+            timeout=20,
+        )
+        if not response.ok:
+            logger.warning(
+                "Telegram API returned status %s: %s",
+                response.status_code,
+                response.text[:200],
+            )
+            return False
         return True
     except Exception:
         logger.exception("Failed to send Telegram notification")

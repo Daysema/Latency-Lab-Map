@@ -165,7 +165,10 @@ docker compose up -d
 ```
 TELEGRAM_BOT_TOKEN=123456:ABC...
 TELEGRAM_CHAT_ID=ваш_chat_id
+TELEGRAM_PROXY=socks5://user:pass@host:1080
 ```
+
+Если `api.telegram.org` с сервера не открывается напрямую, укажите прокси в `TELEGRAM_PROXY` (HTTP, HTTPS или SOCKS5).
 
 Просмотр очереди (только для админа после входа):
 
