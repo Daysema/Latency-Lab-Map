@@ -599,6 +599,8 @@ async function loadData() {
   const regions = await regionsRes.json();
 
   regionsLayer = L.geoJSON(regions, {
+    smoothFactor: 0,
+    noClip: true,
     style: (feature) => regionStyleForHeat(getRegionStats(feature)),
     onEachFeature: onEachRegion,
   }).addTo(map);
