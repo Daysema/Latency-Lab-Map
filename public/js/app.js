@@ -78,7 +78,7 @@ const RUSSIA_INITIAL_BOUNDS = [
 ];
 
 /** Extra pan room beyond region borders (degrees) */
-const MAP_PAN_PADDING = { lat: 3, lng: 4 };
+const MAP_PAN_PADDING = { lat: 6, lng: 8 };
 
 const map = L.map("map", {
   minZoom: MIN_ZOOM,
