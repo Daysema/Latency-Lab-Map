@@ -58,7 +58,7 @@ class UpdateCityRequest(BaseModel):
 class ReportRequest(BaseModel):
     city: str = Field(min_length=1, max_length=120)
     status: str | None = None
-    message: str = Field(min_length=10, max_length=2000)
+    message: str = Field(default="", max_length=2000)
     contact: str | None = Field(default=None, max_length=200)
 
 
@@ -261,7 +261,7 @@ def create_report(body: ReportRequest) -> dict:
         "📍 Новое сообщение о ограничении\n"
         f"Город: {body.city}"
         f"{status_line}\n"
-        f"Сообщение: {body.message}"
+        f"Сообщение: {body.message.strip() or '—'}"
         f"{contact_line}\n"
         f"ID: {report['id']}"
     )

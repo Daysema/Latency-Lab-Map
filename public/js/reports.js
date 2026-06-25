@@ -100,7 +100,7 @@ export function initReports(allCitiesGetter, onCityUpdated) {
 
       const msgEl = document.createElement("p");
       msgEl.className = "admin-reports__message";
-      msgEl.textContent = report.message;
+      msgEl.textContent = report.message || "—";
       li.appendChild(msgEl);
 
       if (report.contact) {
