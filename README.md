@@ -10,9 +10,172 @@
 - Поиск города по названию
 - Тёмная тема
 
-## Быстрый старт
+---
 
-### 1. Подготовить данные
+## Установка на Ubuntu Server
+
+Ниже — полная пошаговая инструкция: от чистого сервера до работающего сайта.
+
+### Требования
+
+- Ubuntu 22.04 / 24.04 (или другой Debian-based дистрибутив)
+- Минимум 1 ГБ RAM, 2 ГБ диска
+- Открытый порт **8080** (или **80**, если измените в `docker-compose.yml`)
+- Доступ по SSH
+
+### Шаг 1. Подключиться к серверу
+
+```bash
+ssh user@IP_ВАШЕГО_СЕРВЕРА
+```
+
+### Шаг 2. Обновить систему и установить Git
+
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y git ca-certificates curl
+```
+
+### Шаг 3. Установить Docker
+
+Официальный способ установки Docker Engine на Ubuntu:
+
+```bash
+# Удалить старые версии (если были)
+sudo apt remove -y docker docker-engine docker.io containerd runc 2>/dev/null
+
+# Добавить репозиторий Docker
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${VERSION_CODENAME:-$VERSION_ID}") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Установить Docker и плагин Compose
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Проверить установку
+sudo docker --version
+sudo docker compose version
+```
+
+Добавить текущего пользователя в группу `docker` (чтобы не писать `sudo` каждый раз):
+
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+Проверка, что Docker работает:
+
+```bash
+docker run --rm hello-world
+```
+
+### Шаг 4. Скопировать проект с GitHub
+
+```bash
+cd ~
+git clone https://github.com/Daysema/Latency-Lab-Map.git
+cd Latency-Lab-Map
+```
+
+> Данные карты (`cities.json`, `regions.geojson`) уже включены в репозиторий — отдельно ничего скачивать не нужно.
+
+### Шаг 5. Запустить сайт
+
+```bash
+docker compose up --build -d
+```
+
+Проверить, что контейнер запущен:
+
+```bash
+docker compose ps
+docker compose logs -f
+```
+
+(`Ctrl+C` — выйти из просмотра логов, контейнер продолжит работать.)
+
+Сайт будет доступен по адресу:
+
+```
+http://IP_ВАШЕГО_СЕРВЕРА:8080
+```
+
+### Шаг 6. Открыть порт в файрволе (если включён ufw)
+
+```bash
+sudo ufw allow 8080/tcp
+sudo ufw status
+```
+
+Если нужен стандартный порт 80, откройте его и измените проброс в `docker-compose.yml`:
+
+```yaml
+ports:
+  - "80:80"
+```
+
+Затем перезапустите:
+
+```bash
+docker compose down
+docker compose up -d
+```
+
+---
+
+## Полезные команды на сервере
+
+### Остановить сайт
+
+```bash
+cd ~/Latency-Lab-Map
+docker compose down
+```
+
+### Перезапустить
+
+```bash
+cd ~/Latency-Lab-Map
+docker compose restart
+```
+
+### Обновить до последней версии с GitHub
+
+```bash
+cd ~/Latency-Lab-Map
+git pull
+docker compose up --build -d
+```
+
+### Посмотреть логи
+
+```bash
+cd ~/Latency-Lab-Map
+docker compose logs -f
+```
+
+### Автозапуск при перезагрузке сервера
+
+Docker обычно стартует сам (`systemctl enable docker`). Контейнер поднимется автоматически благодаря `restart: unless-stopped` в `docker-compose.yml`.
+
+Проверить:
+
+```bash
+sudo systemctl enable docker
+sudo systemctl status docker
+```
+
+---
+
+## Быстрый старт (локально, Windows / macOS)
+
+### 1. Подготовить данные (опционально — для обновления городов)
 
 ```bash
 python scripts/prepare_data.py
@@ -24,30 +187,32 @@ python scripts/prepare_data.py
 docker compose up --build
 ```
 
-Сайт будет доступен по адресу: **http://localhost:8080**
+Сайт: **http://localhost:8080**
 
-## Локальная разработка без Docker
-
-После подготовки данных можно открыть `public/index.html` через любой статический сервер:
+### Локально без Docker
 
 ```bash
 cd public
 python -m http.server 8000
 ```
 
-## Структура
+Сайт: **http://localhost:8000**
+
+---
+
+## Структура проекта
 
 ```
-├── docker-compose.yml
-├── Dockerfile
-├── nginx.conf
+├── docker-compose.yml   # запуск контейнера
+├── Dockerfile           # образ nginx со статикой
+├── nginx.conf           # настройки веб-сервера
 ├── public/
 │   ├── index.html
 │   ├── css/style.css
 │   ├── js/app.js
-│   └── data/          # cities.json, regions.geojson (генерируются скриптом)
+│   └── data/            # cities.json, regions.geojson
 └── scripts/
-    └── prepare_data.py
+    └── prepare_data.py  # скрипт обновления данных
 ```
 
 ## Источники данных
