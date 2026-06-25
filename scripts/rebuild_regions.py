@@ -6,7 +6,6 @@ from pathlib import Path
 
 from fix_region_borders import (
     fix_antimeridian,
-    fix_federal_city_boundaries,
     fix_region_borders,
 )
 
@@ -74,13 +73,6 @@ def main() -> None:
                 )
 
     fix_region_borders(features)
-    cities_path = DATA / "cities.json"
-    cities = (
-        json.loads(cities_path.read_text(encoding="utf-8"))
-        if cities_path.exists()
-        else []
-    )
-    fix_federal_city_boundaries(features, cities)
     fix_antimeridian(features)
     regions = {"type": "FeatureCollection", "features": features}
     (DATA / "regions.geojson").write_text(

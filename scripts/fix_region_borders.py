@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 from shapely import make_valid
-from shapely.geometry import MultiPolygon, Point, mapping, shape
+from shapely.geometry import MultiPolygon, mapping, shape
 from shapely.ops import snap, unary_union
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,14 +31,9 @@ NEIGHBORS = {
     ),
 }
 
-SNAP_TOLERANCE = 0.012  # ~1 km at these latitudes
 MIN_OVERLAP = 1e-9
-CITY_TRANSFER_RADIUS = 0.07  # ~7 km around misplaced oblast cities
 
-FEDERAL_TO_OBLAST = {
-    "Москва": "Московская область",
-    "Санкт-Петербург": "Ленинградская область",
-}
+SNAP_TOLERANCE = 0.012  # ~1 km at these latitudes
 
 
 def _shift_coord(lon: float, lat: float) -> list[float]:
@@ -143,51 +138,9 @@ def fix_region_borders(features: list[dict]) -> list[dict]:
     return features
 
 
-def fix_federal_city_boundaries(
-    features: list[dict], cities: list[dict]
-) -> list[dict]:
-    """Move oblast cities out of oversized federal-city polygons (e.g. Podolsk)."""
-    geoms = _load_geoms(features)
-
-    for federal, oblast in FEDERAL_TO_OBLAST.items():
-        if federal not in geoms or oblast not in geoms:
-            continue
-
-        federal_geom = geoms[federal]
-        oblast_geom = geoms[oblast]
-        transfer_parts = []
-
-        for city in cities:
-            if city.get("subject") != oblast:
-                continue
-            point = Point(city["lng"], city["lat"])
-            if federal_geom.contains(point) and not oblast_geom.contains(point):
-                zone = point.buffer(CITY_TRANSFER_RADIUS)
-                part = federal_geom.intersection(zone)
-                if not part.is_empty and part.area > MIN_OVERLAP:
-                    transfer_parts.append(part)
-
-        if not transfer_parts:
-            continue
-
-        transfer = unary_union(transfer_parts)
-        geoms[federal] = make_valid(federal_geom.difference(transfer))
-        geoms[oblast] = make_valid(oblast_geom.union(transfer))
-
-    _apply_geoms(features, geoms)
-    return features
-
-
 def main() -> None:
     data = json.loads(REGIONS_PATH.read_text(encoding="utf-8"))
-    cities_path = ROOT / "public" / "data" / "cities.json"
-    cities = (
-        json.loads(cities_path.read_text(encoding="utf-8"))
-        if cities_path.exists()
-        else []
-    )
     fix_region_borders(data["features"])
-    fix_federal_city_boundaries(data["features"], cities)
     fix_antimeridian(data["features"])
     REGIONS_PATH.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     print(f"Fixed borders in {REGIONS_PATH}")
