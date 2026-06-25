@@ -1,3 +1,5 @@
+import { initAdmin, isAdmin, onAdminChange, updateCityStatus } from "./admin.js";
+
 const STATUS_LABELS = {
   unknown: "Нет информации",
   ok: "Нет ограничений",
@@ -85,10 +87,16 @@ const zoomLevelEl = document.getElementById("zoom-level");
 const searchInput = document.getElementById("city-search");
 const searchResults = document.getElementById("search-results");
 const popup = document.getElementById("city-popup");
+const popupAdmin = document.getElementById("popup-admin");
+const popupStatusSelect = document.getElementById("popup-status-select");
+const popupSaveBtn = document.getElementById("popup-save");
+const popupAdminError = document.getElementById("popup-admin-error");
 
 let allCities = [];
 let cityMarkers = new Map();
 let regionStatusMap = {};
+let regionsLayer = null;
+let activeCity = null;
 
 function cityStatus(city) {
   return city.status || "unknown";
@@ -180,6 +188,7 @@ function createCityIcon(city) {
 }
 
 function showCityPopup(city) {
+  activeCity = city;
   document.getElementById("popup-name").textContent = city.name;
   document.getElementById("popup-subject").textContent = city.subject || "—";
   document.getElementById("popup-population").textContent = formatPopulation(
@@ -190,11 +199,49 @@ function showCityPopup(city) {
   document.getElementById("popup-updated").textContent = formatStatusUpdatedAt(
     city.statusUpdatedAt
   );
+
+  if (isAdmin()) {
+    popupAdmin.hidden = false;
+    popupStatusSelect.value = cityStatus(city);
+    popupAdminError.hidden = true;
+  } else {
+    popupAdmin.hidden = true;
+  }
+
   popup.hidden = false;
 }
 
 function hideCityPopup() {
   popup.hidden = true;
+  activeCity = null;
+  popupAdminError.hidden = true;
+}
+
+function refreshRegionStyles() {
+  if (!regionsLayer) return;
+  regionsLayer.eachLayer((layer) => {
+    const status = getRegionStatus(layer.feature);
+    layer.setStyle(regionStyleForStatus(status));
+    const tooltip = layer.getTooltip();
+    if (tooltip) {
+      tooltip.setContent(
+        `${layer.feature.properties.name}<br><span style="opacity:0.85">${STATUS_LABELS[status]}</span>`
+      );
+    }
+  });
+}
+
+function applyCityUpdate(updatedCity) {
+  const index = allCities.findIndex((c) => c.name === updatedCity.name);
+  if (index !== -1) {
+    allCities[index] = updatedCity;
+  }
+  regionStatusMap = buildRegionStatusMap(allCities);
+  renderCities(map.getZoom());
+  refreshRegionStyles();
+  if (activeCity?.name === updatedCity.name) {
+    showCityPopup(updatedCity);
+  }
 }
 
 function cityVisibleAtZoom(city, zoom) {
@@ -311,7 +358,7 @@ async function loadData() {
   regionStatusMap = buildRegionStatusMap(allCities);
   const regions = await regionsRes.json();
 
-  L.geoJSON(regions, {
+  regionsLayer = L.geoJSON(regions, {
     style: (feature) => regionStyleForStatus(getRegionStatus(feature)),
     onEachFeature: onEachRegion,
   }).addTo(map);
@@ -331,10 +378,40 @@ document
   .querySelector(".city-popup__close")
   .addEventListener("click", hideCityPopup);
 
+popupSaveBtn.addEventListener("click", async () => {
+  if (!activeCity || !isAdmin()) return;
+
+  popupAdminError.hidden = true;
+  popupSaveBtn.disabled = true;
+
+  try {
+    const updatedCity = await updateCityStatus(
+      activeCity.name,
+      popupStatusSelect.value
+    );
+    applyCityUpdate(updatedCity);
+  } catch (err) {
+    popupAdminError.textContent = err.message || "Не удалось сохранить";
+    popupAdminError.hidden = false;
+  } finally {
+    popupSaveBtn.disabled = false;
+  }
+});
+
+onAdminChange((authed) => {
+  if (!authed) {
+    popupAdmin.hidden = true;
+    return;
+  }
+  if (activeCity && !popup.hidden) {
+    showCityPopup(activeCity);
+  }
+});
+
 setupSearch();
 zoomLevelEl.textContent = String(map.getZoom());
 
-loadData().catch((err) => {
+initAdmin().then(() => loadData()).catch((err) => {
   console.error(err);
   alert("Ошибка загрузки карты. Проверьте, что данные подготовлены (scripts/prepare_data.py).");
 });

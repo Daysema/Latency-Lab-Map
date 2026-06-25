@@ -3,4 +3,18 @@ services:
     build: .
     ports:
       - "8080:80"
+    volumes:
+      - ./public/data:/usr/share/nginx/html/data
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  api:
+    build: ./api
+    environment:
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      SESSION_SECRET: ${SESSION_SECRET:-change-me-in-production}
+      CITIES_PATH: /data/cities.json
+    volumes:
+      - ./public/data:/data
     restart: unless-stopped
