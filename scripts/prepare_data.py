@@ -7,7 +7,7 @@ from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
-from fix_region_borders import fix_region_borders
+from fix_region_borders import fix_federal_city_boundaries, fix_region_borders
 
 ROOT = SCRIPT_DIR.parent
 DATA = ROOT / "public" / "data"
@@ -162,6 +162,7 @@ def main() -> None:
     regions = prepare_regions(regions_raw)
     regions["features"].extend(prepare_dnr_lnr_regions(regions_raw))
     fix_region_borders(regions["features"])
+    fix_federal_city_boundaries(regions["features"], cities)
     (DATA / "regions.geojson").write_text(
         json.dumps(regions, ensure_ascii=False), encoding="utf-8"
     )
