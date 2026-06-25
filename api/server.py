@@ -20,6 +20,8 @@ ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "")
 SESSION_SECRET = os.environ.get("SESSION_SECRET", "change-me-in-production")
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
+TELEGRAM_TOPIC_ID = os.environ.get("TELEGRAM_TOPIC_ID", "").strip()
+TELEGRAM_TOPIC_ID_OPS = os.environ.get("TELEGRAM_TOPIC_ID_OPS", "").strip()
 TELEGRAM_PROXY = os.environ.get("TELEGRAM_PROXY", "").strip()
 SESSION_COOKIE = "llm_admin_session"
 SESSION_VALUE = "authenticated"
@@ -123,6 +125,13 @@ def _load_json(path: Path, default):
         )
         path.replace(backup)
         logger.error("Corrupt JSON in %s, backed up to %s", path, backup)
+        _send_telegram(
+            f"⚠️ Ошибка данных на карте\n"
+            f"Файл: {path.name}\n"
+            f"Резервная копия: {backup.name}\n"
+            f"Использованы значения по умолчанию.",
+            topic="ops",
+        )
         return default
 
 
@@ -152,25 +161,47 @@ def _save_reports(reports: list[dict]) -> None:
     _save_json(REPORTS_PATH, reports)
 
 
+def _parse_topic_id(value: str) -> int | None:
+    if not value:
+        return None
+    try:
+        topic_id = int(value)
+    except ValueError:
+        logger.warning("Invalid Telegram topic id: %r", value)
+        return None
+    if topic_id <= 0:
+        logger.warning("Telegram topic id must be positive: %s", topic_id)
+        return None
+    return topic_id
+
+
 def _telegram_proxies() -> dict[str, str] | None:
     if not TELEGRAM_PROXY:
         return None
     return {"http": TELEGRAM_PROXY, "https": TELEGRAM_PROXY}
 
 
-def _send_telegram(text: str) -> bool:
+def _send_telegram(text: str, *, topic: str = "reports") -> bool:
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         return False
 
+    thread_id = _parse_topic_id(
+        TELEGRAM_TOPIC_ID_OPS if topic == "ops" else TELEGRAM_TOPIC_ID
+    )
+
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    payload: dict[str, object] = {
+        "chat_id": TELEGRAM_CHAT_ID,
+        "text": text,
+        "disable_web_page_preview": True,
+    }
+    if thread_id is not None:
+        payload["message_thread_id"] = thread_id
+
     try:
         response = requests.post(
             url,
-            data={
-                "chat_id": TELEGRAM_CHAT_ID,
-                "text": text,
-                "disable_web_page_preview": True,
-            },
+            data=payload,
             proxies=_telegram_proxies(),
             timeout=20,
         )
@@ -185,6 +216,13 @@ def _send_telegram(text: str) -> bool:
     except Exception:
         logger.exception("Failed to send Telegram notification")
         return False
+
+
+def _report_telegram_topic(status: str | None) -> str:
+    """Уточнения и исправления карты — в отдельный топик."""
+    if status in (None, "ok"):
+        return "ops"
+    return "reports"
 
 
 @app.get("/api/cities")
@@ -288,15 +326,24 @@ def create_report(body: ReportRequest) -> dict:
     if body.contact:
         contact_line = f"\nКонтакт: {body.contact}"
 
+    topic = _report_telegram_topic(body.status)
+    if topic == "ops":
+        if body.status == "ok":
+            headline = "✏️ Уточнение: на карте ошибка (нет ограничений)"
+        else:
+            headline = "❓ Уточнение по городу"
+    else:
+        headline = "📍 Новое сообщение об ограничении"
+
     telegram_text = (
-        "📍 Новое сообщение о ограничении\n"
+        f"{headline}\n"
         f"Город: {body.city}"
         f"{status_line}\n"
         f"Сообщение: {body.message.strip() or '—'}"
         f"{contact_line}\n"
         f"ID: {report['id']}"
     )
-    telegram_sent = _send_telegram(telegram_text)
+    telegram_sent = _send_telegram(telegram_text, topic=topic)
 
     return {"ok": True, "id": report["id"], "telegramSent": telegram_sent}
 

@@ -219,8 +219,16 @@ docker compose logs -f caddy
 ```
 TELEGRAM_BOT_TOKEN=123456:ABC...
 TELEGRAM_CHAT_ID=ваш_chat_id
+TELEGRAM_TOPIC_ID=12
+TELEGRAM_TOPIC_ID_OPS=34
 TELEGRAM_PROXY=socks5://user:pass@host:1080
 ```
+
+Если группа с **темами** (Forum), укажите `TELEGRAM_TOPIC_ID` для сообщений об ограничениях и `TELEGRAM_TOPIC_ID_OPS` для уточнений, исправлений карты и ошибок сервера. ID темы — это `message_thread_id` (узнать через @getidsbot: перешлите любое сообщение из нужной темы).
+
+Маршрутизация заявок с сайта:
+- статус «временные/постоянные ограничения» → `TELEGRAM_TOPIC_ID`
+- «не знаю» или «нет ограничений» (исправление ошибки) → `TELEGRAM_TOPIC_ID_OPS`
 
 Если `api.telegram.org` с сервера не открывается напрямую, укажите прокси в `TELEGRAM_PROXY` (HTTP, HTTPS или SOCKS5).
 
