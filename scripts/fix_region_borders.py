@@ -38,6 +38,35 @@ FEDERAL_TO_OBLAST = {
 }
 
 
+def _shift_coord(lon: float, lat: float) -> list[float]:
+    if lon < 0:
+        lon += 360
+    return [lon, lat]
+
+
+def _shift_coords_recursive(coords):
+    if isinstance(coords[0], (int, float)):
+        return _shift_coord(coords[0], coords[1])
+    return [_shift_coords_recursive(part) for part in coords]
+
+
+def fix_antimeridian_geometry(geometry: dict) -> dict:
+    return {
+        "type": geometry["type"],
+        "coordinates": _shift_coords_recursive(geometry["coordinates"]),
+    }
+
+
+def fix_antimeridian(features: list[dict]) -> list[dict]:
+    for feature in features:
+        geom = shape(feature["geometry"])
+        minx, _, maxx, _ = geom.bounds
+        if maxx - minx <= 180:
+            continue
+        feature["geometry"] = fix_antimeridian_geometry(feature["geometry"])
+    return features
+
+
 def _load_geoms(features: list[dict]) -> dict[str, object]:
     return {
         feature["properties"]["name"]: make_valid(shape(feature["geometry"]))
@@ -136,6 +165,7 @@ def main() -> None:
     )
     fix_region_borders(data["features"])
     fix_federal_city_boundaries(data["features"], cities)
+    fix_antimeridian(data["features"])
     REGIONS_PATH.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     print(f"Fixed borders in {REGIONS_PATH}")
 

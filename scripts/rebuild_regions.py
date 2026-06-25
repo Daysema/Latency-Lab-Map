@@ -4,7 +4,11 @@ import json
 import urllib.request
 from pathlib import Path
 
-from fix_region_borders import fix_federal_city_boundaries, fix_region_borders
+from fix_region_borders import (
+    fix_antimeridian,
+    fix_federal_city_boundaries,
+    fix_region_borders,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
@@ -77,6 +81,7 @@ def main() -> None:
         else []
     )
     fix_federal_city_boundaries(features, cities)
+    fix_antimeridian(features)
     regions = {"type": "FeatureCollection", "features": features}
     (DATA / "regions.geojson").write_text(
         json.dumps(regions, ensure_ascii=False), encoding="utf-8"
