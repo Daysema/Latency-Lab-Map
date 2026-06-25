@@ -96,6 +96,10 @@
       <div><dt>Население</dt><dd id="popup-population"></dd></div>
       <div><dt>Доступность</dt><dd id="popup-status"></dd></div>
       <div><dt>Обновлено</dt><dd id="popup-updated"></dd></div>
+      <div id="popup-comment-row" class="city-popup__comment-row" hidden>
+        <dt>Комментарий</dt>
+        <dd id="popup-comment"></dd>
+      </div>
     </dl>
     <div id="popup-admin" class="popup-admin" hidden>
       <label for="popup-status-select">Изменить доступность</label>
@@ -106,6 +110,13 @@
         <option value="temp_frequent">Временные ограничения (частые)</option>
         <option value="permanent">Постоянные ограничения</option>
       </select>
+      <label for="popup-comment-input">Комментарий</label>
+      <textarea
+        id="popup-comment-input"
+        rows="2"
+        maxlength="500"
+        placeholder="Заметка, видная всем на карте…"
+      ></textarea>
       <button type="button" id="popup-save" class="popup-admin__save">Сохранить</button>
       <p id="popup-admin-error" class="popup-admin__error" hidden></p>
     </div>

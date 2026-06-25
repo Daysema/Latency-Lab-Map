@@ -58,6 +58,7 @@ class LoginRequest(BaseModel):
 class UpdateCityRequest(BaseModel):
     name: str = Field(min_length=1)
     status: str
+    comment: str | None = Field(default=None, max_length=500)
 
 
 class ReportRequest(BaseModel):
@@ -274,6 +275,8 @@ def update_city(body: UpdateCityRequest, request: Request) -> dict:
             if city["name"] == body.name:
                 city["status"] = body.status
                 city["statusUpdatedAt"] = date.today().isoformat()
+                comment = (body.comment or "").strip()
+                city["comment"] = comment or None
                 updated = city
                 break
 

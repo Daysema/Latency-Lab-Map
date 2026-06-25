@@ -310,6 +310,32 @@ body {
   font-size: 0.85rem;
 }
 
+.city-popup__comment-row dd {
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.popup-admin textarea {
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+  resize: vertical;
+  min-height: 2.5rem;
+}
+
+.popup-admin textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
 .leaflet-control-zoom a {
   background: var(--surface) !important;
   color: var(--text) !important;

@@ -50,6 +50,7 @@ def prepare_cities(raw: list) -> list:
                 "tier": tier(pop, name),
                 "status": "unknown",
                 "statusUpdatedAt": None,
+                "comment": None,
             }
         )
     cities.sort(key=lambda c: (-c["population"], c["name"]))

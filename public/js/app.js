@@ -107,6 +107,9 @@ const searchResults = document.getElementById("search-results");
 const popup = document.getElementById("city-popup");
 const popupAdmin = document.getElementById("popup-admin");
 const popupStatusSelect = document.getElementById("popup-status-select");
+const popupCommentInput = document.getElementById("popup-comment-input");
+const popupCommentRow = document.getElementById("popup-comment-row");
+const popupCommentEl = document.getElementById("popup-comment");
 const popupSaveBtn = document.getElementById("popup-save");
 const popupAdminError = document.getElementById("popup-admin-error");
 const regionPopup = document.getElementById("region-popup");
@@ -344,9 +347,19 @@ function showCityPopup(city) {
     city.statusUpdatedAt
   );
 
+  const comment = (city.comment || "").trim();
+  if (comment) {
+    popupCommentEl.textContent = comment;
+    popupCommentRow.hidden = false;
+  } else {
+    popupCommentEl.textContent = "";
+    popupCommentRow.hidden = true;
+  }
+
   if (isAdmin()) {
     popupAdmin.hidden = false;
     popupStatusSelect.value = cityStatus(city);
+    popupCommentInput.value = comment;
     popupAdminError.hidden = true;
   } else {
     popupAdmin.hidden = true;
@@ -609,7 +622,8 @@ popupSaveBtn.addEventListener("click", async () => {
   try {
     const updatedCity = await updateCityStatus(
       activeCity.name,
-      popupStatusSelect.value
+      popupStatusSelect.value,
+      popupCommentInput.value
     );
     applyCityUpdate(updatedCity);
     popupAdminError.hidden = true;

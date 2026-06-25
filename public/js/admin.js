@@ -77,10 +77,14 @@ export async function logout() {
   setAuthenticated(false);
 }
 
-export async function updateCityStatus(name, status) {
+export async function updateCityStatus(name, status, comment) {
   const data = await api("/api/cities", {
     method: "PATCH",
-    body: JSON.stringify({ name, status }),
+    body: JSON.stringify({
+      name,
+      status,
+      comment: comment?.trim() || null,
+    }),
   });
   return data.city;
 }
