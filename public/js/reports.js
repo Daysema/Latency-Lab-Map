@@ -1,6 +1,27 @@
-import { api, isAdmin } from "./admin.js";
+import { api, isAdmin, onAdminChange } from "./admin.js";
 
-export function initReports(allCitiesGetter) {
+const STATUS_LABELS = {
+  unknown: "Нет информации",
+  ok: "Нет ограничений",
+  temp_rare: "Временные (редкие)",
+  temp_frequent: "Временные (частые)",
+  permanent: "Постоянные ограничения",
+};
+
+function formatDate(iso) {
+  if (!iso) return "—";
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+  return new Intl.DateTimeFormat("ru-RU", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(date);
+}
+
+export function initReports(allCitiesGetter, onCityUpdated) {
   const dialog = document.getElementById("report-dialog");
   const form = document.getElementById("report-form");
   const openBtn = document.getElementById("report-open");
@@ -8,6 +29,10 @@ export function initReports(allCitiesGetter) {
   const cityResults = document.getElementById("report-city-results");
   const errorEl = document.getElementById("report-error");
   const successEl = document.getElementById("report-success");
+  const adminReportsDialog = document.getElementById("admin-reports");
+  const adminReportsToggle = document.getElementById("admin-reports-toggle");
+  const adminReportsList = document.getElementById("admin-reports-list");
+  const adminReportsCount = document.getElementById("admin-reports-count");
   let selectedCity = "";
 
   function hide() {
@@ -27,10 +52,138 @@ export function initReports(allCitiesGetter) {
     cityInput.focus();
   }
 
+  function hideAdminReports() {
+    adminReportsDialog.hidden = true;
+  }
+
+  async function renderAdminReports() {
+    adminReportsList.innerHTML = "";
+    const data = await loadReports();
+    const pending = data.filter((r) => !r.reviewed);
+
+    adminReportsCount.textContent = pending.length
+      ? `Новых сообщений: ${pending.length}`
+      : "Новых сообщений нет";
+
+    if (!data.length) {
+      const li = document.createElement("li");
+      li.className = "admin-reports__empty";
+      li.textContent = "Очередь пуста";
+      adminReportsList.appendChild(li);
+      return;
+    }
+
+    for (const report of data) {
+      const li = document.createElement("li");
+      li.className = report.reviewed
+        ? "admin-reports__item admin-reports__item--done"
+        : "admin-reports__item";
+
+      const statusText = report.status
+        ? STATUS_LABELS[report.status] || report.status
+        : "Статус не указан";
+
+      const head = document.createElement("div");
+      head.className = "admin-reports__meta";
+      const cityEl = document.createElement("strong");
+      cityEl.textContent = report.city;
+      const dateEl = document.createElement("span");
+      dateEl.textContent = formatDate(report.createdAt);
+      head.appendChild(cityEl);
+      head.appendChild(dateEl);
+      li.appendChild(head);
+
+      const statusEl = document.createElement("div");
+      statusEl.className = "admin-reports__status";
+      statusEl.textContent = statusText;
+      li.appendChild(statusEl);
+
+      const msgEl = document.createElement("p");
+      msgEl.className = "admin-reports__message";
+      msgEl.textContent = report.message;
+      li.appendChild(msgEl);
+
+      if (report.contact) {
+        const contactEl = document.createElement("p");
+        contactEl.className = "admin-reports__contact";
+        contactEl.textContent = `Контакт: ${report.contact}`;
+        li.appendChild(contactEl);
+      }
+
+      if (!report.reviewed) {
+        const actions = document.createElement("div");
+        actions.className = "admin-reports__actions";
+
+        if (report.status) {
+          const applyBtn = document.createElement("button");
+          applyBtn.type = "button";
+          applyBtn.textContent = "Применить на карту";
+          applyBtn.addEventListener("click", async () => {
+            applyBtn.disabled = true;
+            try {
+              const result = await api(`/api/reports/${report.id}`, {
+                method: "PATCH",
+                body: JSON.stringify({ apply: true }),
+              });
+              if (result.city && onCityUpdated) {
+                onCityUpdated(result.city);
+              }
+              await renderAdminReports();
+            } catch (err) {
+              alert(err.message || "Не удалось применить");
+              applyBtn.disabled = false;
+            }
+          });
+          actions.appendChild(applyBtn);
+        }
+
+        const dismissBtn = document.createElement("button");
+        dismissBtn.type = "button";
+        dismissBtn.className = "admin-reports__dismiss";
+        dismissBtn.textContent = "Отметить просмотренным";
+        dismissBtn.addEventListener("click", async () => {
+          dismissBtn.disabled = true;
+          try {
+            await api(`/api/reports/${report.id}`, {
+              method: "PATCH",
+              body: JSON.stringify({ apply: false }),
+            });
+            await renderAdminReports();
+          } catch (err) {
+            alert(err.message || "Не удалось обновить");
+            dismissBtn.disabled = false;
+          }
+        });
+        actions.appendChild(dismissBtn);
+        li.appendChild(actions);
+      }
+
+      adminReportsList.appendChild(li);
+    }
+  }
+
+  async function showAdminReports() {
+    adminReportsDialog.hidden = false;
+    await renderAdminReports();
+  }
+
   openBtn.addEventListener("click", show);
   dialog.querySelector(".report-dialog__close").addEventListener("click", hide);
   dialog.addEventListener("click", (e) => {
     if (e.target === dialog) hide();
+  });
+
+  adminReportsToggle.addEventListener("click", showAdminReports);
+  adminReportsDialog
+    .querySelector(".admin-reports__close")
+    .addEventListener("click", hideAdminReports);
+  adminReportsDialog.addEventListener("click", (e) => {
+    if (e.target === adminReportsDialog) hideAdminReports();
+  });
+
+  onAdminChange((authed) => {
+    adminReportsToggle.hidden = !authed;
+    if (!authed) hideAdminReports();
   });
 
   cityInput.addEventListener("input", () => {
@@ -89,7 +242,7 @@ export function initReports(allCitiesGetter) {
     submitBtn.disabled = true;
 
     try {
-      await api("/api/reports", {
+      const result = await api("/api/reports", {
         method: "POST",
         body: JSON.stringify({
           city,
@@ -98,8 +251,9 @@ export function initReports(allCitiesGetter) {
           contact: contact || null,
         }),
       });
-      successEl.textContent =
-        "Спасибо! Сообщение отправлено и добавлено в очередь на проверку.";
+      successEl.textContent = result.telegramSent
+        ? "Спасибо! Сообщение сохранено и отправлено на проверку."
+        : "Спасибо! Сообщение сохранено и добавлено в очередь на проверку.";
       successEl.hidden = false;
       form.reset();
       selectedCity = "";
@@ -111,11 +265,13 @@ export function initReports(allCitiesGetter) {
     }
   });
 
-  return { showReportForCity(cityName) {
-    show();
-    selectedCity = cityName;
-    cityInput.value = cityName;
-  }};
+  return {
+    showReportForCity(cityName) {
+      show();
+      selectedCity = cityName;
+      cityInput.value = cityName;
+    },
+  };
 }
 
 export async function loadReports() {

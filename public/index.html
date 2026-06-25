@@ -34,6 +34,16 @@
       </div>
       <button
         type="button"
+        id="admin-reports-toggle"
+        class="admin-reports-toggle"
+        title="Очередь сообщений"
+        aria-label="Очередь сообщений"
+        hidden
+      >
+        📋
+      </button>
+      <button
+        type="button"
         id="admin-toggle"
         class="admin-toggle"
         title="Вход администратора"
@@ -130,6 +140,15 @@
         <p id="report-success" class="report-dialog__success" hidden></p>
         <button type="submit">Отправить</button>
       </form>
+    </div>
+  </div>
+
+  <div id="admin-reports" class="admin-reports" hidden>
+    <div class="admin-reports__panel">
+      <button type="button" class="admin-reports__close" aria-label="Закрыть">&times;</button>
+      <h2>Очередь сообщений</h2>
+      <p id="admin-reports-count" class="admin-reports__count"></p>
+      <ul id="admin-reports-list" class="admin-reports__list"></ul>
     </div>
   </div>
 

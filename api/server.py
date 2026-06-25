@@ -1,6 +1,7 @@
 import hashlib
 import hmac
 import json
+import logging
 import os
 import urllib.parse
 import urllib.request
@@ -34,6 +35,7 @@ STATUS_LABELS = {
 }
 
 app = FastAPI(title="Latency Lab Map API", docs_url=None, redoc_url=None)
+logger = logging.getLogger("latency_lab_map")
 
 app.add_middleware(
     CORSMiddleware,
@@ -58,6 +60,10 @@ class ReportRequest(BaseModel):
     status: str | None = None
     message: str = Field(min_length=10, max_length=2000)
     contact: str | None = Field(default=None, max_length=200)
+
+
+class ReviewReportRequest(BaseModel):
+    apply: bool = True
 
 
 def _session_token() -> str:
@@ -120,9 +126,9 @@ def _save_reports(reports: list[dict]) -> None:
     _save_json(REPORTS_PATH, reports)
 
 
-def _send_telegram(text: str) -> None:
+def _send_telegram(text: str) -> bool:
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
-        return
+        return False
 
     payload = urllib.parse.urlencode(
         {
@@ -134,13 +140,14 @@ def _send_telegram(text: str) -> None:
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     req = urllib.request.Request(url, data=payload, method="POST")
     try:
-        with urllib.request.urlopen(req, timeout=10) as resp:
+        with urllib.request.urlopen(req, timeout=15) as resp:
             if resp.status >= 400:
-                raise HTTPException(status_code=502, detail="Ошибка Telegram API")
-    except HTTPException:
-        raise
-    except Exception as exc:
-        raise HTTPException(status_code=502, detail="Не удалось отправить в Telegram") from exc
+                logger.warning("Telegram API returned status %s", resp.status)
+                return False
+        return True
+    except Exception:
+        logger.exception("Failed to send Telegram notification")
+        return False
 
 
 @app.get("/api/cities")
@@ -247,9 +254,9 @@ def create_report(body: ReportRequest) -> dict:
         f"{contact_line}\n"
         f"ID: {report['id']}"
     )
-    _send_telegram(telegram_text)
+    telegram_sent = _send_telegram(telegram_text)
 
-    return {"ok": True, "id": report["id"]}
+    return {"ok": True, "id": report["id"], "telegramSent": telegram_sent}
 
 
 @app.get("/api/reports")
@@ -258,3 +265,33 @@ def list_reports(request: Request) -> dict:
     reports = _load_reports()
     pending = [r for r in reports if not r.get("reviewed")]
     return {"reports": reports[:100], "pendingCount": len(pending)}
+
+
+@app.patch("/api/reports/{report_id}")
+def review_report(
+    report_id: str, body: ReviewReportRequest, request: Request
+) -> dict:
+    _require_admin(request)
+
+    reports = _load_reports()
+    report = next((r for r in reports if r["id"] == report_id), None)
+    if not report:
+        raise HTTPException(status_code=404, detail="Заявка не найдена")
+
+    updated_city = None
+    if body.apply and report.get("status") in VALID_STATUSES:
+        cities = _load_cities()
+        for city in cities:
+            if city["name"] == report["city"]:
+                city["status"] = report["status"]
+                city["statusUpdatedAt"] = date.today().isoformat()
+                updated_city = city
+                break
+        if updated_city:
+            _save_cities(cities)
+
+    report["reviewed"] = True
+    report["reviewedAt"] = datetime.now(timezone.utc).isoformat()
+    _save_reports(reports)
+
+    return {"ok": True, "report": report, "city": updated_city}

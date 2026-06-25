@@ -608,7 +608,7 @@ zoomLevelEl.textContent = String(map.getZoom());
 
 initAdmin()
   .then(() => {
-    reportActions = initReports(() => allCities);
+    reportActions = initReports(() => allCities, applyCityUpdate);
     return loadData();
   })
   .catch((err) => {
