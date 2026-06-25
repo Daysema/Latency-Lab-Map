@@ -18,4 +18,6 @@ if [ ! -f /data/reports.json ]; then
   echo "[]" > /data/reports.json
 fi
 
+python3 merge_extra_cities.py
+
 exec uvicorn server:app --host 0.0.0.0 --port 8000

@@ -6,6 +6,7 @@ COPY api/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY api/server.py .
+COPY api/merge_extra_cities.py .
 COPY api/entrypoint.sh /entrypoint.sh
 COPY public/data/ /seed/
 
