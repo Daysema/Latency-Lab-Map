@@ -261,10 +261,6 @@ body {
 .dot--temp-frequent { background: var(--status-temp-frequent); }
 .dot--permanent { background: var(--status-permanent); }
 
-.leaflet-region-heat {
-  pointer-events: none;
-}
-
 .city-popup {
   position: fixed;
   top: 50%;

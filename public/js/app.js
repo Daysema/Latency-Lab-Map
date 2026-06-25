@@ -1,6 +1,5 @@
 import { initAdmin, isAdmin, onAdminChange, updateCityStatus } from "./admin.js";
 import { initReports } from "./reports.js";
-import { createRegionHeatLayer } from "./region-heat-canvas.js";
 
 const STATUS_LABELS = {
   unknown: "Нет информации",
@@ -115,11 +114,9 @@ const popupAdminError = document.getElementById("popup-admin-error");
 const regionPopup = document.getElementById("region-popup");
 
 let allCities = [];
-let citiesByRegion = {};
 let cityMarkers = new Map();
 let regionStatsMap = {};
 let regionsLayer = null;
-let regionHeatLayer = null;
 let activeCity = null;
 let activeRegionName = null;
 let reportActions = null;
@@ -292,45 +289,25 @@ function formatRegionTooltip(name, stats) {
   return lines.join("<br>");
 }
 
-function rebuildCitiesByRegion() {
-  citiesByRegion = {};
-  for (const city of allCities) {
-    const region = normalizeSubject(city.subject || "");
-    if (!region) continue;
-    (citiesByRegion[region] ||= []).push(city);
-  }
-}
-
-function regionHeatContext() {
-  return {
-    regionsLayer,
-    citiesByRegion,
-    cityStatus,
-    intensityWeight: INTENSITY_WEIGHT,
-    heatColor,
-    statusColors: STATUS_COLORS,
-  };
-}
-
 function regionStyleForHeat(stats) {
   const { color, fillIntensity } = regionHeatVisual(stats);
   return {
-    fillColor: "transparent",
-    fillOpacity: 0,
+    fillColor: color,
+    fillOpacity: 0.08 + fillIntensity * 0.48,
     color,
-    weight: 1.1 + fillIntensity * 0.8,
-    opacity: 0.5 + fillIntensity * 0.35,
+    weight: 1.2 + fillIntensity * 1.4,
+    opacity: 0.55 + fillIntensity * 0.45,
   };
 }
 
 function regionHoverStyle(stats) {
   const { color, fillIntensity } = regionHeatVisual(stats);
   return {
-    fillColor: "transparent",
-    fillOpacity: 0,
+    fillColor: color,
+    fillOpacity: 0.2 + fillIntensity * 0.58,
     color,
-    weight: 2 + fillIntensity * 0.8,
-    opacity: 0.95,
+    weight: 2.2 + fillIntensity * 1.2,
+    opacity: 1,
   };
 }
 
@@ -457,12 +434,10 @@ function applyCityUpdate(updatedCity) {
   if (index !== -1) {
     allCities[index] = updatedCity;
   }
-  rebuildCitiesByRegion();
   regionStatsMap = buildRegionStatsMap(allCities);
   renderCities(map.getZoom());
   refreshRegionStyles();
   updateLegendFill();
-  regionHeatLayer?.redraw();
   if (activeCity?.name === updatedCity.name) {
     showCityPopup(updatedCity);
   }
@@ -629,7 +604,6 @@ async function loadData() {
   ]);
 
   allCities = await loadCities();
-  rebuildCitiesByRegion();
 
   if (!regionsRes.ok) {
     throw new Error("Не удалось загрузить данные карты");
@@ -637,9 +611,6 @@ async function loadData() {
 
   regionStatsMap = buildRegionStatsMap(allCities);
   const regions = await regionsRes.json();
-
-  regionHeatLayer = createRegionHeatLayer(regionHeatContext);
-  regionHeatLayer.addTo(map);
 
   regionsLayer = L.geoJSON(regions, {
     smoothFactor: 1.25,
