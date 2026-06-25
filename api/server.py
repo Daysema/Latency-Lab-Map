@@ -255,20 +255,28 @@ def _pending_reports(reports: list[dict]) -> list[dict]:
     return [r for r in reports if _is_pending_report(r)]
 
 
-def _dedupe_by_city(reports: list[dict]) -> list[dict]:
-    seen: set[str] = set()
+def _report_signature(report: dict) -> tuple[str, str, str, str]:
+    city = (report.get("city") or "").strip().casefold()
+    status = report.get("status") or ""
+    message = (report.get("message") or "").strip().casefold()
+    contact = (report.get("contact") or "").strip().casefold()
+    return city, status, message, contact
+
+
+def _dedupe_identical(reports: list[dict]) -> list[dict]:
+    seen: set[tuple[str, str, str, str]] = set()
     deduped: list[dict] = []
     for report in reports:
-        city = report.get("city")
-        if not city or city in seen:
+        signature = _report_signature(report)
+        if not signature[0] or signature in seen:
             continue
-        seen.add(city)
+        seen.add(signature)
         deduped.append(report)
     return deduped
 
 
 def _normalize_queue(reports: list[dict]) -> list[dict]:
-    return _dedupe_by_city(_pending_reports(reports))
+    return _dedupe_identical(_pending_reports(reports))
 
 
 def _save_reports_file(reports: list[dict]) -> None:
@@ -617,8 +625,9 @@ def create_report(body: ReportRequest) -> dict:
     }
 
     def add_report(pending: list[dict]) -> tuple[list[dict], None]:
-        without_city = [r for r in pending if r.get("city") != body.city]
-        return [report, *without_city][:500], None
+        signature = _report_signature(report)
+        without_dup = [r for r in pending if _report_signature(r) != signature]
+        return [report, *without_dup][:500], None
 
     _mutate_reports(add_report)
 
