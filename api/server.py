@@ -1,11 +1,14 @@
 import hashlib
 import hmac
+import io
 import json
 import logging
 import os
 import threading
 import time
 import uuid
+import zipfile
+from contextlib import asynccontextmanager
 from datetime import date, datetime, timezone
 from pathlib import Path
 
@@ -16,7 +19,9 @@ from pydantic import BaseModel, Field
 
 CITIES_PATH = Path(os.environ.get("CITIES_PATH", "/data/cities.json"))
 REPORTS_PATH = Path(os.environ.get("REPORTS_PATH", "/data/reports.json"))
+REGIONS_PATH = Path(os.environ.get("REGIONS_PATH", "/data/regions.geojson"))
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "")
+BACKUP_INTERVAL_HOURS = float(os.environ.get("TELEGRAM_BACKUP_INTERVAL_HOURS", "0") or "0")
 SESSION_SECRET = os.environ.get("SESSION_SECRET", "change-me-in-production")
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
@@ -37,8 +42,31 @@ STATUS_LABELS = {
     "permanent": "Постоянные ограничения",
 }
 
-app = FastAPI(title="Latency Lab Map API", docs_url=None, redoc_url=None)
 logger = logging.getLogger("latency_lab_map")
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    if (
+        BACKUP_INTERVAL_HOURS > 0
+        and TELEGRAM_BOT_TOKEN
+        and TELEGRAM_CHAT_ID
+    ):
+        thread = threading.Thread(target=_scheduled_backup_loop, daemon=True)
+        thread.start()
+        logger.info(
+            "Telegram backup scheduled every %s h",
+            BACKUP_INTERVAL_HOURS,
+        )
+    yield
+
+
+app = FastAPI(
+    title="Latency Lab Map API",
+    docs_url=None,
+    redoc_url=None,
+    lifespan=lifespan,
+)
 _reports_lock = threading.Lock()
 _cities_lock = threading.Lock()
 
@@ -180,20 +208,25 @@ def _telegram_proxies() -> dict[str, str] | None:
     return {"http": TELEGRAM_PROXY, "https": TELEGRAM_PROXY}
 
 
-def _send_telegram(text: str) -> bool:
+def _telegram_payload_base() -> dict[str, object] | None:
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
-        return False
+        return None
 
+    payload: dict[str, object] = {"chat_id": TELEGRAM_CHAT_ID}
     thread_id = _parse_topic_id(TELEGRAM_TOPIC_ID)
-
-    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    payload: dict[str, object] = {
-        "chat_id": TELEGRAM_CHAT_ID,
-        "text": text,
-        "disable_web_page_preview": True,
-    }
     if thread_id is not None:
         payload["message_thread_id"] = thread_id
+    return payload
+
+
+def _send_telegram(text: str) -> bool:
+    payload = _telegram_payload_base()
+    if payload is None:
+        return False
+
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    payload["text"] = text
+    payload["disable_web_page_preview"] = True
 
     try:
         response = requests.post(
@@ -213,6 +246,121 @@ def _send_telegram(text: str) -> bool:
     except Exception:
         logger.exception("Failed to send Telegram notification")
         return False
+
+
+def _send_telegram_document(
+    file_data: bytes, filename: str, caption: str
+) -> bool:
+    payload = _telegram_payload_base()
+    if payload is None:
+        return False
+
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendDocument"
+    payload["caption"] = caption[:1024]
+
+    try:
+        response = requests.post(
+            url,
+            data=payload,
+            files={"document": (filename, file_data)},
+            proxies=_telegram_proxies(),
+            timeout=120,
+        )
+        if not response.ok:
+            logger.warning(
+                "Telegram document API returned status %s: %s",
+                response.status_code,
+                response.text[:200],
+            )
+            return False
+        return True
+    except Exception:
+        logger.exception("Failed to send Telegram document")
+        return False
+
+
+BACKUP_FILES: tuple[tuple[str, Path], ...] = (
+    ("cities.json", CITIES_PATH),
+    ("reports.json", REPORTS_PATH),
+    ("regions.geojson", REGIONS_PATH),
+)
+
+RESTORE_README = """Резервная копия Latency Lab Map
+==============================
+
+Восстановление на новом сервере:
+1. Распакуйте cities.json, reports.json и regions.geojson в Docker-volume /data/
+   (в docker-compose это volume map_data, путь внутри контейнера api: /data/).
+2. Запустите: docker compose up -d
+
+Статические файлы из репозитория (public/data/) — только начальные данные;
+рабочая копия хранится в volume и переживает пересборку контейнеров.
+"""
+
+
+def _build_backup_archive() -> tuple[bytes, str, list[str]]:
+    included: list[str] = []
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as archive:
+        archive.writestr("RESTORE.txt", RESTORE_README)
+        for arcname, path in BACKUP_FILES:
+            if path.exists():
+                archive.write(path, arcname)
+                included.append(arcname)
+
+    if not included:
+        raise HTTPException(
+            status_code=500,
+            detail="Нет файлов данных для резервной копии",
+        )
+
+    stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d_%H%M")
+    filename = f"latency-lab-map_{stamp}_utc.zip"
+    return buf.getvalue(), filename, included
+
+
+def _backup_to_telegram(*, manual: bool) -> dict:
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        raise HTTPException(
+            status_code=503,
+            detail="Telegram не настроен (TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID)",
+        )
+
+    zip_data, filename, included = _build_backup_archive()
+    size_kb = len(zip_data) // 1024
+    kind = "Ручная выгрузка" if manual else "Автоматическая выгрузка"
+    caption = (
+        f"💾 {kind} БД карты\n"
+        f"Файлы: {', '.join(included)}\n"
+        f"Размер: {size_kb} КБ\n"
+        f"Распакуйте в /data/ на новом сервере (см. RESTORE.txt в архиве)."
+    )
+    sent = _send_telegram_document(zip_data, filename, caption)
+    if not sent:
+        raise HTTPException(
+            status_code=502,
+            detail="Не удалось отправить архив в Telegram",
+        )
+
+    logger.info("Backup sent to Telegram: %s (%s KB)", filename, size_kb)
+    return {
+        "ok": True,
+        "filename": filename,
+        "files": included,
+        "sizeBytes": len(zip_data),
+        "telegramSent": sent,
+    }
+
+
+def _scheduled_backup_loop() -> None:
+    while True:
+        time.sleep(max(BACKUP_INTERVAL_HOURS, 0.1) * 3600)
+        try:
+            _backup_to_telegram(manual=False)
+        except HTTPException as exc:
+            logger.warning("Scheduled backup skipped: %s", exc.detail)
+        except Exception:
+            logger.exception("Scheduled backup failed")
 
 
 @app.get("/api/cities")
@@ -344,6 +492,12 @@ def list_reports(request: Request) -> dict:
     reports = _load_reports()
     pending = [r for r in reports if not r.get("reviewed")]
     return {"reports": reports[:100], "pendingCount": len(pending)}
+
+
+@app.post("/api/admin/backup")
+def admin_backup(request: Request) -> dict:
+    _require_admin(request)
+    return _backup_to_telegram(manual=True)
 
 
 @app.patch("/api/reports/{report_id}")

@@ -1,4 +1,4 @@
-import { api, isAdmin, onAdminChange } from "./admin.js";
+import { api, isAdmin, onAdminChange, sendBackupToTelegram } from "./admin.js";
 
 const STATUS_LABELS = {
   unknown: "Нет информации",
@@ -36,6 +36,8 @@ export function initReports(allCitiesGetter, onCityUpdated) {
   const adminReportsToggle = document.getElementById("admin-reports-toggle");
   const adminReportsList = document.getElementById("admin-reports-list");
   const adminReportsCount = document.getElementById("admin-reports-count");
+  const adminBackupBtn = document.getElementById("admin-backup-btn");
+  const adminBackupStatus = document.getElementById("admin-backup-status");
   let selectedCity = "";
   let closeTimer = null;
 
@@ -206,6 +208,23 @@ export function initReports(allCitiesGetter, onCityUpdated) {
     .addEventListener("click", hideAdminReports);
   adminReportsDialog.addEventListener("click", (e) => {
     if (e.target === adminReportsDialog) hideAdminReports();
+  });
+
+  adminBackupBtn.addEventListener("click", async () => {
+    adminBackupStatus.hidden = true;
+    adminBackupBtn.disabled = true;
+    try {
+      const result = await sendBackupToTelegram();
+      adminBackupStatus.textContent = result.telegramSent
+        ? `Архив ${result.filename} отправлен в Telegram`
+        : "Архив создан, но Telegram не ответил";
+      adminBackupStatus.hidden = false;
+    } catch (err) {
+      adminBackupStatus.textContent = err.message || "Не удалось выгрузить";
+      adminBackupStatus.hidden = false;
+    } finally {
+      adminBackupBtn.disabled = false;
+    }
   });
 
   onAdminChange((authed) => {

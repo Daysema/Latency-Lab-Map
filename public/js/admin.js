@@ -89,6 +89,10 @@ export async function updateCityStatus(name, status, comment) {
   return data.city;
 }
 
+export async function sendBackupToTelegram() {
+  return api("/api/admin/backup", { method: "POST" });
+}
+
 export function initAdmin() {
   const toggleBtn = document.getElementById("admin-toggle");
   const loginDialog = document.getElementById("admin-login");

@@ -1052,3 +1052,36 @@ body {
   color: var(--muted);
   font-size: 0.85rem;
 }
+
+.admin-reports__backup {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.admin-reports__backup-btn {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.admin-reports__backup-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.admin-reports__backup-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.admin-reports__backup-status {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
