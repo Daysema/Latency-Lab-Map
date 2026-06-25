@@ -68,6 +68,18 @@ const TIER_MIN_ZOOM = {
   town: 8,
 };
 
+/** Halo radius around city by tier (meters) */
+const INFLUENCE_RADIUS_M = {
+  capital: 130_000,
+  megacity: 110_000,
+  large: 90_000,
+  regional: 75_000,
+  small: 58_000,
+  town: 42_000,
+};
+
+const INFLUENCE_MIN_ZOOM = 4;
+
 const MIN_ZOOM = 3;
 const MAX_ZOOM = 10; // city level — no street detail
 
@@ -99,6 +111,7 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
   maxZoom: MAX_ZOOM,
 }).addTo(map);
 
+const cityInfluenceLayer = L.layerGroup().addTo(map);
 const cityLayer = L.layerGroup().addTo(map);
 const zoomLevelEl = document.getElementById("zoom-level");
 const searchInput = document.getElementById("city-search");
@@ -293,7 +306,7 @@ function regionStyleForHeat(stats) {
   const { color, fillIntensity } = regionHeatVisual(stats);
   return {
     fillColor: color,
-    fillOpacity: 0.08 + fillIntensity * 0.48,
+    fillOpacity: 0.05 + fillIntensity * 0.32,
     color,
     weight: 1.2 + fillIntensity * 1.4,
     opacity: 0.55 + fillIntensity * 0.45,
@@ -304,11 +317,31 @@ function regionHoverStyle(stats) {
   const { color, fillIntensity } = regionHeatVisual(stats);
   return {
     fillColor: color,
-    fillOpacity: 0.2 + fillIntensity * 0.58,
+    fillOpacity: 0.12 + fillIntensity * 0.42,
     color,
     weight: 2.2 + fillIntensity * 1.2,
     opacity: 1,
   };
+}
+
+function influenceRadiusMeters(city, zoom) {
+  const base = INFLUENCE_RADIUS_M[city.tier] ?? 55_000;
+  if (zoom <= 4) return base * 0.7;
+  if (zoom <= 5) return base * 0.85;
+  return base;
+}
+
+function cityInfluenceStyle(city) {
+  const status = cityStatus(city);
+  if (status === "unknown") return null;
+
+  const intensity = INTENSITY_WEIGHT[status] ?? 0;
+  const color =
+    status === "ok" ? STATUS_COLORS.ok : heatColor(intensity);
+  const fillOpacity =
+    status === "ok" ? 0.2 : 0.1 + intensity * 0.22;
+
+  return { color, fillOpacity };
 }
 
 function formatPopulation(n) {
@@ -448,11 +481,27 @@ function cityVisibleAtZoom(city, zoom) {
 }
 
 function renderCities(zoom) {
+  cityInfluenceLayer.clearLayers();
   cityLayer.clearLayers();
   cityMarkers.clear();
 
+  const showInfluence = zoom >= INFLUENCE_MIN_ZOOM;
+
   for (const city of allCities) {
     if (!cityVisibleAtZoom(city, zoom)) continue;
+
+    if (showInfluence) {
+      const influence = cityInfluenceStyle(city);
+      if (influence) {
+        L.circle([city.lat, city.lng], {
+          radius: influenceRadiusMeters(city, zoom),
+          stroke: false,
+          fillColor: influence.color,
+          fillOpacity: influence.fillOpacity,
+          interactive: false,
+        }).addTo(cityInfluenceLayer);
+      }
+    }
 
     const marker = L.marker([city.lat, city.lng], {
       icon: createCityIcon(city),
