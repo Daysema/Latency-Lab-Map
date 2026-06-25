@@ -1057,6 +1057,29 @@ body {
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-reports__clear-btn {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #b45309;
+  border-radius: 8px;
+  background: transparent;
+  color: #fbbf24;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.admin-reports__clear-btn:hover:not(:disabled) {
+  background: rgba(251, 191, 36, 0.08);
+}
+
+.admin-reports__clear-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
 }
 
 .admin-reports__backup-btn {

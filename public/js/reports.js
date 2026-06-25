@@ -1,4 +1,4 @@
-import { api, isAdmin, onAdminChange, sendBackupToTelegram } from "./admin.js";
+import { api, isAdmin, onAdminChange, sendBackupToTelegram, clearAllReports } from "./admin.js";
 
 const STATUS_LABELS = {
   unknown: "Нет информации",
@@ -38,6 +38,7 @@ export function initReports(allCitiesGetter, onCityUpdated) {
   const adminReportsCount = document.getElementById("admin-reports-count");
   const adminBackupBtn = document.getElementById("admin-backup-btn");
   const adminBackupStatus = document.getElementById("admin-backup-status");
+  const adminClearReportsBtn = document.getElementById("admin-clear-reports-btn");
   let selectedCity = "";
   let closeTimer = null;
   let reportsRenderGeneration = 0;
@@ -114,11 +115,13 @@ export function initReports(allCitiesGetter, onCityUpdated) {
       return;
     }
 
-    adminReportsCount.textContent = data.length
-      ? `Новых сообщений: ${data.length}`
+    adminReportsCount.textContent = data.pendingCount
+      ? `Новых сообщений: ${data.pendingCount}`
       : "Новых сообщений нет";
 
-    if (!data.length) {
+    const reports = data.reports || [];
+
+    if (!reports.length) {
       const li = document.createElement("li");
       li.className = "admin-reports__empty";
       li.textContent = "Очередь пуста";
@@ -126,7 +129,7 @@ export function initReports(allCitiesGetter, onCityUpdated) {
       return;
     }
 
-    for (const report of data) {
+    for (const report of reports) {
       const li = document.createElement("li");
       li.className = "admin-reports__item";
 
@@ -246,6 +249,30 @@ export function initReports(allCitiesGetter, onCityUpdated) {
     }
   });
 
+  adminClearReportsBtn.addEventListener("click", async () => {
+    if (!confirm("Удалить все сообщения из очереди? Это действие нельзя отменить.")) {
+      return;
+    }
+    adminClearReportsBtn.disabled = true;
+    try {
+      const result = await clearAllReports();
+      adminReportsList.innerHTML = "";
+      const li = document.createElement("li");
+      li.className = "admin-reports__empty";
+      li.textContent = "Очередь пуста";
+      adminReportsList.appendChild(li);
+      adminReportsCount.textContent = "Новых сообщений нет";
+      if (result.removedCount) {
+        adminBackupStatus.textContent = `Удалено сообщений: ${result.removedCount}`;
+        adminBackupStatus.hidden = false;
+      }
+    } catch (err) {
+      alert(err.message || "Не удалось очистить очередь");
+    } finally {
+      adminClearReportsBtn.disabled = false;
+    }
+  });
+
   onAdminChange((authed) => {
     adminReportsToggle.hidden = !authed;
     if (!authed) hideAdminReports();
@@ -338,11 +365,14 @@ export function initReports(allCitiesGetter, onCityUpdated) {
 }
 
 export async function loadReports() {
-  if (!isAdmin()) return [];
+  if (!isAdmin()) return { reports: [], pendingCount: 0 };
   try {
     const data = await api("/api/reports");
-    return data.reports || [];
+    return {
+      reports: data.reports || [],
+      pendingCount: data.pendingCount ?? (data.reports || []).length,
+    };
   } catch {
-    return [];
+    return { reports: [], pendingCount: 0 };
   }
 }

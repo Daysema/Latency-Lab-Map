@@ -94,6 +94,10 @@ export async function sendBackupToTelegram() {
   return api("/api/admin/backup", { method: "POST" });
 }
 
+export async function clearAllReports() {
+  return api("/api/reports", { method: "DELETE" });
+}
+
 export function initAdmin() {
   const toggleBtn = document.getElementById("admin-toggle");
   const loginDialog = document.getElementById("admin-login");

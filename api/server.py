@@ -239,72 +239,86 @@ def _is_pending_report(report: dict) -> bool:
     return True
 
 
-def _read_reports_locked(lock_file) -> list[dict]:
-    del lock_file
+def _read_reports_file() -> list[dict]:
     if not REPORTS_PATH.exists():
         return []
 
-    with open(REPORTS_PATH, "r", encoding="utf-8") as handle:
-        if fcntl is not None:
-            fcntl.flock(handle.fileno(), fcntl.LOCK_SH)
-        try:
-            return _decode_json_list(handle.read().strip(), REPORTS_PATH)
-        finally:
-            if fcntl is not None:
-                fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+    text = REPORTS_PATH.read_text(encoding="utf-8").strip()
+    if not text:
+        return []
+    return _decode_json_list(text, REPORTS_PATH)
 
 
-def _write_reports_locked(lock_file, reports: list[dict]) -> None:
-    del lock_file
-    REPORTS_PATH.parent.mkdir(parents=True, exist_ok=True)
-    content = json.dumps(reports, ensure_ascii=False, indent=2)
-    with open(REPORTS_PATH, "w", encoding="utf-8") as handle:
-        if fcntl is not None:
-            fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
-        try:
-            handle.write(content)
-            handle.flush()
-            if fcntl is not None:
-                os.fsync(handle.fileno())
-        finally:
-            if fcntl is not None:
-                fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+def _pending_reports(reports: list[dict]) -> list[dict]:
+    if not isinstance(reports, list):
+        return []
+    return [r for r in reports if _is_pending_report(r)]
+
+
+def _dedupe_by_city(reports: list[dict]) -> list[dict]:
+    seen: set[str] = set()
+    deduped: list[dict] = []
+    for report in reports:
+        city = report.get("city")
+        if not city or city in seen:
+            continue
+        seen.add(city)
+        deduped.append(report)
+    return deduped
+
+
+def _normalize_queue(reports: list[dict]) -> list[dict]:
+    return _dedupe_by_city(_pending_reports(reports))
+
+
+def _save_reports_file(reports: list[dict]) -> None:
+    _save_json(REPORTS_PATH, reports)
+    saved = _pending_reports(_read_reports_file())
+    if len(saved) != len(reports):
+        logger.error(
+            "Reports save verification failed: expected %s items, got %s",
+            len(reports),
+            len(saved),
+        )
+        raise HTTPException(
+            status_code=500,
+            detail="Не удалось сохранить очередь сообщений",
+        )
 
 
 def _mutate_reports(mutator: Callable[[list[dict]], tuple[list[dict], T]]) -> T:
     REPORTS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    lock_path = REPORTS_PATH.with_suffix(".lock")
+    lock_path.touch(exist_ok=True)
 
     with _reports_lock:
-        if fcntl is None:
-            reports = _load_json(REPORTS_PATH, [])
-            if not isinstance(reports, list):
-                reports = []
-            pending = [r for r in reports if _is_pending_report(r)]
-            if len(pending) != len(reports):
-                _save_json(REPORTS_PATH, pending)
-                reports = pending
-            new_reports, result = mutator(pending)
-            if new_reports != pending:
-                _save_json(REPORTS_PATH, new_reports)
-            return result
-
-        lock_path = REPORTS_PATH.with_suffix(".lock")
-        lock_path.touch(exist_ok=True)
         with open(lock_path, "a", encoding="utf-8") as lock_file:
-            fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX)
+            if fcntl is not None:
+                fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX)
             try:
-                reports = _read_reports_locked(lock_file)
-                pending = [r for r in reports if _is_pending_report(r)]
-                if len(pending) != len(reports):
-                    _write_reports_locked(lock_file, pending)
-                    reports = pending
+                raw = _read_reports_file()
+                pending = _normalize_queue(raw)
+                if pending != raw:
+                    logger.info(
+                        "Normalized reports queue: %s -> %s items",
+                        len(raw) if isinstance(raw, list) else 0,
+                        len(pending),
+                    )
+                    _save_reports_file(pending)
 
-                new_reports, result = mutator(pending)
-                if new_reports != pending:
-                    _write_reports_locked(lock_file, new_reports)
+                pending_copy = list(pending)
+                new_reports, result = mutator(pending_copy)
+                if new_reports != pending_copy:
+                    logger.info(
+                        "Reports queue updated: %s -> %s items",
+                        len(pending_copy),
+                        len(new_reports),
+                    )
+                    _save_reports_file(new_reports)
                 return result
             finally:
-                fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
+                if fcntl is not None:
+                    fcntl.flock(lock_file.fileno(), fcntl.LOCK_UN)
 
 
 def _load_cities() -> list[dict]:
@@ -603,7 +617,8 @@ def create_report(body: ReportRequest) -> dict:
     }
 
     def add_report(pending: list[dict]) -> tuple[list[dict], None]:
-        return [report, *pending][:500], None
+        without_city = [r for r in pending if r.get("city") != body.city]
+        return [report, *without_city][:500], None
 
     _mutate_reports(add_report)
 
@@ -639,7 +654,18 @@ def create_report(body: ReportRequest) -> dict:
 def list_reports(request: Request) -> dict:
     _require_admin(request)
     reports = _load_pending_reports()
-    return {"reports": reports[:100], "pendingCount": len(reports)}
+    return {"reports": reports, "pendingCount": len(reports)}
+
+
+@app.delete("/api/reports")
+def clear_reports(request: Request) -> dict:
+    _require_admin(request)
+
+    def clear(_pending: list[dict]) -> tuple[list[dict], int]:
+        return [], len(_pending)
+
+    removed_count = _mutate_reports(clear)
+    return {"ok": True, "removedCount": removed_count}
 
 
 @app.delete("/api/reports/{report_id}")
