@@ -4,15 +4,13 @@ import json
 import urllib.request
 from pathlib import Path
 
+from fix_region_borders import fix_region_borders
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
 
 CITIES_URL = "https://raw.githubusercontent.com/pensnarik/russian-cities/master/russian-cities.json"
 REGIONS_URL = (
-    "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/"
-    "master/geojson/ne_50m_admin_1_states_provinces.geojson"
-)
-REGIONS_DNR_LNR_URL = (
     "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/"
     "master/geojson/ne_10m_admin_1_states_provinces.geojson"
 )
@@ -76,15 +74,20 @@ def prepare_cities(raw: list) -> list:
 
 def prepare_regions(geo: dict) -> dict:
     features = []
+    seen: set[str] = set()
     for f in geo["features"]:
         props = f["properties"]
         if props.get("adm0_a3") != "RUS":
             continue
+        name = props.get("name_ru") or props.get("name", "")
+        if name in seen:
+            continue
+        seen.add(name)
         features.append(
             {
                 "type": "Feature",
                 "properties": {
-                    "name": props.get("name_ru") or props.get("name", ""),
+                    "name": name,
                     "name_en": props.get("name_en") or props.get("name", ""),
                     "code": props.get("iso_3166_2", ""),
                 },
@@ -154,8 +157,8 @@ def main() -> None:
 
     regions_raw = json.loads(fetch(REGIONS_URL).decode("utf-8"))
     regions = prepare_regions(regions_raw)
-    dnr_lnr_raw = json.loads(fetch(REGIONS_DNR_LNR_URL).decode("utf-8"))
-    regions["features"].extend(prepare_dnr_lnr_regions(dnr_lnr_raw))
+    regions["features"].extend(prepare_dnr_lnr_regions(regions_raw))
+    fix_region_borders(regions["features"])
     (DATA / "regions.geojson").write_text(
         json.dumps(regions, ensure_ascii=False), encoding="utf-8"
     )
