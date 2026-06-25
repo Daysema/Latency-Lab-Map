@@ -74,13 +74,21 @@ const RUSSIA_BOUNDS = [
   [82.0, 180.0],
 ];
 
+/** Initial framing — all of Russia without empty Arctic ocean above */
+const RUSSIA_INITIAL_BOUNDS = [
+  [41.5, 19.0],
+  [70.0, 170.0],
+];
+
 const map = L.map("map", {
   minZoom: MIN_ZOOM,
   maxZoom: MAX_ZOOM,
   maxBounds: RUSSIA_BOUNDS,
   maxBoundsViscosity: 0.85,
   zoomControl: true,
-}).setView([61.5, 96.0], 3);
+});
+
+map.fitBounds(RUSSIA_INITIAL_BOUNDS, { padding: [16, 16], maxZoom: 4 });
 
 L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
   attribution:
