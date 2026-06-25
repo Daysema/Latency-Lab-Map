@@ -39,6 +39,7 @@ export function isAdmin() {
 
 export function onAdminChange(callback) {
   listeners.add(callback);
+  callback(authenticated);
   return () => listeners.delete(callback);
 }
 
