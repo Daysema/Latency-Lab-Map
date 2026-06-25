@@ -2,7 +2,7 @@ let authenticated = false;
 let adminConfigured = false;
 const listeners = new Set();
 
-async function api(path, options = {}) {
+export async function api(path, options = {}) {
   const response = await fetch(path, {
     credentials: "same-origin",
     headers: {

@@ -2,7 +2,10 @@ import hashlib
 import hmac
 import json
 import os
-from datetime import date
+import urllib.parse
+import urllib.request
+import uuid
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Request, Response
@@ -10,14 +13,25 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
 CITIES_PATH = Path(os.environ.get("CITIES_PATH", "/data/cities.json"))
+REPORTS_PATH = Path(os.environ.get("REPORTS_PATH", "/data/reports.json"))
 ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "")
 SESSION_SECRET = os.environ.get("SESSION_SECRET", "change-me-in-production")
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
 SESSION_COOKIE = "llm_admin_session"
 SESSION_VALUE = "authenticated"
 
 VALID_STATUSES = frozenset(
     {"unknown", "ok", "temp_rare", "temp_frequent", "permanent"}
 )
+
+STATUS_LABELS = {
+    "unknown": "Нет информации",
+    "ok": "Нет ограничений",
+    "temp_rare": "Временные ограничения (редкие)",
+    "temp_frequent": "Временные ограничения (частые)",
+    "permanent": "Постоянные ограничения",
+}
 
 app = FastAPI(title="Latency Lab Map API", docs_url=None, redoc_url=None)
 
@@ -37,6 +51,13 @@ class LoginRequest(BaseModel):
 class UpdateCityRequest(BaseModel):
     name: str = Field(min_length=1)
     status: str
+
+
+class ReportRequest(BaseModel):
+    city: str = Field(min_length=1, max_length=120)
+    status: str | None = None
+    message: str = Field(min_length=10, max_length=2000)
+    contact: str | None = Field(default=None, max_length=200)
 
 
 def _session_token() -> str:
@@ -65,20 +86,61 @@ def _require_admin(request: Request) -> None:
         raise HTTPException(status_code=401, detail="Требуется авторизация")
 
 
+def _load_json(path: Path, default):
+    if not path.exists():
+        return default
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _save_json(path: Path, data) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = path.with_suffix(path.suffix + ".tmp")
+    tmp_path.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    tmp_path.replace(path)
+
+
 def _load_cities() -> list[dict]:
     if not CITIES_PATH.exists():
         raise HTTPException(status_code=500, detail="Файл городов не найден")
-    return json.loads(CITIES_PATH.read_text(encoding="utf-8"))
+    return _load_json(CITIES_PATH, [])
 
 
 def _save_cities(cities: list[dict]) -> None:
-    CITIES_PATH.parent.mkdir(parents=True, exist_ok=True)
-    tmp_path = CITIES_PATH.with_suffix(".json.tmp")
-    tmp_path.write_text(
-        json.dumps(cities, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
-    tmp_path.replace(CITIES_PATH)
+    _save_json(CITIES_PATH, cities)
+
+
+def _load_reports() -> list[dict]:
+    return _load_json(REPORTS_PATH, [])
+
+
+def _save_reports(reports: list[dict]) -> None:
+    _save_json(REPORTS_PATH, reports)
+
+
+def _send_telegram(text: str) -> None:
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        return
+
+    payload = urllib.parse.urlencode(
+        {
+            "chat_id": TELEGRAM_CHAT_ID,
+            "text": text,
+            "disable_web_page_preview": "true",
+        }
+    ).encode("utf-8")
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    req = urllib.request.Request(url, data=payload, method="POST")
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            if resp.status >= 400:
+                raise HTTPException(status_code=502, detail="Ошибка Telegram API")
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(status_code=502, detail="Не удалось отправить в Telegram") from exc
 
 
 @app.get("/api/cities")
@@ -148,3 +210,51 @@ def update_city(body: UpdateCityRequest, request: Request) -> dict:
 
     _save_cities(cities)
     return {"ok": True, "city": updated}
+
+
+@app.post("/api/reports")
+def create_report(body: ReportRequest) -> dict:
+    if body.status and body.status not in VALID_STATUSES:
+        raise HTTPException(status_code=400, detail="Недопустимый статус")
+
+    report = {
+        "id": str(uuid.uuid4()),
+        "city": body.city,
+        "status": body.status,
+        "message": body.message.strip(),
+        "contact": body.contact.strip() if body.contact else None,
+        "createdAt": datetime.now(timezone.utc).isoformat(),
+        "reviewed": False,
+    }
+
+    reports = _load_reports()
+    reports.insert(0, report)
+    _save_reports(reports[:500])
+
+    status_line = ""
+    if body.status:
+        status_line = f"\nСтатус: {STATUS_LABELS.get(body.status, body.status)}"
+
+    contact_line = ""
+    if body.contact:
+        contact_line = f"\nКонтакт: {body.contact}"
+
+    telegram_text = (
+        "📍 Новое сообщение о ограничении\n"
+        f"Город: {body.city}"
+        f"{status_line}\n"
+        f"Сообщение: {body.message}"
+        f"{contact_line}\n"
+        f"ID: {report['id']}"
+    )
+    _send_telegram(telegram_text)
+
+    return {"ok": True, "id": report["id"]}
+
+
+@app.get("/api/reports")
+def list_reports(request: Request) -> dict:
+    _require_admin(request)
+    reports = _load_reports()
+    pending = [r for r in reports if not r.get("reviewed")]
+    return {"reports": reports[:100], "pendingCount": len(pending)}

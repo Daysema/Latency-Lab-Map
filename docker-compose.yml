@@ -16,7 +16,10 @@ services:
     environment:
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
       SESSION_SECRET: ${SESSION_SECRET:-change-me-in-production}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
+      TELEGRAM_CHAT_ID: ${TELEGRAM_CHAT_ID:-}
       CITIES_PATH: /data/cities.json
+      REPORTS_PATH: /data/reports.json
     volumes:
       - map_data:/data
     restart: unless-stopped

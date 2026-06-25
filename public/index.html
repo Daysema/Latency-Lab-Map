@@ -55,6 +55,13 @@
       <li><span class="dot dot--temp-frequent"></span> Временные ограничения (частые)</li>
       <li><span class="dot dot--permanent"></span> Постоянные ограничения</li>
     </ul>
+    <p class="legend__heat">
+      Заливка субъекта — интенсивность ограничений
+      <span class="legend__heat-bar" aria-hidden="true"></span>
+    </p>
+    <button type="button" id="report-open" class="legend__report-btn">
+      Сообщить об ограничении
+    </button>
     <p class="legend__note">
       Если вы нашли ошибку или хотите предоставить информацию, напишите в
       <a href="https://t.me/zhkira" target="_blank" rel="noopener noreferrer">Telegram @zhkira</a>.
@@ -81,6 +88,48 @@
       </select>
       <button type="button" id="popup-save" class="popup-admin__save">Сохранить</button>
       <p id="popup-admin-error" class="popup-admin__error" hidden></p>
+    </div>
+  </div>
+
+  <div id="region-popup" class="region-popup" hidden>
+    <button type="button" class="region-popup__close" aria-label="Закрыть">&times;</button>
+    <h3 id="region-popup-name"></h3>
+    <p id="region-popup-intensity" class="region-popup__intensity"></p>
+    <ul id="region-popup-stats" class="region-popup__stats"></ul>
+    <p id="region-popup-total" class="region-popup__total"></p>
+  </div>
+
+  <div id="report-dialog" class="report-dialog" hidden>
+    <div class="report-dialog__panel">
+      <button type="button" class="report-dialog__close" aria-label="Закрыть">&times;</button>
+      <h2>Сообщить об ограничении</h2>
+      <p>Опишите ситуацию — сообщение попадёт в очередь на проверку.</p>
+      <form id="report-form">
+        <label for="report-city">Город</label>
+        <div class="report-city-search">
+          <input id="report-city" type="text" placeholder="Начните вводить название…" required autocomplete="off" />
+          <ul id="report-city-results" class="search-results" hidden></ul>
+        </div>
+
+        <label for="report-status">Предполагаемый статус (необязательно)</label>
+        <select id="report-status">
+          <option value="">Не знаю / не уверен</option>
+          <option value="ok">Нет ограничений</option>
+          <option value="temp_rare">Временные ограничения (редкие)</option>
+          <option value="temp_frequent">Временные ограничения (частые)</option>
+          <option value="permanent">Постоянные ограничения</option>
+        </select>
+
+        <label for="report-message">Описание</label>
+        <textarea id="report-message" rows="4" placeholder="Что именно не работает: звонки, интернет, какой оператор…" required minlength="10" maxlength="2000"></textarea>
+
+        <label for="report-contact">Контакт (необязательно)</label>
+        <input id="report-contact" type="text" placeholder="Telegram, email…" maxlength="200" />
+
+        <p id="report-error" class="report-dialog__error" hidden></p>
+        <p id="report-success" class="report-dialog__success" hidden></p>
+        <button type="submit">Отправить</button>
+      </form>
     </div>
   </div>
 

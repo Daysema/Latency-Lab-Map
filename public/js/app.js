@@ -1,4 +1,5 @@
 import { initAdmin, isAdmin, onAdminChange, updateCityStatus } from "./admin.js";
+import { initReports } from "./reports.js";
 
 const STATUS_LABELS = {
   unknown: "Нет информации",
@@ -16,13 +17,21 @@ const STATUS_COLORS = {
   permanent: "#ef4444",
 };
 
-const STATUS_PRIORITY = {
+const INTENSITY_WEIGHT = {
   unknown: 0,
-  ok: 1,
-  temp_rare: 2,
-  temp_frequent: 3,
-  permanent: 4,
+  ok: 0,
+  temp_rare: 0.35,
+  temp_frequent: 0.65,
+  permanent: 1,
 };
+
+const HEAT_STOPS = [
+  { t: 0, rgb: [100, 116, 139] },
+  { t: 0.25, rgb: [34, 197, 94] },
+  { t: 0.5, rgb: [234, 179, 8] },
+  { t: 0.75, rgb: [249, 115, 22] },
+  { t: 1, rgb: [239, 68, 68] },
+];
 
 /** City subject names → region names in GeoJSON */
 const SUBJECT_ALIASES = {
@@ -91,12 +100,15 @@ const popupAdmin = document.getElementById("popup-admin");
 const popupStatusSelect = document.getElementById("popup-status-select");
 const popupSaveBtn = document.getElementById("popup-save");
 const popupAdminError = document.getElementById("popup-admin-error");
+const regionPopup = document.getElementById("region-popup");
 
 let allCities = [];
 let cityMarkers = new Map();
-let regionStatusMap = {};
+let regionStatsMap = {};
 let regionsLayer = null;
 let activeCity = null;
+let activeRegionName = null;
+let reportActions = null;
 
 function cityStatus(city) {
   return city.status || "unknown";
@@ -106,46 +118,168 @@ function normalizeSubject(subject) {
   return SUBJECT_ALIASES[subject] || subject;
 }
 
-function buildRegionStatusMap(cities) {
+function rgbToHex([r, g, b]) {
+  return `#${[r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("")}`;
+}
+
+function lerp(a, b, t) {
+  return a + (b - a) * t;
+}
+
+function heatColor(intensity) {
+  const value = Math.max(0, Math.min(1, intensity));
+  for (let i = 0; i < HEAT_STOPS.length - 1; i++) {
+    const left = HEAT_STOPS[i];
+    const right = HEAT_STOPS[i + 1];
+    if (value <= right.t) {
+      const localT = (value - left.t) / (right.t - left.t || 1);
+      const rgb = left.rgb.map((channel, idx) =>
+        Math.round(lerp(left.rgb[idx], right.rgb[idx], localT))
+      );
+      return rgbToHex(rgb);
+    }
+  }
+  return rgbToHex(HEAT_STOPS[HEAT_STOPS.length - 1].rgb);
+}
+
+function computeIntensity(counts, total) {
+  if (!total) return 0;
+  const unknown = counts.unknown || 0;
+  const known = total - unknown;
+  if (!known) return 0;
+
+  let sum = 0;
+  for (const [status, count] of Object.entries(counts)) {
+    if (status === "unknown") continue;
+    sum += (INTENSITY_WEIGHT[status] ?? 0) * count;
+  }
+  return sum / known;
+}
+
+function regionHeatVisual(stats) {
+  const { counts, total, intensity } = stats;
+  const unknown = counts.unknown || 0;
+  const known = total - unknown;
+  const restricted =
+    (counts.temp_rare || 0) +
+    (counts.temp_frequent || 0) +
+    (counts.permanent || 0);
+
+  if (!known) {
+    return { color: heatColor(0), fillIntensity: 0 };
+  }
+
+  if (!restricted && (counts.ok || 0) > 0) {
+    return {
+      color: STATUS_COLORS.ok,
+      fillIntensity: 0.12 + ((counts.ok || 0) / total) * 0.25,
+    };
+  }
+
+  return {
+    color: heatColor(intensity),
+    fillIntensity: intensity,
+  };
+}
+
+function worstStatusFromCounts(counts) {
+  let worst = "unknown";
+  let maxWeight = -1;
+  for (const [status, count] of Object.entries(counts)) {
+    if (!count) continue;
+    const weight = INTENSITY_WEIGHT[status] ?? 0;
+    if (weight > maxWeight) {
+      maxWeight = weight;
+      worst = status;
+    }
+  }
+  return worst;
+}
+
+function buildRegionStatsMap(cities) {
   const map = {};
   for (const city of cities) {
     const region = normalizeSubject(city.subject || "");
     if (!region) continue;
-    const status = cityStatus(city);
-    const prev = map[region];
-    if (
-      prev === undefined ||
-      STATUS_PRIORITY[status] > STATUS_PRIORITY[prev]
-    ) {
-      map[region] = status;
+    if (!map[region]) {
+      map[region] = {
+        counts: {
+          unknown: 0,
+          ok: 0,
+          temp_rare: 0,
+          temp_frequent: 0,
+          permanent: 0,
+        },
+        total: 0,
+        intensity: 0,
+        worstStatus: "unknown",
+      };
     }
+    const status = cityStatus(city);
+    map[region].counts[status] = (map[region].counts[status] || 0) + 1;
+    map[region].total += 1;
+  }
+
+  for (const stats of Object.values(map)) {
+    stats.intensity = computeIntensity(stats.counts, stats.total);
+    stats.worstStatus = worstStatusFromCounts(stats.counts);
   }
   return map;
 }
 
-function getRegionStatus(feature) {
+function getRegionStats(feature) {
   const name = feature.properties.name;
-  return regionStatusMap[name] || feature.properties.status || "unknown";
+  return (
+    regionStatsMap[name] || {
+      counts: { unknown: 0, ok: 0, temp_rare: 0, temp_frequent: 0, permanent: 0 },
+      total: 0,
+      intensity: 0,
+      worstStatus: "unknown",
+    }
+  );
 }
 
-function regionStyleForStatus(status) {
-  const color = STATUS_COLORS[status] || STATUS_COLORS.unknown;
+function formatIntensityPercent(intensity) {
+  return `${Math.round(intensity * 100)}%`;
+}
+
+function formatRegionTooltip(name, stats) {
+  const lines = [
+    `<strong>${name}</strong>`,
+    `Интенсивность: ${formatIntensityPercent(stats.intensity)}`,
+    `Городов на карте: ${stats.total}`,
+  ];
+
+  const statusOrder = ["permanent", "temp_frequent", "temp_rare", "ok", "unknown"];
+  for (const status of statusOrder) {
+    const count = stats.counts[status] || 0;
+    if (count > 0) {
+      lines.push(`${STATUS_LABELS[status]}: ${count}`);
+    }
+  }
+
+  lines.push('<span style="opacity:0.75">Клик — подробная сводка</span>');
+  return lines.join("<br>");
+}
+
+function regionStyleForHeat(stats) {
+  const { color, fillIntensity } = regionHeatVisual(stats);
   return {
     fillColor: color,
-    fillOpacity: 0.1,
+    fillOpacity: 0.08 + fillIntensity * 0.48,
     color,
-    weight: 1.5,
-    opacity: 0.8,
+    weight: 1.2 + fillIntensity * 1.4,
+    opacity: 0.55 + fillIntensity * 0.45,
   };
 }
 
-function regionHoverStyle(status) {
-  const color = STATUS_COLORS[status] || STATUS_COLORS.unknown;
+function regionHoverStyle(stats) {
+  const { color, fillIntensity } = regionHeatVisual(stats);
   return {
     fillColor: color,
-    fillOpacity: 0.3,
+    fillOpacity: 0.2 + fillIntensity * 0.58,
     color,
-    weight: 2.5,
+    weight: 2.2 + fillIntensity * 1.2,
     opacity: 1,
   };
 }
@@ -189,6 +323,7 @@ function createCityIcon(city) {
 
 function showCityPopup(city) {
   activeCity = city;
+  hideRegionPopup();
   document.getElementById("popup-name").textContent = city.name;
   document.getElementById("popup-subject").textContent = city.subject || "—";
   document.getElementById("popup-population").textContent = formatPopulation(
@@ -217,16 +352,42 @@ function hideCityPopup() {
   popupAdminError.hidden = true;
 }
 
+function hideRegionPopup() {
+  regionPopup.hidden = true;
+  activeRegionName = null;
+}
+
+function showRegionPopup(name, stats) {
+  hideCityPopup();
+  activeRegionName = name;
+
+  document.getElementById("region-popup-name").textContent = name;
+  document.getElementById("region-popup-intensity").textContent =
+    `Интенсивность ограничений: ${formatIntensityPercent(stats.intensity)}`;
+
+  const statsList = document.getElementById("region-popup-stats");
+  statsList.innerHTML = "";
+  for (const [status, label] of Object.entries(STATUS_LABELS)) {
+    const count = stats.counts[status] || 0;
+    if (!count) continue;
+    const li = document.createElement("li");
+    li.innerHTML = `<span class="dot dot--${status === "temp_rare" ? "temp-rare" : status === "temp_frequent" ? "temp-frequent" : status}"></span>${label}: <strong>${count}</strong>`;
+    statsList.appendChild(li);
+  }
+
+  document.getElementById("region-popup-total").textContent =
+    `Всего городов на карте: ${stats.total}`;
+  regionPopup.hidden = false;
+}
+
 function refreshRegionStyles() {
   if (!regionsLayer) return;
   regionsLayer.eachLayer((layer) => {
-    const status = getRegionStatus(layer.feature);
-    layer.setStyle(regionStyleForStatus(status));
+    const stats = getRegionStats(layer.feature);
+    layer.setStyle(regionStyleForHeat(stats));
     const tooltip = layer.getTooltip();
     if (tooltip) {
-      tooltip.setContent(
-        `${layer.feature.properties.name}<br><span style="opacity:0.85">${STATUS_LABELS[status]}</span>`
-      );
+      tooltip.setContent(formatRegionTooltip(layer.feature.properties.name, stats));
     }
   });
 }
@@ -236,7 +397,7 @@ function applyCityUpdate(updatedCity) {
   if (index !== -1) {
     allCities[index] = updatedCity;
   }
-  regionStatusMap = buildRegionStatusMap(allCities);
+  regionStatsMap = buildRegionStatsMap(allCities);
   renderCities(map.getZoom());
   refreshRegionStyles();
   if (activeCity?.name === updatedCity.name) {
@@ -279,20 +440,24 @@ function renderCities(zoom) {
 
 function onEachRegion(feature, layer) {
   const name = feature.properties.name;
-  const status = getRegionStatus(feature);
-  const baseStyle = regionStyleForStatus(status);
+  const stats = getRegionStats(feature);
+  const baseStyle = regionStyleForHeat(stats);
 
-  layer.bindTooltip(
-    `${name}<br><span style="opacity:0.85">${STATUS_LABELS[status]}</span>`,
-    { sticky: true, opacity: 0.95 }
-  );
+  layer.bindTooltip(formatRegionTooltip(name, stats), {
+    sticky: true,
+    opacity: 0.95,
+  });
 
   layer.on({
     mouseover: (e) => {
-      e.target.setStyle(regionHoverStyle(status));
+      e.target.setStyle(regionHoverStyle(stats));
     },
     mouseout: (e) => {
       e.target.setStyle(baseStyle);
+    },
+    click: (e) => {
+      L.DomEvent.stopPropagation(e);
+      showRegionPopup(name, getRegionStats(feature));
     },
   });
 }
@@ -372,11 +537,11 @@ async function loadData() {
     throw new Error("Не удалось загрузить данные карты");
   }
 
-  regionStatusMap = buildRegionStatusMap(allCities);
+  regionStatsMap = buildRegionStatsMap(allCities);
   const regions = await regionsRes.json();
 
   regionsLayer = L.geoJSON(regions, {
-    style: (feature) => regionStyleForStatus(getRegionStatus(feature)),
+    style: (feature) => regionStyleForHeat(getRegionStats(feature)),
     onEachFeature: onEachRegion,
   }).addTo(map);
 
@@ -389,11 +554,18 @@ map.on("zoomend", () => {
   renderCities(zoom);
 });
 
-map.on("click", hideCityPopup);
+map.on("click", () => {
+  hideCityPopup();
+  hideRegionPopup();
+});
 
 document
   .querySelector(".city-popup__close")
   .addEventListener("click", hideCityPopup);
+
+document
+  .querySelector(".region-popup__close")
+  .addEventListener("click", hideRegionPopup);
 
 popupSaveBtn.addEventListener("click", async () => {
   if (!activeCity || !isAdmin()) return;
@@ -434,7 +606,12 @@ onAdminChange((authed) => {
 setupSearch();
 zoomLevelEl.textContent = String(map.getZoom());
 
-initAdmin().then(() => loadData()).catch((err) => {
-  console.error(err);
-  alert("Ошибка загрузки карты. Проверьте, что данные подготовлены (scripts/prepare_data.py).");
-});
+initAdmin()
+  .then(() => {
+    reportActions = initReports(() => allCities);
+    return loadData();
+  })
+  .catch((err) => {
+    console.error(err);
+    alert("Ошибка загрузки карты. Проверьте, что данные подготовлены (scripts/prepare_data.py).");
+  });
