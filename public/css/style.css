@@ -161,7 +161,7 @@ body {
   border-radius: 10px;
   backdrop-filter: blur(8px);
   font-size: 0.8rem;
-  max-width: 260px;
+  max-width: 280px;
 }
 
 .legend h2 {
@@ -187,7 +187,16 @@ body {
   margin: 0.5rem 0 0;
   color: var(--muted);
   font-size: 0.72rem;
-  line-height: 1.35;
+  line-height: 1.45;
+}
+
+.legend__note a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.legend__note a:hover {
+  text-decoration: underline;
 }
 
 .dot {

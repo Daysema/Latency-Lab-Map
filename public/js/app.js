@@ -14,6 +14,28 @@ const STATUS_COLORS = {
   permanent: "#ef4444",
 };
 
+const STATUS_PRIORITY = {
+  unknown: 0,
+  ok: 1,
+  temp_rare: 2,
+  temp_frequent: 3,
+  permanent: 4,
+};
+
+/** City subject names → region names in GeoJSON */
+const SUBJECT_ALIASES = {
+  Алтай: "Республика Алтай",
+  Башкортостан: "Республика Башкортостан",
+  Коми: "Республика Коми",
+  Крым: "Автономная Республика Крым",
+  "Северная Осетия": "Республика Северная Осетия-Алания",
+  "Еврейская АО": "Еврейская автономная область",
+  "Ненецкий АО": "Ненецкий автономный округ",
+  "Ханты-Мансийский АО": "Ханты-Мансийский автономный округ — Югра",
+  "Чукотский АО": "Чукотский автономный округ",
+  "Ямало-Ненецкий АО": "Ямало-Ненецкий автономный округ",
+};
+
 const TIER_RADIUS = {
   capital: 9,
   megacity: 8,
@@ -66,13 +88,73 @@ const popup = document.getElementById("city-popup");
 
 let allCities = [];
 let cityMarkers = new Map();
+let regionStatusMap = {};
 
 function cityStatus(city) {
   return city.status || "unknown";
 }
 
+function normalizeSubject(subject) {
+  return SUBJECT_ALIASES[subject] || subject;
+}
+
+function buildRegionStatusMap(cities) {
+  const map = {};
+  for (const city of cities) {
+    const region = normalizeSubject(city.subject || "");
+    if (!region) continue;
+    const status = cityStatus(city);
+    const prev = map[region];
+    if (
+      prev === undefined ||
+      STATUS_PRIORITY[status] > STATUS_PRIORITY[prev]
+    ) {
+      map[region] = status;
+    }
+  }
+  return map;
+}
+
+function getRegionStatus(feature) {
+  const name = feature.properties.name;
+  return regionStatusMap[name] || feature.properties.status || "unknown";
+}
+
+function regionStyleForStatus(status) {
+  const color = STATUS_COLORS[status] || STATUS_COLORS.unknown;
+  return {
+    fillColor: color,
+    fillOpacity: 0.1,
+    color,
+    weight: 1.5,
+    opacity: 0.8,
+  };
+}
+
+function regionHoverStyle(status) {
+  const color = STATUS_COLORS[status] || STATUS_COLORS.unknown;
+  return {
+    fillColor: color,
+    fillOpacity: 0.3,
+    color,
+    weight: 2.5,
+    opacity: 1,
+  };
+}
+
 function formatPopulation(n) {
   return new Intl.NumberFormat("ru-RU").format(n) + " чел.";
+}
+
+function formatStatusUpdatedAt(value) {
+  if (!value) return "—";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat("ru-RU", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(date);
 }
 
 function createCityIcon(city) {
@@ -105,6 +187,9 @@ function showCityPopup(city) {
   );
   document.getElementById("popup-status").textContent =
     STATUS_LABELS[cityStatus(city)] || cityStatus(city);
+  document.getElementById("popup-updated").textContent = formatStatusUpdatedAt(
+    city.statusUpdatedAt
+  );
   popup.hidden = false;
 }
 
@@ -145,30 +230,22 @@ function renderCities(zoom) {
   }
 }
 
-function regionStyle() {
-  return {
-    fillColor: "#3b82f6",
-    fillOpacity: 0.06,
-    color: "#93c5fd",
-    weight: 1,
-    opacity: 0.55,
-  };
-}
-
 function onEachRegion(feature, layer) {
   const name = feature.properties.name;
-  layer.bindTooltip(name, { sticky: true, opacity: 0.9 });
+  const status = getRegionStatus(feature);
+  const baseStyle = regionStyleForStatus(status);
+
+  layer.bindTooltip(
+    `${name}<br><span style="opacity:0.85">${STATUS_LABELS[status]}</span>`,
+    { sticky: true, opacity: 0.95 }
+  );
 
   layer.on({
     mouseover: (e) => {
-      e.target.setStyle({
-        fillOpacity: 0.18,
-        weight: 1.5,
-        opacity: 0.85,
-      });
+      e.target.setStyle(regionHoverStyle(status));
     },
     mouseout: (e) => {
-      e.target.setStyle(regionStyle());
+      e.target.setStyle(baseStyle);
     },
   });
 }
@@ -231,10 +308,11 @@ async function loadData() {
   }
 
   allCities = await citiesRes.json();
+  regionStatusMap = buildRegionStatusMap(allCities);
   const regions = await regionsRes.json();
 
   L.geoJSON(regions, {
-    style: regionStyle,
+    style: (feature) => regionStyleForStatus(getRegionStatus(feature)),
     onEachFeature: onEachRegion,
   }).addTo(map);
 
