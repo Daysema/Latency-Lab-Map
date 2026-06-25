@@ -28,28 +28,55 @@ export function initReports(allCitiesGetter, onCityUpdated) {
   const cityInput = document.getElementById("report-city");
   const cityResults = document.getElementById("report-city-results");
   const errorEl = document.getElementById("report-error");
-  const successEl = document.getElementById("report-success");
+  const successScreen = document.getElementById("report-success-screen");
+  const successText = document.getElementById("report-success-text");
+  const dialogTitle = dialog.querySelector(".report-dialog__title");
+  const dialogIntro = dialog.querySelector(".report-dialog__intro");
   const adminReportsDialog = document.getElementById("admin-reports");
   const adminReportsToggle = document.getElementById("admin-reports-toggle");
   const adminReportsList = document.getElementById("admin-reports-list");
   const adminReportsCount = document.getElementById("admin-reports-count");
   let selectedCity = "";
+  let closeTimer = null;
 
-  function hide() {
-    dialog.hidden = true;
+  function resetDialog() {
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+    form.hidden = false;
+    if (dialogTitle) dialogTitle.hidden = false;
+    if (dialogIntro) dialogIntro.hidden = false;
+    successScreen.hidden = true;
     errorEl.hidden = true;
-    successEl.hidden = true;
-  }
-
-  function show() {
-    dialog.hidden = false;
     form.reset();
     selectedCity = "";
     cityInput.value = "";
     cityResults.hidden = true;
-    errorEl.hidden = true;
-    successEl.hidden = true;
+  }
+
+  function hide() {
+    dialog.hidden = true;
+    resetDialog();
+  }
+
+  function show() {
+    resetDialog();
+    dialog.hidden = false;
     cityInput.focus();
+  }
+
+  function showSuccess(message) {
+    form.hidden = true;
+    if (dialogTitle) dialogTitle.hidden = true;
+    if (dialogIntro) dialogIntro.hidden = true;
+    errorEl.hidden = true;
+    successText.textContent = message;
+    successScreen.hidden = false;
+
+    closeTimer = setTimeout(() => {
+      hide();
+    }, 2000);
   }
 
   function hideAdminReports() {
@@ -225,7 +252,6 @@ export function initReports(allCitiesGetter, onCityUpdated) {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     errorEl.hidden = true;
-    successEl.hidden = true;
 
     const city = selectedCity || cityInput.value.trim();
     const message = document.getElementById("report-message").value.trim();
@@ -251,12 +277,11 @@ export function initReports(allCitiesGetter, onCityUpdated) {
           contact: contact || null,
         }),
       });
-      successEl.textContent = result.telegramSent
-        ? "Спасибо! Сообщение сохранено и отправлено на проверку."
-        : "Спасибо! Сообщение сохранено и добавлено в очередь на проверку.";
-      successEl.hidden = false;
-      form.reset();
-      selectedCity = "";
+      showSuccess(
+        result.telegramSent
+          ? "Спасибо! Сообщение отправлено и передано на проверку."
+          : "Спасибо! Сообщение сохранено и передано на проверку."
+      );
     } catch (err) {
       errorEl.textContent = err.message || "Не удалось отправить";
       errorEl.hidden = false;

@@ -122,8 +122,12 @@
   <div id="report-dialog" class="report-dialog" hidden>
     <div class="report-dialog__panel">
       <button type="button" class="report-dialog__close" aria-label="Закрыть">&times;</button>
-      <h2>Сообщить об ограничении</h2>
-      <p>Опишите ситуацию — сообщение попадёт в очередь на проверку.</p>
+      <h2 class="report-dialog__title">Сообщить об ограничении</h2>
+      <p class="report-dialog__intro">Опишите ситуацию — сообщение попадёт в очередь на проверку.</p>
+      <div id="report-success-screen" class="report-success-screen" hidden>
+        <p class="report-success-screen__icon" aria-hidden="true">✓</p>
+        <p id="report-success-text" class="report-success-screen__text"></p>
+      </div>
       <form id="report-form">
         <label for="report-city">Город</label>
         <div class="report-city-search">
@@ -147,7 +151,6 @@
         <input id="report-contact" type="text" placeholder="Telegram, email…" maxlength="200" />
 
         <p id="report-error" class="report-dialog__error" hidden></p>
-        <p id="report-success" class="report-dialog__success" hidden></p>
         <button type="submit">Отправить</button>
       </form>
     </div>
