@@ -97,13 +97,13 @@ nano .env
 
 ```
 SITE_ADDRESS=map.example.com
-ACME_EMAIL=you@example.com
+ACME_EMAIL=ваш-настоящий@email.com
 ADMIN_PASSWORD=ваш-секретный-пароль
 SESSION_SECRET=случайная-длинная-строка-минимум-32-символа
 ```
 
 - `SITE_ADDRESS` — ваш домен (Caddy выпустит HTTPS-сертификат автоматически)
-- `ACME_EMAIL` — email для Let's Encrypt
+- `ACME_EMAIL` — **реальный** email для Let's Encrypt (нельзя `example.com`)
 
 Для проверки по IP без домена (только HTTP):
 
@@ -156,6 +156,31 @@ sudo ufw status
 docker compose down
 docker compose up -d
 ```
+
+### HTTPS не работает / ошибка сертификата
+
+Если в логах Caddy есть `contact email has forbidden domain "example.com"`:
+
+1. Откройте `.env` и укажите **настоящий** email:
+   ```bash
+   nano .env
+   ```
+   ```
+   ACME_EMAIL=ваш@gmail.com
+   SITE_ADDRESS=map.latencylab.ru
+   ```
+
+2. Перезапустите Caddy:
+   ```bash
+   docker compose up -d caddy
+   ```
+
+3. Проверьте логи (сертификат выпускается за 1–2 минуты):
+   ```bash
+   docker compose logs -f caddy
+   ```
+
+Убедитесь, что DNS A-запись домена указывает на IP сервера и порты 80/443 открыты.
 
 ---
 
