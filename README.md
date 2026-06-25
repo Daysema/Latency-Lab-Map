@@ -159,28 +159,43 @@ docker compose up -d
 
 ### HTTPS не работает / ошибка сертификата
 
-Если в логах Caddy есть `contact email has forbidden domain "example.com"`:
+**1. Проверьте `.env`** — нужен настоящий email (не `example.com`):
 
-1. Откройте `.env` и укажите **настоящий** email:
-   ```bash
-   nano .env
-   ```
-   ```
-   ACME_EMAIL=ваш@gmail.com
-   SITE_ADDRESS=map.latencylab.ru
-   ```
+```bash
+nano .env
+```
 
-2. Перезапустите Caddy:
-   ```bash
-   docker compose up -d caddy
-   ```
+```
+SITE_ADDRESS=map.latencylab.ru
+ACME_EMAIL=ваш@gmail.com
+```
 
-3. Проверьте логи (сертификат выпускается за 1–2 минуты):
-   ```bash
-   docker compose logs -f caddy
-   ```
+**2. Сбросьте кэш сертификатов Caddy** (после неудачной первой попытки это обязательно):
 
-Убедитесь, что DNS A-запись домена указывает на IP сервера и порты 80/443 открыты.
+```bash
+cd ~/Latency-Lab-Map
+docker compose down
+docker volume rm latency-lab-map_caddy_data latency-lab-map_caddy_config
+docker compose up -d
+```
+
+> Не используйте `docker compose down -v` — это удалит и данные карты (`map_data`).
+
+Имя тома можно посмотреть так: `docker volume ls | grep caddy`
+
+**3. Проверьте логи:**
+
+```bash
+docker compose logs -f caddy
+```
+
+Успех выглядит так: `certificate obtained successfully` или `serving initial configuration` без ошибок `tls.obtain`.
+
+**4. Проверьте снаружи:**
+
+- DNS: `map.latencylab.ru` → IP сервера (`dig map.latencylab.ru +short`)
+- Порты 80 и 443 открыты: `sudo ufw allow 80/tcp && sudo ufw allow 443/tcp`
+- Сайт доступен по HTTP до выпуска cert: `curl -I http://map.latencylab.ru`
 
 ---
 
