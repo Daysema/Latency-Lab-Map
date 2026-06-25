@@ -89,6 +89,7 @@ const map = L.map("map", {
 });
 
 map.fitBounds(RUSSIA_INITIAL_BOUNDS, { padding: [16, 16], maxZoom: 4 });
+map.attributionControl.setPrefix("");
 
 L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
   attribution:
