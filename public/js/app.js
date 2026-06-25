@@ -77,9 +77,13 @@ const RUSSIA_INITIAL_BOUNDS = [
   [70.0, 170.0],
 ];
 
+/** Extra pan room beyond region borders (degrees) */
+const MAP_PAN_PADDING = { lat: 3, lng: 4 };
+
 const map = L.map("map", {
   minZoom: MIN_ZOOM,
   maxZoom: MAX_ZOOM,
+  maxBoundsViscosity: 0.4,
   zoomControl: true,
 });
 
@@ -570,6 +574,16 @@ async function loadCities() {
   return res.json();
 }
 
+function applyMapPanBounds() {
+  if (!regionsLayer) return;
+
+  const bounds = regionsLayer.getBounds();
+  map.setMaxBounds([
+    [bounds.getSouth() - MAP_PAN_PADDING.lat, bounds.getWest() - MAP_PAN_PADDING.lng],
+    [bounds.getNorth() + MAP_PAN_PADDING.lat, bounds.getEast() + MAP_PAN_PADDING.lng],
+  ]);
+}
+
 async function loadData() {
   const [regionsRes] = await Promise.all([
     fetch("/data/regions.geojson", { cache: "no-store" }),
@@ -589,6 +603,7 @@ async function loadData() {
     onEachFeature: onEachRegion,
   }).addTo(map);
 
+  applyMapPanBounds();
   renderCities(map.getZoom());
 }
 
