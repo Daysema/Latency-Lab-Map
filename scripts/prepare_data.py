@@ -11,6 +11,7 @@ from fix_region_borders import (
     fix_antimeridian,
     fix_region_borders,
 )
+from region_names import prepare_russian_regions
 
 ROOT = SCRIPT_DIR.parent
 DATA = ROOT / "public" / "data"
@@ -79,28 +80,10 @@ def prepare_cities(raw: list) -> list:
 
 
 def prepare_regions(geo: dict) -> dict:
-    features = []
-    seen: set[str] = set()
-    for f in geo["features"]:
-        props = f["properties"]
-        if props.get("adm0_a3") != "RUS":
-            continue
-        name = props.get("name_ru") or props.get("name", "")
-        if name in seen:
-            continue
-        seen.add(name)
-        features.append(
-            {
-                "type": "Feature",
-                "properties": {
-                    "name": name,
-                    "name_en": props.get("name_en") or props.get("name", ""),
-                    "code": props.get("iso_3166_2", ""),
-                },
-                "geometry": f["geometry"],
-            }
-        )
-    return {"type": "FeatureCollection", "features": features}
+    return {
+        "type": "FeatureCollection",
+        "features": prepare_russian_regions(geo),
+    }
 
 
 def prepare_dnr_lnr_regions(geo: dict) -> list[dict]:

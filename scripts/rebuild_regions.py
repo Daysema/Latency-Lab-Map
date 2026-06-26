@@ -8,6 +8,7 @@ from fix_region_borders import (
     fix_antimeridian,
     fix_region_borders,
 )
+from region_names import prepare_russian_regions
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "public" / "data"
@@ -38,39 +39,21 @@ def fetch(url: str) -> bytes:
 
 def main() -> None:
     geo = json.loads(fetch(NE_10M_URL).decode("utf-8"))
-    features = []
+    features = prepare_russian_regions(geo)
 
-    seen_rus: set[str] = set()
     for feature in geo["features"]:
         props = feature["properties"]
-        adm0 = props.get("adm0_a3")
-        if adm0 == "RUS":
-            name = props.get("name_ru") or props.get("name", "")
-            if name in seen_rus:
-                continue
-            seen_rus.add(name)
+        if props.get("adm0_a3") != "UKR":
+            continue
+        meta = DNR_LNR_REGIONS.get(props.get("name"))
+        if meta:
             features.append(
                 {
                     "type": "Feature",
-                    "properties": {
-                        "name": props.get("name_ru") or props.get("name", ""),
-                        "name_en": props.get("name_en") or props.get("name", ""),
-                        "code": props.get("iso_3166_2", ""),
-                    },
+                    "properties": meta,
                     "geometry": feature["geometry"],
                 }
             )
-            continue
-        if adm0 == "UKR":
-            meta = DNR_LNR_REGIONS.get(props.get("name"))
-            if meta:
-                features.append(
-                    {
-                        "type": "Feature",
-                        "properties": meta,
-                        "geometry": feature["geometry"],
-                    }
-                )
 
     fix_region_borders(features)
     fix_antimeridian(features)
