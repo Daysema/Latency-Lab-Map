@@ -203,11 +203,9 @@ function regionHeatVisual(stats) {
     };
   }
 
-  const restrictedShare = restricted / known;
-  const visualIntensity = Math.max(intensity, INTENSITY_WEIGHT[stats.worstStatus] ?? intensity);
   return {
-    color: heatColor(visualIntensity),
-    fillIntensity: Math.max(intensity, 0.18 + restrictedShare * 0.35),
+    color: heatColor(intensity),
+    fillIntensity: intensity,
   };
 }
 
