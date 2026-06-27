@@ -168,15 +168,12 @@ export function initReports(allCitiesGetter, onCityUpdated) {
       actions.className = "admin-reports__actions";
 
       if (report.status) {
-        const applyBtn = document.createElement("button");
-        applyBtn.type = "button";
-        applyBtn.textContent = "Применить на карту";
-        applyBtn.addEventListener("click", async () => {
-          applyBtn.disabled = true;
+        const applyReport = async (withComment, button) => {
+          button.disabled = true;
           try {
             const result = await api(`/api/reports/${report.id}`, {
               method: "PATCH",
-              body: JSON.stringify({ apply: true }),
+              body: JSON.stringify({ apply: true, withComment }),
             });
             if (result.city && onCityUpdated) {
               onCityUpdated(result.city);
@@ -184,10 +181,26 @@ export function initReports(allCitiesGetter, onCityUpdated) {
             removeReportItem(li);
           } catch (err) {
             alert(err.message || "Не удалось применить");
-            applyBtn.disabled = false;
+            button.disabled = false;
           }
-        });
+        };
+
+        const applyBtn = document.createElement("button");
+        applyBtn.type = "button";
+        applyBtn.textContent = "Применить на карту";
+        applyBtn.addEventListener("click", () => applyReport(false, applyBtn));
         actions.appendChild(applyBtn);
+
+        if ((report.message || "").trim()) {
+          const applyCommentBtn = document.createElement("button");
+          applyCommentBtn.type = "button";
+          applyCommentBtn.className = "admin-reports__apply-comment";
+          applyCommentBtn.textContent = "Добавить с комментарием";
+          applyCommentBtn.addEventListener("click", () =>
+            applyReport(true, applyCommentBtn)
+          );
+          actions.appendChild(applyCommentBtn);
+        }
       }
 
       const dismissBtn = document.createElement("button");

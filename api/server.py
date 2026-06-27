@@ -118,6 +118,57 @@ class ReportRequest(BaseModel):
 
 class ReviewReportRequest(BaseModel):
     apply: bool = True
+    withComment: bool = False
+
+
+def _find_city_for_report(cities: list[dict], report_city: str) -> dict | None:
+    query = (report_city or "").strip()
+    if not query:
+        return None
+
+    query_cf = query.casefold()
+    by_name = {city["name"]: city for city in cities}
+
+    if query in by_name:
+        return by_name[query]
+
+    for city in cities:
+        if city["name"].casefold() == query_cf:
+            return city
+
+    partial = [
+        city
+        for city in cities
+        if city["name"].casefold() in query_cf or query_cf in city["name"].casefold()
+    ]
+    if not partial:
+        return None
+    if len(partial) == 1:
+        return partial[0]
+
+    partial.sort(key=lambda city: len(city["name"]), reverse=True)
+    for city in partial:
+        if city["name"].casefold() in query_cf:
+            return city
+    return partial[0]
+
+
+def _apply_report_to_city(
+    cities: list[dict], report: dict, *, with_comment: bool
+) -> dict | None:
+    if report.get("status") not in VALID_STATUSES:
+        return None
+
+    city = _find_city_for_report(cities, report.get("city", ""))
+    if not city:
+        return None
+
+    city["status"] = report["status"]
+    city["statusUpdatedAt"] = date.today().isoformat()
+    if with_comment:
+        message = (report.get("message") or "").strip()
+        city["comment"] = message[:500] or None
+    return city
 
 
 def _session_token() -> str:
@@ -717,16 +768,15 @@ def review_report(
     report = holder["report"]
 
     updated_city = None
-    if body.apply and report.get("status") in VALID_STATUSES:
+    if body.apply:
         with _cities_lock:
             cities = _load_cities()
-            for city in cities:
-                if city["name"] == report["city"]:
-                    city["status"] = report["status"]
-                    city["statusUpdatedAt"] = date.today().isoformat()
-                    updated_city = city
-                    break
+            updated_city = _apply_report_to_city(
+                cities, report, with_comment=body.withComment
+            )
             if updated_city:
                 _save_cities(cities)
+            elif report.get("status") in VALID_STATUSES:
+                raise HTTPException(status_code=404, detail="Город не найден")
 
     return {"ok": True, "report": report, "city": updated_city}
