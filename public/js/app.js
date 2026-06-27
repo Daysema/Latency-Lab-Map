@@ -624,13 +624,13 @@ function setupMobileLegend() {
   const close = () => {
     legend.classList.remove("legend--open");
     toggle.setAttribute("aria-expanded", "false");
-    toggle.textContent = "Легенда";
+    toggle.textContent = "Доступность";
   };
 
   toggle.addEventListener("click", () => {
     const open = legend.classList.toggle("legend--open");
     toggle.setAttribute("aria-expanded", String(open));
-    toggle.textContent = open ? "Скрыть" : "Легенда";
+    toggle.textContent = open ? "Скрыть" : "Доступность";
   });
 
   document.addEventListener("click", (e) => {

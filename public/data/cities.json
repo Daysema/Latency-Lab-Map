@@ -8545,6 +8545,17 @@
     "status": "unknown"
   },
   {
+    "name": "Черниговка",
+    "lat": 44.3393,
+    "lng": 132.5795,
+    "population": 10124,
+    "subject": "Приморский край",
+    "tier": "town",
+    "status": "unknown",
+    "statusUpdatedAt": null,
+    "comment": null
+  },
+  {
     "name": "Верхний Тагил",
     "lat": 57.38333,
     "lng": 59.93333,
